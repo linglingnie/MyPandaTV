@@ -73,6 +73,9 @@ public abstract class BaseFragment extends Fragment {
      */
     public abstract void setBundle(Bundle bundle);
 
-
-
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        unbinder.unbind();
+    }
 }
