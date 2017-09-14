@@ -30,15 +30,6 @@ import butterknife.OnClick;
 
 public class MainActivity extends BaseActivity {
 
-
-    @BindView(R.id.iconImg)
-    ImageView iconImg;
-    @BindView(R.id.personImg)
-    ImageView personImg;
-    @BindView(R.id.titleTv)
-    TextView titleTv;
-    @BindView(R.id.hudongImg)
-    ImageView hudongImg;
     @BindView(R.id.container)
     FrameLayout container;
     @BindView(R.id.homePage)
