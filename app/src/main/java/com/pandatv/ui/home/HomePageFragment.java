@@ -1,34 +1,31 @@
 package com.pandatv.ui.home;
 
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
+import android.text.format.DateUtils;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.GridView;
 import android.widget.Toast;
 
-import com.jcodecraeer.xrecyclerview.XRecyclerView;
+import com.handmark.pulltorefresh.library.PullToRefreshBase;
+import com.handmark.pulltorefresh.library.PullToRefreshGridView;
 import com.pandatv.R;
 import com.pandatv.base.BaseFragment;
 import com.pandatv.entity.PandaHome;
 
-
-import java.util.ArrayList;
-import java.util.List;
-
 import butterknife.BindView;
+import butterknife.Unbinder;
 
 /**
  * Created by chj on 2017/8/20.
  */
 
-public class HomePageFragment extends BaseFragment implements XRecyclerView.LoadingListener,HomeContract.View {
+public class HomePageFragment extends BaseFragment implements AdapterView.OnItemClickListener, PullToRefreshBase.OnRefreshListener, HomeContract.View {
 
-
-    @BindView(R.id.homeRecyclerView)
-    XRecyclerView homeRecyclerView;
+    @BindView(R.id.chinaGridView)
+    PullToRefreshGridView mChinaGridView;
+    Unbinder unbinder;
     private HomeContract.Presenter presenter;
-    private List<Object> data;
-
-
 
     @Override
     protected int getLayoutRes() {
@@ -43,31 +40,15 @@ public class HomePageFragment extends BaseFragment implements XRecyclerView.Load
 
     @Override
     protected void initView(View view) {
-        this.data = new ArrayList<Object>();
-        LinearLayoutManager manager = new LinearLayoutManager(getContext());
-        manager.setOrientation(LinearLayoutManager.VERTICAL);
-        homeRecyclerView.setLayoutManager(manager);
-        homeRecyclerView.setPullRefreshEnabled(true);
-        homeRecyclerView.setLoadingMoreEnabled(false);
-        homeRecyclerView.setLoadingListener(this);
 
+        mChinaGridView.setOnItemClickListener(this);
+        mChinaGridView.setOnRefreshListener(this);
 
     }
 
     @Override
     public void setBundle(Bundle bundle) {
 
-    }
-
-
-
-
-
-//    @OnClick(R.id.homeBtns)
-    public void onViewClicked() {
-        Toast.makeText(getActivity(), "00000000", Toast.LENGTH_SHORT).show();
-//        FragmentManger.getInstance().start(R.id.homeframe123,HomeDetailFragment.class,true).build();
-       // FragmentBuilder.getInstance().init().initContainId(R.id.homeframe123).replace(HomeDetailFragment.class).build();
     }
 
     @Override
@@ -105,13 +86,42 @@ public class HomePageFragment extends BaseFragment implements XRecyclerView.Load
         this.presenter = presenter;
     }
 
+
     @Override
-    public void onRefresh() {
-        presenter.start();
+    public void onDestroyView() {
+        super.onDestroyView();
+        unbinder.unbind();
     }
 
     @Override
-    public void onLoadMore() {
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
+    }
+
+    @Override
+    public void onRefresh(PullToRefreshBase pullToRefreshBase) {
+        String label = DateUtils.formatDateTime(getActivity(), System.currentTimeMillis(),
+                DateUtils.FORMAT_SHOW_TIME | DateUtils.FORMAT_SHOW_DATE | DateUtils.FORMAT_ABBREV_ALL);
+
+        //最后一次刷新的时间
+        mChinaGridView.getLoadingLayoutProxy().setLastUpdatedLabel("上次刷新时间   " + label);
+
+        //设置刷新图标 下拉的时候显示的内容
+        mChinaGridView.getLoadingLayoutProxy().setLoadingDrawable(getResources().getDrawable(R.mipmap.ic_launcher));
+
+        //下拉完成后，还没有刷新时 显示的内容
+        mChinaGridView.getLoadingLayoutProxy().setReleaseLabel("默默地么么哒！！");
+
+        //松开手，正在刷新时 ，显示的内容
+        mChinaGridView.getLoadingLayoutProxy().setRefreshingLabel("啦啦啦啦啦");
+
+        Toast.makeText(getActivity(), "刷新了", Toast.LENGTH_SHORT).show();
+
+        mChinaGridView.setMode(PullToRefreshBase.Mode.PULL_FROM_START);
+
+        GridView refreshableView = mChinaGridView.getRefreshableView();
+
+        //refreshableView.add
+        //refreshableView.setAdapter(new ChinaAdapter(this, getData()));
     }
 }
