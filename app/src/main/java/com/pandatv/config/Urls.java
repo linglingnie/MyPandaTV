@@ -6,8 +6,6 @@ package com.pandatv.config;
  */
 
 public class Urls {
-
-
     //服务器地址
     private static final String BASEURL = "http://www.ipanda.com/kehuduan/";
     //首页互动
