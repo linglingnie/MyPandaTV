@@ -5,5 +5,7 @@ package com.pandatv.base;
  */
 
 public interface IBasePresenter {
+
     void start();
+
 }
