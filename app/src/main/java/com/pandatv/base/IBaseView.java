@@ -9,4 +9,6 @@ public interface IBaseView<T> {
     void dismissProgress();
     void showMessage(String msg);
     void setPresenter(T t);
+
+
 }

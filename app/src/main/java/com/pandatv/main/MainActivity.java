@@ -4,12 +4,9 @@ import android.support.v4.app.FragmentManager;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.TextView;
 import android.widget.Toast;
-
 
 import com.pandatv.R;
 import com.pandatv.app.App;
@@ -17,6 +14,7 @@ import com.pandatv.base.BaseActivity;
 import com.pandatv.base.BaseFragment;
 import com.pandatv.manager.ActivityCollector;
 import com.pandatv.manager.FragmentManger;
+import com.pandatv.ui.bobao.BoBaoFragment;
 import com.pandatv.ui.home.HomePageFragment;
 import com.pandatv.ui.home.HomePresenter;
 import com.pandatv.ui.live.LivePageFragment;
@@ -30,15 +28,6 @@ import butterknife.OnClick;
 
 public class MainActivity extends BaseActivity {
 
-
-    @BindView(R.id.iconImg)
-    ImageView iconImg;
-    @BindView(R.id.personImg)
-    ImageView personImg;
-    @BindView(R.id.titleTv)
-    TextView titleTv;
-    @BindView(R.id.hudongImg)
-    ImageView hudongImg;
     @BindView(R.id.container)
     FrameLayout container;
     @BindView(R.id.homePage)
@@ -90,6 +79,7 @@ public class MainActivity extends BaseActivity {
             case R.id.homeRollVideo:
                 break;
             case R.id.homePandaBroadcast:
+                FragmentManger.getInstance().start(R.id.container, BoBaoFragment.class,false).build();
                 break;
             case R.id.homeLiveChina:
                 break;
@@ -98,7 +88,7 @@ public class MainActivity extends BaseActivity {
         }
     }
 
-    ///////////////////
+///////////////////
     /**
      * 自定义回退栈管理；
      * 获取栈顶的fragment的名字，判断名字是否和主页的名字是否一样，
@@ -150,6 +140,7 @@ public class MainActivity extends BaseActivity {
         }
         return super.onKeyDown(keyCode, event);
     }
+
 }
 
 
