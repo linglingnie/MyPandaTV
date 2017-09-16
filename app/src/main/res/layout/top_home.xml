@@ -40,7 +40,7 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_margin="10dp"
-                android:src="@mipmap/ic_launcher" />
+                android:src="@drawable/about_sign" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -128,7 +128,7 @@
             android:background="@color/radio_down_background" />
 
         <GridView
-            android:id="@+id/showGridView"
+            android:id="@+id/mShowGridView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:numColumns="3"></GridView>
@@ -156,11 +156,25 @@
             android:background="@color/radio_down_background" />
 
         <GridView
-            android:id="@+id/momentGridView"
+            android:id="@+id/mMomentGridView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:numColumns="2"></GridView>
     </LinearLayout>
 
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        android:paddingBottom="20dp"
+        android:paddingLeft="15dp"
+        android:paddingTop="20dp"
+        android:text="滚滚视频"
+        android:textColor="@color/colorPrimary" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/radio_down_background" />
 </LinearLayout>

@@ -24,32 +24,34 @@ public class PandaHomeModelImpl implements IPandaHomeModel {
     }
 
     @Override
-    public void loadWheel(NetWorkCallBack<WheelBean> callBack) {
-        iHttp.get(Urls.PANDAHOME, null, callBack);
+    public void loadWheel(String url, NetWorkCallBack<WheelBean> callBack) {
+        iHttp.get(url, null, callBack);
     }
 
     @Override
-    public void loadBroadcast(NetWorkCallBack<BroadcastBean> callBack) {
-        iHttp.get(Urls.PANDAHOME, null, callBack);
+    public void loadBroadcast(String url, NetWorkCallBack<BroadcastBean> callBack) {
+        iHttp.get(url, null, callBack);
     }
 
     @Override
-    public void loadShow(NetWorkCallBack<ShowBean> callBack) {
-        iHttp.get(Urls.PANDAHOME, null, callBack);
+    public void loadShow(String url, NetWorkCallBack<ShowBean> callBack) {
+        iHttp.get(url, null, callBack);
     }
 
     @Override
-    public void loadMoment(NetWorkCallBack<MomentBean> callBack) {
-        iHttp.get(Urls.PANDAHOME, null, callBack);
+    public void loadMoment(String url, NetWorkCallBack<MomentBean> callBack) {
+        iHttp.get(url, null, callBack);
     }
 
     @Override
     public void loadVideo(NetWorkCallBack<VideoBean> callBack) {
-        iHttp.get(Urls.PANDAHOME, null, callBack);
+        iHttp.get(Urls.VIDEO, null, callBack);
     }
 
     @Override
-    public void loadChina(NetWorkCallBack<ChinaBean> callBack) {
-        iHttp.get(Urls.PANDAHOME, null, callBack);
+    public void loadChina(String url, NetWorkCallBack<ChinaBean> callBack) {
+        iHttp.get(url, null, callBack);
     }
+
+
 }

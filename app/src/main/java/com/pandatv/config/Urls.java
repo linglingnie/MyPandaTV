@@ -104,4 +104,10 @@ public class Urls {
     //播报跳转
     public static final String BOBAOXIANGQING="http://api.cntv.cn/article/contentinfo";
     public static final String CHINADIMING = BASEURL+"PAGE14501775094142282/index.json";
+
+    //home
+    //精彩一刻
+    public static final String MOMENT="http://www.ipanda.com/kehuduan/shipinliebieye/jingcaiyike/index.json";
+    //滚滚视频
+    public static final String VIDEO="http://www.ipanda.com/kehuduan/shipinliebieye/video/index.json";
 }

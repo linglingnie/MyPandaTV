@@ -18,16 +18,16 @@ public interface IPandaHomeModel extends BaseModel {
 
     void loadHomeList(NetWorkCallBack<PandaHome> callback);
 
-    void loadWheel(NetWorkCallBack<WheelBean> callBack);
+    void loadWheel(String url,NetWorkCallBack<WheelBean> callBack);
 
-    void loadBroadcast(NetWorkCallBack<BroadcastBean> callBack);
+    void loadBroadcast(String url,NetWorkCallBack<BroadcastBean> callBack);
 
-    void loadShow(NetWorkCallBack<ShowBean> callBack);
+    void loadShow(String url,NetWorkCallBack<ShowBean> callBack);
 
-    void loadMoment(NetWorkCallBack<MomentBean> callBack);
+    void loadMoment(String url,NetWorkCallBack<MomentBean> callBack);
 
     void loadVideo(NetWorkCallBack<VideoBean> callBack);
 
-    void loadChina(NetWorkCallBack<ChinaBean> callBack);
+    void loadChina(String url,NetWorkCallBack<ChinaBean> callBack);
 
 }
