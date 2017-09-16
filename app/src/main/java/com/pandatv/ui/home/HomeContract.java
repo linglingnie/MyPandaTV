@@ -13,7 +13,7 @@ import com.pandatv.entity.PandaHome;
 public class HomeContract {
 
     interface View extends IBaseView<Presenter> {
-        void showHomeListData(PandaHome pandaHome);
+            void showHomeListData(PandaHome pandaHome);
         void playVideo();
         void loadWebView();
     }
