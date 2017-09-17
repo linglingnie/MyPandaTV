@@ -25,7 +25,7 @@ public class BoBaoAdapter extends RecyclerView.Adapter implements View.OnClickLi
 
     private BoBaoAdapter.Bobaoitem bobaoitem;
 
-    private void setItem(Bobaoitem bobaoitem){
+    public void setItem(Bobaoitem bobaoitem){
         this.bobaoitem=bobaoitem;
 
     }

@@ -12,7 +12,7 @@ import com.pandatv.modle.dataModel.bobaoModel.IBobaoPresenter;
 
 public interface WebToContract {
 
-    public interface view extends IBaseView<presenter>{
+    interface view extends IBaseView<presenter>{
 
         void ShowWeb2list1(Web2Entity1 list1);
         void ShowWeb2list2(Web2Entity2 list2);

@@ -3,6 +3,7 @@ package com.pandatv.ui.bobaoWebView;
 import com.pandatv.entity.bobaoBean.Web2Entity1;
 import com.pandatv.entity.bobaoBean.Web2Entity2;
 import com.pandatv.entity.bobaoBean.Web2Entity3;
+import com.pandatv.modle.dataModel.web2bobao.IbobaoWeb2Model;
 import com.pandatv.modle.dataModel.web2bobao.Web2modelMvp;
 import com.pandatv.modle.net.callback.NetWorkCallBack;
 
@@ -17,7 +18,7 @@ public class WebTopresenter implements WebToContract.presenter{
 
 
     private WebToContract.view view;
-    private Web2modelMvp model;
+    private IbobaoWeb2Model model;
     public WebTopresenter(WebToContract.view view) {
         this.view = view;
         view.setPresenter(this);

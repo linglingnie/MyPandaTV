@@ -20,6 +20,7 @@ import com.pandatv.base.BaseFragment;
 import com.pandatv.entity.bobaoBean.BoBaoEntity1;
 import com.pandatv.entity.bobaoBean.BoBaoEntity2;
 import com.pandatv.ui.bobaoWebView.VideoActivity;
+import com.pandatv.ui.bobaoWebView.Web2Activity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -74,6 +75,16 @@ public class BoBaoFragment extends BaseFragment implements BoBaoControct.view, X
     @Override
     protected void initData() {
 
+        boBaoAdapter.setItem(new BoBaoAdapter.Bobaoitem() {
+            @Override
+            public void Listener(int psoo) {
+                Intent intent =new Intent(getActivity(), Web2Activity.class);
+                 intent.putExtra("url",listdata.get(psoo).getUrl());
+                intent.putExtra("title",listdata.get(psoo).getTitle());
+                intent.putExtra("time",listdata.get(psoo).getFocus_date());
+                startActivity(intent);
+            }
+        });
     }
 
     /**

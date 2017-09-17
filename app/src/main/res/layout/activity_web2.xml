@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_web2"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.pandatv.ui.bobaoWebView.Web2Activity">
+
+    <LinearLayout
+        android:id="@+id/web2_lin2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/web2_title2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15px"
+            android:layout_marginTop="30px"
+            android:text="11111"
+            android:textSize="40px"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/web2_timer2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15px"
+            android:layout_marginTop="30px"
+            android:text="2222222"
+            android:textSize="30px" />
+    </LinearLayout>
+
+
+        <WebView
+            android:layout_weight="1"
+            android:id="@+id/webView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"></WebView>
+
+
+    <RelativeLayout
+        android:id="@+id/web2_relativeLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true">
+
+            <Button
+                android:id="@+id/web2_sc"
+                android:layout_width="80px"
+                android:layout_height="80px"
+                android:layout_marginRight="30px"
+                android:background="@drawable/personal_shoucang_img" />
+
+            <Button
+                android:id="@+id/web2_fx"
+                android:layout_width="80px"
+                android:layout_height="80px"
+                android:layout_marginLeft="30px"
+                android:background="@drawable/pe_share_img" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>
