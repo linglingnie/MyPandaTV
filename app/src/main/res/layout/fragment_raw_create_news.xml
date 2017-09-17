@@ -1,13 +1,13 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<in.srain.cube.views.ptr.PtrFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/rawCreate_ptr"
     tools:context="com.pandatv.ui.live.liveFragment.RawCreateNewsFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+<ListView
+    android:id="@+id/rawCreate_listView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"></ListView>
 
-</FrameLayout>
+</in.srain.cube.views.ptr.PtrFrameLayout>

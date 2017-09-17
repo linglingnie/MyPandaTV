@@ -57,6 +57,6 @@ dependencies {
     compile 'com.android.support:support-v4:25.2.0'
     testCompile 'junit:junit:4.12'
     apt 'com.jakewharton:butterknife-compiler:8.4.0'
-
+    compile 'in.srain.cube:ptr-load-more:1.0.6'
    compile 'fm.jiecao:jiecaovideoplayer:1.6'
 }

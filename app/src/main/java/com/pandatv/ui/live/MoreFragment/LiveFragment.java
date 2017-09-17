@@ -2,6 +2,7 @@ package com.pandatv.ui.live.MoreFragment;
 
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,8 +10,14 @@ import android.widget.GridView;
 
 import com.pandatv.R;
 import com.pandatv.base.BaseFragment;
+import com.pandatv.ui.live.adapter.ManchAngleAdapter;
 import com.pandatv.ui.live.entity.ManchAngleofViewBean;
 import com.pandatv.ui.live.liveContract.LiveContract;
+import com.pandatv.ui.live.liveContract.ManchAngleOfViewPresenterImp;
+import com.pandatv.ui.live.liveContract.WonderfulPresenterImp;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -22,6 +29,9 @@ public class LiveFragment extends BaseFragment implements LiveContract.MuchAngle
     @BindView(R.id.live_gridView)
     GridView liveGridView;
     Unbinder unbinder;
+    private ManchAngleOfViewPresenterImp presenterImp;
+    private ManchAngleAdapter manchAngleAdapter;
+    private List<ManchAngleofViewBean.ListBean> list=new ArrayList<>();
 
     @Override
     protected int getLayoutRes() {
@@ -30,7 +40,8 @@ public class LiveFragment extends BaseFragment implements LiveContract.MuchAngle
 
     @Override
     protected void initData() {
-
+        presenterImp = new ManchAngleOfViewPresenterImp(this);
+        presenterImp.start();
     }
 
     @Override
@@ -59,7 +70,12 @@ public class LiveFragment extends BaseFragment implements LiveContract.MuchAngle
 
     @Override
     public void showAngleOfView(ManchAngleofViewBean manchAngleofViewBean) {
-
+        List<ManchAngleofViewBean.ListBean> list2 = manchAngleofViewBean.getList();
+        Log.e("TAG",list2.get(2).getTitle());
+        list.addAll(list2);
+        manchAngleAdapter = new ManchAngleAdapter(getActivity(), list);
+        liveGridView.setAdapter(manchAngleAdapter);
+        manchAngleAdapter.notifyDataSetChanged();
     }
 
     @Override

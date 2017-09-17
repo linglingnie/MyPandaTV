@@ -1,7 +1,6 @@
 package com.pandatv.ui.live.adapter;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -10,7 +9,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.pandatv.R;
-import com.pandatv.ui.live.entity.ManchAngleofViewBean;
+import com.pandatv.ui.live.entity.WonderfulBean;
 
 import java.util.List;
 
@@ -18,14 +17,14 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
- * Created by Windows on 2017/9/14.
+ * Created by Windows on 2017/9/16.
  */
 
-public class ManchAngleAdapter extends BaseAdapter {
+public class WonderfulAdapter extends BaseAdapter {
     private Context context;
-    private List<ManchAngleofViewBean.ListBean> list;
+    private List<WonderfulBean.VideoBean> list;
 
-    public ManchAngleAdapter(Context context, List<ManchAngleofViewBean.ListBean> list) {
+    public WonderfulAdapter(Context context, List<WonderfulBean.VideoBean> list) {
         this.context = context;
         this.list = list;
     }
@@ -37,39 +36,38 @@ public class ManchAngleAdapter extends BaseAdapter {
 
     @Override
     public Object getItem(int position) {
-        return list.get(position);
+        return null;
     }
 
     @Override
     public long getItemId(int position) {
-        return position;
+        return 0;
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder;
         if (convertView == null) {
-            convertView = View.inflate(context, R.layout.live_grid_item, null);
-            holder = new ViewHolder(convertView);
+            convertView = View.inflate(context, R.layout.wonderful_item, null);
+            holder=new ViewHolder(convertView);
             convertView.setTag(holder);
-        } else {
-            holder = (ViewHolder) convertView.getTag();
+        }else {
+            holder= (ViewHolder) convertView.getTag();
         }
-        ManchAngleofViewBean.ListBean listBean = list.get(position);
-        String title = listBean.getTitle();
-        holder.gridLiveTv.setText(title);
-        String image = listBean.getImage();
-        Glide.with(context).load(image).into(holder.livieGridImage);
-
+        WonderfulBean.VideoBean videoBean = list.get(position);
+        holder.wonderfulTitle.setText(videoBean.getT());
+        holder.wonderfulTime.setText(videoBean.getPtime());
+        Glide.with(context).load(videoBean.getImg()).into(holder.wonderfulFirstimage);
         return convertView;
     }
 
-
     static class ViewHolder {
-        @BindView(R.id.livie_grid_image)
-        ImageView livieGridImage;
-        @BindView(R.id.grid_live_tv)
-        TextView gridLiveTv;
+        @BindView(R.id.wonderful_firstimage)
+        ImageView wonderfulFirstimage;
+        @BindView(R.id.wonderful_title)
+        TextView wonderfulTitle;
+        @BindView(R.id.wonderful_time)
+        TextView wonderfulTime;
 
         ViewHolder(View view) {
             ButterKnife.bind(this, view);

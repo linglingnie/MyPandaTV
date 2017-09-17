@@ -5,8 +5,6 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.content.ContextCompat;
-import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,6 +25,7 @@ import com.pandatv.ui.live.liveFragment.ThoseThingFragment;
 import com.pandatv.ui.live.liveFragment.TopBangFragment;
 import com.pandatv.ui.live.liveFragment.WhenNoLetFragment;
 import com.pandatv.ui.live.liveFragment.WonderfulFragment;
+import com.pandatv.ui.live.noScrollViewPager.NoScrollViewPager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,17 +39,18 @@ import butterknife.Unbinder;
  * Created by chj on 2017/8/20.
  */
 
-public class LivePageFragment extends BaseFragment implements LiveContract.liveView{
+public class LivePageFragment extends BaseFragment implements LiveContract.liveView {
 
     @BindView(R.id.live_image_login)
     ImageView liveImageLogin;
     @BindView(R.id.live_tablayout)
     TabLayout liveTablayout;
-    @BindView(R.id.live_viewPager)
-    ViewPager liveViewPager;
+
     Unbinder unbinder;
+    @BindView(R.id.live_viewPager)
+    NoScrollViewPager liveViewPager;
     private List<Fragment> list = new ArrayList<>();
-    private List<String> titlelist=new ArrayList<>();
+    private List<String> titlelist = new ArrayList<>();
     private LivePresenterImp livePresenterImp;
 //    private ProgressDialog  dialog = new ProgressDialog(getActivity());;
     //    private ImageView image_login;
@@ -77,7 +77,7 @@ public class LivePageFragment extends BaseFragment implements LiveContract.liveV
         list.add(new RawCreateNewsFragment());
         LinearLayout childAt = (LinearLayout) liveTablayout.getChildAt(0);
         childAt.setShowDividers(LinearLayout.SHOW_DIVIDER_MIDDLE);
-        childAt.setDividerDrawable(ContextCompat.getDrawable(getActivity(),R.drawable.tab_style));
+        childAt.setDividerDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.tab_style));
     }
 
     @Override
@@ -112,7 +112,6 @@ public class LivePageFragment extends BaseFragment implements LiveContract.liveV
         List<LiveTitleBean.TablistBean> tablist = titleBean.getTablist();
         for (int i = 0; i < tablist.size(); i++) {
             String title = tablist.get(i).getTitle();
-            Log.e("TAG",title);
             titlelist.add(title);
         }
 

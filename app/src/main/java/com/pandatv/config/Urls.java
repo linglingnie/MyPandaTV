@@ -22,7 +22,7 @@ public class Urls {
     //首页数据的滚滚视频二级数据
     public static final String PANDAHOME_GUNGUNSHIPING = BASEURL+"shipinliebieye/video/index.json";
 
-    //熊猫直播
+    //熊猫直播  http://www.ipanda.com/kehuduan/PAGE14501769230331752/index.json
     public static final String PANDALIVE = BASEURL + "PAGE14501769230331752/index.json";
 
     //首页互动
