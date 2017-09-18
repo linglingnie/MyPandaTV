@@ -39,8 +39,8 @@ public class PandaHomeModelImpl implements IPandaHomeModel {
     }
 
     @Override
-    public void loadMoment(String url, NetWorkCallBack<MomentBean> callBack) {
-        iHttp.get(url, null, callBack);
+    public void loadMoment(NetWorkCallBack<MomentBean> callBack) {
+        iHttp.get(Urls.MOMENT, null, callBack);
     }
 
     @Override

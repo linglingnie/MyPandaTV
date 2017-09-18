@@ -4,4 +4,253 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="cancel">取消</string>
+    <string name="sure">确定</string>
+    <string name="edit">编辑</string>
+    <string name="del_tip">确认删除?</string>
+    <string name="delete">删除</string>
+    <string name="select_all">全选</string>
+    <string name="cancel_select_all">取消全选</string>
+    <string name="tips">提示</string>
+
+    <string name="finish">完成</string>
+    <string name="goto_update_now">现在去更新</string>
+    <string name="new_version">新版本更新</string>
+
+    <!-- player相关提示语 -->
+    <string name="player_tip1">您正在使用移动数据网络，所产生的流量费由当地运营商收取，是否继续？</string>
+    <string name="player_tip2">网络无法连接，请检查网络设置</string>
+    <string name="player_tip3">内容加载失败，请稍后重试</string>
+    <string name="player_tip4">垫片</string>
+    <string name="player_tip5">该频道目前无法观看，请选择其它频道观看</string>
+    <string name="player_tip6">当前观看人数较多，网络较慢，请您耐心等待</string>
+    <string name="player_tip7">已切换至WiFi</string>
+    <string name="watch_cancel">取消观看</string>
+    <string name="watch_continue">继续观看</string>
+    <string name="faster">极速</string>
+
+    <!-- 分享相关 -->
+    <string name="share_tip1">未找到客户端</string>
+    <string name="share_tip2">"熊猫频道"想要打开"微信"</string>
+    <string name="share_tip3">"熊猫频道"想要打开"新浪微博"</string>
+    <!-- 个人中心 -->
+    <string name="personal_login">点击登录</string>
+    <string name="personal_nickname">昵称</string>
+    <string name="personal_watchhistory">观看历史</string>
+    <string name="personal_mycollection">我的收藏</string>
+    <string name="personal_setting">设置</string>
+    <string name="personal_page">个人中心</string>
+    <string name="user_enquiry">用户调查</string>
+    <string name="paswd_error">密码错误，请重输</string>
+    <string name="personal_his_logintips">登录后可以在移动设备上同步观看历史</string>
+    <string name="personal_collect_logintips">登录后可以在移动设备上同步我的收藏</string>
+    <string name="personal_login_now">立即登录</string>
+    <!--登录-->
+    <string name="login_weinxin">微信</string>
+    <string name="login_qq">QQ</string>
+    <string name="login_sina">微博</string>
+    <string name="login_tips">使用社交账号登录到熊猫频道</string>
+    <string name="login_cntv">CNTV通行证</string>
+    <string name="login_forgetpaswd">忘记密码</string>
+    <string name="login_btn">登录</string>
+    <string name="login_regist">注册</string>
+    <string name="login_account_hint">账号：请输入邮箱或手机号</string>
+    <string name="login_password_hint">请输入密码</string>
+
+    <!--注册-->
+    <string name="regist_phone">手机注册</string>
+    <string name="regist_email">邮箱注册</string>
+    <string name="regist_phone_tips">海外用户暂不支持手机号注册，您可以使用邮箱注册</string>
+    <string name="regist_yanzhengma">获取验证码</string>
+    <string name="regist_protorcal">我已阅读并同意《央视网网络服务使用协议》</string>
+    <string name="regist_email_tips">邮箱注册需要激活后才能登录</string>
+    <string name="regist_phone_account_hint">账号：请输入手机账号</string>
+    <string name="regist_email_account_hint">账号：请输入邮箱</string>
+    <string name="regist_phone_paswd_hint">请输入密码</string>
+    <string name="regist_confirm_paswd">请确认密码</string>
+    <string name="regist_sendmessage_again">重新获取</string>
+    <string name="regist_tips">请输入手机号码</string>
+    <string name="regist_error_tips">图片验证码输入有误</string>
+    <string name="regist_nullphonenumber_tips">手机号码不能为空</string>
+    <string name="regist_phone_reg_error">手机号格式不正确</string>
+    <string name="regist_null_paswd_tips">密码不能为空</string>
+    <string name="regist_null_comfirm_paswd">确认密码不能为空</string>
+    <string name="regist_paswd_differ">密码不一致</string>
+    <string name="regist_email_null">邮箱不能为空</string>
+    <string name="regist_email_error">邮箱格式不正确</string>
+    <string name="regist_paswd_reg">密码仅限6-16个字符</string>
+    <string name="regist_yanzhengma_null">验证码不能为空</string>
+    <string name="regist_yanzhengma_error">验证码不正确</string>
+    <string name="regist_account_null">邮箱/手机号不能为空</string>
+    <string name="regist_account_error">邮箱/手机格式不正确</string>
+    <string name="regist_not_checked">未勾选《央视网网络服务使用协议》</string>
+    <string name="regist_email_success">请到您的邮箱激活账号后登录，是否现在去邮箱激活</string>
+
+    <!--忘记密码-->
+    <string name="forget_pasword">忘记密码</string>
+    <string name="forget_found_pswd">找回密码</string>
+    <string name="forget_tips">只支持手机号注册用户找回密码</string>
+    <string name="forget_account_hint">请输入注册时的手机号</string>
+    <string name="forget_img_yanzhengma_hint">请输入图片验证码</string>
+    <string name="forget_phone_yanzhengma_hint">请输入收到的验证码</string>
+    <string name="forget_set_newpaswd_hint">请设置新密码</string>
+    <string name="forget_image_yanzhengma">图形验证码</string>
+
+    <!--页面-->
+    <string name="hudong">原创·互动</string>
+    <string name="history_page">历史纪录</string>
+    <string name="collection_page">收藏</string>
+    <string name="live">直播</string>
+    <string name="kandian">精彩看点</string>
+    <string name="jianjie">简介</string>
+    <string name="change_lanmu">切换栏目</string>
+    <string name="click_add_morelanmu">点击添加更多栏目</string>
+    <string name="duoshijiaozhibo">多视角直播</string>
+    <string name="biankanbianliao">边看边聊</string>
+    <string name="live_now">[正在直播] </string>
+    <string name="send_pinglun">发送</string>
+    <string name="live_firsttime">首播时间:</string>
+    <string name="floor"> 楼</string>
+    <string name="no_login_tips">您没有登录，是否登录</string>
+    <string name="longclick_can_sort">长按拖动可以排序</string>
+
+    <!--个人信息-->
+    <string name="personal_info">个人信息</string>
+    <string name="info_touxiang">头像</string>
+    <string name="info_loginout">退出登录</string>
+
+    <!--设置-->
+    <string name="set_general">常用功能</string>
+    <string name="set_push">是否接受消息推送</string>
+    <string name="set_play_next">自动播放下一集</string>
+    <string name="set_clear_cash">清除缓存</string>
+    <string name="set_other">其他</string>
+    <string name="set_userbackandhelp">用户反馈及帮助</string>
+    <string name="set_language">语言</string>
+    <string name="set_language_chinese">简体中文</string>
+    <string name="set_language_english">English</string>
+    <string name="set_language_system">系统</string>
+    <string name="set_check_update">检测升级</string>
+    <string name="set_check_newversion">已检测到新版本，是否升级？</string>
+    <string name="set_confirm_clear_cache">确认清除缓存吗?</string>
+    <string name="set_push_tips">推送提示</string>
+    <string name="set_is_open_push">是否开启推送？</string>
+    <string name="set_great">喜欢我们,给我好评</string>
+    <string name="set_about_panda">关于熊猫频道</string>
+    <string name="set_back_title">用户反馈</string>
+    <string name="set_back_myquestion">遇到的问题</string>
+    <string name="set_back_commonquestion">常见问题</string>
+    <string name="set_back_email">请输入您的邮箱，方便我们及时给您回复</string>
+    <string name="set_back_commit">提交</string>
+    <string name="set_back_liulan">请留下您的宝贵意见</string>
+    <string name="set_back_question1">功能异常</string>
+    <string name="set_back_question2">内容问题</string>
+    <string name="set_back_question3">界面优化</string>
+    <string name="set_back_question4">视频播放</string>
+    <string name="set_back_question5">显示异常</string>
+    <string name="set_back_question6">其他建议</string>
+    <string name="set_about_version">熊猫频道V1.0.0</string>
+    <string name="set_about_content">熊猫频道以24小时直播中国名山大川、自然风光以及熊猫、金丝猴等世界珍稀动物为特色，以CCTV电视节目资源为基础，旨在打造一个传播中国声音、讲好中国故事、展示中国文化独特魅力的中国频道，充分满足海外华人以及喜爱中国文化的外国人的需求，最终建成以视频为特色的中国互联网大百科。现阶段主要开设有《熊猫观察》、《熊猫直播》、《直播中国》、《熊猫文化》等特色栏目。</string>
+
+    <!-- 修改昵称、头像 -->
+    <string name="save">保存</string>
+    <string name="change_nickname">修改昵称</string>
+    <string name="photo_select">从手机相册选择</string>
+    <string name="photo_make">拍一张</string>
+    <string name="photo_cancle">取消</string>
+    <string name="editnickname_tips">用户昵称只能为汉字、字母、数字、下划线组成;长度为3-10个汉字(6-20个非汉字字符);不能为空;不能有禁词;敏感词;不能重复</string>
+    <string name="change_nickname_tips">您的昵称已提交审核\n\n请稍后回来确认吧</string>
+    <string name="change_photo_tips">您的头像已提交审核\n\n请稍后回来确认吧</string>
+    <string name="change_nickname_sure">我知道啦</string>
+    <string name="login_cookies">您的登录已过期，请重新登录</string>
+    <string name="whatch_photo">"熊猫频道"想访问您的相册</string>
+    <string name="whatch_camera">"熊猫频道"想访问您的相机</string>
+    <string name="watch_photo_ok">好</string>
+    <string name="watch_photo_no">不允许</string>
+    <string name="tip_null"></string>
+    <string name="login_faile">您的登录已过期，请重新登录</string>
+    <string name="request_faile_tips">服务器连接失败，请重试</string>
+    <!--搜索相关-->
+    <string name="search_text_btn">搜索</string>
+    <string name="search_edittext">请输入关键字</string>
+    <string name="search_tips">对不起，搜索内容不能为空</string>
+
+    <!-- Cbox相关 -->
+    <string name="share_content_hit">我正在使用CBox央视影音客户端观看:</string>
+    <string name="share_qqzone_success">QQ空间分享成功</string>
+    <string name="sina">新浪微博</string>
+    <string name="weixing">微信</string>
+    <string name="txweibo">腾讯微博</string>
+    <string name="qqkongjian">QQ空间</string>
+    <string name="pengyouquan">朋友圈</string>
+
+    <!-- xlistview相关 -->
+    <string name="xlistview_header_hint_normal">下拉刷新</string>
+    <string name="xlistview_header_hint_ready">松开刷新数据</string>
+    <string name="xlistview_header_hint_loading">正在加载&#8230;</string>
+    <string name="xlistview_header_last_time">最后更新时间：</string>
+    <string name="xlistview_footer_hint_normal">上拉加载更多</string>
+    <string name="xlistview_footer_hint_ready">松开载入更多</string>
+    <string name="xlistview_footer_hint_no">已加载完全部数据</string>
+
+    <!-- 首页 -->
+    <string name="home">首页</string>
+    <string name="love_panda">熊猫直播</string>
+    <string name="live_china">直播中国</string>
+    <string name="cctv">CCTV</string>
+    <string name="panda_eye">熊猫观察</string>
+    <string name="panda_culture">熊猫文化</string>
+
+    <!-- 首页title -->
+    <string name="panda_channel">熊猫频道</string>
+
+    <!-- 自定义登录Dialog -->
+    <string name="dialog_title">您还没有登录，是否要登录</string>
+    <string name="dialog_cancle">取消</string>
+    <string name="dialog_login">登录</string>
+
+    <!-- 网络提示语 -->
+    <string name="no_net_val">没有网络</string>
+    <!-- 熊猫直播 -->
+    <string name="lpanda_watchtalk">添加评论...</string>
+    <!--熊猫文化底层-->
+    <string name="culture_detail_breif">栏目介绍</string>
+
+    <!-- 收藏提示语 -->
+    <string name="collect_no">已取消收藏</string>
+    <string name="collect_yes">已添加，请到[我的收藏]中查看</string>
+    <string name="collect_no_data">暂无收藏</string>
+    <string name="collect_no_data_tip">收藏您喜欢的节目后，这里将显示您的收藏记录</string>
+
+    <string name="network_invalid">没有网络连接</string>
+
+
+    <string name="messenger_send_button_text">Send</string>
+
+    <!-- toast提示语 -->
+    <string name="click_two_exit_app">连续点击两次退出应用!</string>
+    <string name="load_try_again">数据加载失败, 请稍后重试</string>
+    <string name="load_fail">数据获取失败!</string>
+    <string name="can_not_be_empty">对不起，搜索内容不能为空</string>
+    <string name="already_saved_to_search_history">已经存到搜索历史</string>
+    <string name="video_address_not_exist">视频地址不存在</string>
+    <string name="data_error_try_again_later">数据有误，请稍后重试!</string>
+    <string name="greater_than_four">栏目区，不能少于四个频道</string>
+    <string name="video_data_deletion">视频数据缺失</string>
+    <string name="no_more_data">暂无更多数据</string>
+    <string name="please_enter_the_content">请输入内容</string>
+    <string name="show_your_comments">审核通过后显示您的评论</string>
+    <string name="have_no_version_name">没找到版本名!</string>
+    <string name="no_obtain_code">未获取验证码</string>
+    <string name="login_error_try_again">登录错误，请重试...</string>
+    <string name="check_error">检测升级失败</string>
+    <string name="no_find_store">没有找到可用的应用市场</string>
+    <string name="email_error">邮箱格式不正确</string>
+    <string name="submit_repeat">内容提交重复!</string>
+    <string name="p2ptocdn">p2p初始化失败,切换到cdn播放!</string>
+    <string name="try_again_play">当前视频无法播放,请重新离开重试!</string>
+    <string name="no_copyright">版权问题,该视频无法播放!</string>
+    <string name="download_failed">下载失败!</string>
+    <string name="cancel_download">取消下载!</string>
 </resources>

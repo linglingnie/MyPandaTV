@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.pandatv.R;
-import com.pandatv.entity.PandaHome;
+import com.pandatv.ui.home.bean.MomentBean;
 
 import java.util.List;
 
@@ -17,11 +17,11 @@ import java.util.List;
  * Created by Yuan on 2017/9/17.
  */
 
-public class ChinaAdapter extends BaseAdapter {
+public class MomentAdapter extends BaseAdapter {
     private Context context;
-    private List<PandaHome.DataBean.ChinaliveBean.ListBeanXX> list;
+    private List<MomentBean.ListBean> list;
 
-    public ChinaAdapter(Context context, List<PandaHome.DataBean.ChinaliveBean.ListBeanXX> list) {
+    public MomentAdapter(Context context, List<MomentBean.ListBean> list) {
         this.context = context;
         this.list = list;
     }
@@ -45,27 +45,36 @@ public class ChinaAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder = null;
         if (convertView == null) {
-            convertView = View.inflate(context, R.layout.item_home_china, null);
+            convertView = View.inflate(context, R.layout.item_home_moment, null);
             holder = new ViewHolder(convertView);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
+
+        holder.mTime.setText(list.get(position).getVideoLength());
         holder.mTitle.setText(list.get(position).getTitle());
+        holder.mMDayTime.setText(list.get(position).getDaytime());
         Glide.with(context).load(list.get(position).getImage()).into(holder.mImage);
         return convertView;
     }
 
+
     public static class ViewHolder {
         public View rootView;
         public ImageView mImage;
+        public TextView mTime;
         public TextView mTitle;
+        public TextView mMDayTime;
 
         public ViewHolder(View rootView) {
             this.rootView = rootView;
             this.mImage = (ImageView) rootView.findViewById(R.id.image);
+            this.mTime = (TextView) rootView.findViewById(R.id.time);
             this.mTitle = (TextView) rootView.findViewById(R.id.title);
+            this.mMDayTime = (TextView) rootView.findViewById(R.id.mDayTime);
         }
 
     }
+
 }

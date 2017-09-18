@@ -14,14 +14,14 @@ import com.pandatv.entity.PandaHome;
 import java.util.List;
 
 /**
- * Created by Yuan on 2017/9/17.
+ * Created by Yuan on 2017/9/14.
  */
 
-public class ChinaAdapter extends BaseAdapter {
+public class ShowAdapter extends BaseAdapter {
     private Context context;
-    private List<PandaHome.DataBean.ChinaliveBean.ListBeanXX> list;
+    private List<PandaHome.DataBean.PandaliveBean.ListBean> list;
 
-    public ChinaAdapter(Context context, List<PandaHome.DataBean.ChinaliveBean.ListBeanXX> list) {
+    public ShowAdapter(Context context, List<PandaHome.DataBean.PandaliveBean.ListBean> list) {
         this.context = context;
         this.list = list;
     }

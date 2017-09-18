@@ -6,6 +6,7 @@ import com.pandatv.modle.dataModel.IPandaHomeModel;
 import com.pandatv.modle.dataModel.PandaHomeModelImpl;
 import com.pandatv.modle.net.callback.NetWorkCallBack;
 import com.pandatv.ui.home.bean.BroadcastBean;
+import com.pandatv.ui.home.bean.MomentBean;
 import com.pandatv.ui.home.bean.VideoBean;
 
 /**
@@ -52,6 +53,24 @@ public class HomePresenter implements HomeContract.Presenter {
             @Override
             public void onSuccess(VideoBean videoBean) {
                 homeView.loadVideo(videoBean);
+                homeView.dismissProgress();
+            }
+
+            @Override
+            public void onError(int errorCode, String errorMsg) {
+                homeView.showMessage(errorMsg);
+                homeView.dismissProgress();
+            }
+
+            @Override
+            public void onFail(String netOff) {
+
+            }
+        });
+        homeModel.loadMoment(new NetWorkCallBack<MomentBean>() {
+            @Override
+            public void onSuccess(MomentBean momentBean) {
+                homeView.loadMoment(momentBean);
                 homeView.dismissProgress();
             }
 

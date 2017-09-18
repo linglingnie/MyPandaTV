@@ -37,6 +37,7 @@
             android:orientation="horizontal">
 
             <ImageView
+                android:id="@+id/pandaImg"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_margin="10dp"
@@ -68,13 +69,12 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
-                        android:layout_marginTop="10dp" />
+                        android:layout_marginTop="5dp" />
                 </LinearLayout>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:layout_margin="5dp"
                     android:background="@color/radio_down_background" />
 
                 <LinearLayout
@@ -130,7 +130,7 @@
         <GridView
             android:id="@+id/mShowGridView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="400dp"
             android:numColumns="3"></GridView>
     </LinearLayout>
 
@@ -158,7 +158,7 @@
         <GridView
             android:id="@+id/mMomentGridView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="400dp"
             android:numColumns="2"></GridView>
     </LinearLayout>
 

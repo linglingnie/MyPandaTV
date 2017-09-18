@@ -19,7 +19,7 @@
             android:layout_marginBottom="5dp"
             android:layout_height="wrap_content"
             android:layout_alignBottom="@id/image"
-            android:background="#55000000"
+            android:background="@drawable/lpanda_bottom_gra"
             android:orientation="horizontal">
 
             <ImageView

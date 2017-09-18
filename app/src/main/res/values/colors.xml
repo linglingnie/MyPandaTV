@@ -12,4 +12,106 @@
 
     <color name="radio_down_background">#eee</color>
     <color name="radio_top_background">#fff</color>
+
+    <color name="gray">#7c7c7c</color>
+    <color name="transparent">#00000000</color> <!-- 透明 -->
+    <color name="transparent_half">#90000000</color> <!-- 半透明 -->
+    <color name="transparent_half_up">#AA000000</color> <!-- 半透明 -->
+    <color name="crimson">#DC143C</color><!--暗深红色 -->
+    <color name="transparent_background">#20000000</color>
+
+    <!-- Cbox相关 -->
+    <color name="share_color_p">#CFCFCF</color>
+    <color name="blue">#009ce5</color>
+
+    <!--首页-->
+    <color name="home_tab_back">#E6EBEF</color>
+    <color name="home_tab_font_sel">#121ec3</color>
+    <color name="home_tab_font_nor">#909097</color>
+    <color name="home_group_title">#1d539b</color>
+    <color name="home_ssubject_item">#5B5B5B</color>
+    <color name="home_panda_eye_type">#ff0a5a</color>
+    <color name="home_text">#000000</color>
+
+    <!-- 专题模板 -->
+    <color name="ssubject_text">#5B5B5B</color>
+
+    <!-- 熊猫直播 -->
+    <color name="lpanda_scroll_color_selected">#1E539C</color>
+    <color name="lpanda_scroll_color_normal">#000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="color_black">#000000</color>
+
+
+    <!-- CCTV -->
+    <color name="cctv_tab_unsel">#000000</color>
+    <color name="cctv_tab_sel">#1E539C</color>
+    <color name="cctv_space">#E6EBF0</color>
+    <color name="cctv_grey">#DFDFDF</color>			<!-- 淡灰色 -->
+    <color name="cctv_grey2">#F7F7F7</color>			<!-- 石灰色 -->
+
+    <!-- 个人中心 -->
+    <color name="pe_text_bg_gray">#5d5d5d</color>
+    <color name="pe_bg_light_blue">#E6EBEF</color>
+    <color name="pe_gray">#808080</color>
+    <color name="black">#353535</color>
+
+    <!--直播中国  -->
+    <!--黑色  -->
+    <color name="live_china_black">#000000</color>
+    <!--文字灰色  -->
+    <color name="live_china_grak">#656565</color>
+    <color name="default_text_night">#ff747474</color>
+    <color name="subscribe_item_text_color_pressed_night">#ff303030</color>
+    <color name="subscribe_item_selected_stroke_night">#ffbc494d</color>
+    <color name="subscribe_item_drag_stroke">#ffd2d2d2</color>
+    <color name="subscribe_item_drag_bg">#fff5f5f5</color>
+    <color name="subscribe_item_selected_bg">#ffffffff</color>
+    <color name="subscribe_item_selected_stroke">#ffcc3131</color>
+    <color name="subscribe_item_disabled_stroke">#ffd9d9d9</color>
+    <color name="subscribe_item_disabled_bg">#ffefefef</color>
+    <color name="subscribe_item_pressed_stroke">#ffcdcdcd</color>
+    <color name="subscribe_item_pressed_bg">#fff9f9f9</color>
+    <color name="subscribe_item_normal_stroke">#ffcdcdcd</color>
+    <color name="subscribe_item_normal_bg">#fff5f5f5</color>
+    <item name="subscribe_item_text_color_normal_night" type="color">@color/default_text_night</item>
+    <color name="subscribe_item_text_color_pressed">#ffb9b9b9</color>
+    <item name="subscribe_item_text_color_normal" type="color">@color/default_text</item>
+    <color name="default_text">#ff454545</color>
+
+    <color name="qianhuise">#E8E8E8</color>
+
+    <!-- dasdasdas -->
+    <color name="black_overlay">#66000000</color>
+
+    <color name="ijk_color_blue_main">@color/ijk_color_blue_500</color>
+    <color name="ijk_color_blue_50">#E3F2FD</color>
+    <color name="ijk_color_blue_100">#BBDEFB</color>
+    <color name="ijk_color_blue_200">#90CAF9</color>
+    <color name="ijk_color_blue_300">#64B5F6</color>
+    <color name="ijk_color_blue_400">#42A5F5</color>
+    <color name="ijk_color_blue_500">#2196F3</color>
+    <color name="ijk_color_blue_600">#1E88E5</color>
+    <color name="ijk_color_blue_700">#1976D2</color>
+    <color name="ijk_color_blue_800">#1565C0</color>
+    <color name="ijk_color_blue_900">#0D47A1</color>
+
+    <color name="ijk_transparent_dark">#77000000</color>
+    <!--  <color name="ijk_transparent_dark">#009ce5</color>  -->
+
+    <color name="setting_common_bg">#f6f6f6</color>
+    <color name="title_bar_title_color">#404f64</color>
+    <color name="panda_bg_color">#e0e5ea</color>
+    <color name="tab_top_line_color">#d4d5d7</color>
+
+    <color name="tab_prss_color">#e7e7e7</color>
+    <color name="bg_color">#CDCDCD</color>
+
+    <!--播放器  -->
+    <color name="media_qingxidu">#99285AA0</color>
+    <color name="volume_seekBar">#285AA0</color>
+    <!--升级-->
+    <color name="home_upgrade">#285AA0</color>
+
+    <color name="setting_divider_line_bg">#c2c2c2</color>
 </resources>
