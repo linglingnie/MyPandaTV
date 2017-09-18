@@ -4,6 +4,7 @@
     android:id="@+id/activity_video"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+<<<<<<< HEAD
     tools:context="com.pandatv.ui.video.VideoActivity">
     <fm.jiecao.jcvideoplayer_lib.JCVideoPlayer
         android:id="@+id/videocontroller1"
@@ -11,4 +12,13 @@
         android:layout_height="match_parent"
         />
 
+=======
+    tools:context="com.pandatv.ui.bobaoWebView.VideoActivity">
+
+
+    <fm.jiecao.jcvideoplayer_lib.JCVideoPlayer
+        android:id="@+id/videoactivity_jc"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+>>>>>>> origin/master
 </RelativeLayout>

@@ -1,9 +1,107 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.pandatv.ui.live.liveFragment.GridFragment">
+    <fm.jiecao.jcvideoplayer_lib.JCVideoPlayer
+        android:id="@+id/live_jcvVideoPlayer"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"></fm.jiecao.jcvideoplayer_lib.JCVideoPlayer>
+
+    <TextView
+        android:id="@+id/live_title"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:text="[正在直播]成都基地高清精切线路"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:textColor="#D4D4D4"
+            android:text="简介"
+            />
+        <ImageView
+            android:id="@+id/live_china_down"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:layout_weight="1"
+            android:visibility="gone"
+            android:src="@drawable/live_china_detail_down"
+            />
+        <ImageView
+            android:id="@+id/live_china_up"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/live_china_detail_up"
+            />
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#d4d4d4"
+        />
+
+    <TextView
+        android:id="@+id/live_tv_brief"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:text="翻身、吃饭、睡觉、喝奶、打闹、攀爬...."
+        />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#d4d4d4"
+        />
+
+
+        <LinearLayout
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <android.support.design.widget.TabLayout
+                android:id="@+id/grid_tablayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:tabSelectedTextColor="@color/colorPrimaryDark"
+                app:tabTextColor="#000"
+                app:tabIndicatorColor="@color/colorPrimaryDark"
+                ></android.support.design.widget.TabLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#d4d4d4"
+                />
+            <com.pandatv.ui.live.noScrollViewPager.NoScrollViewPager
+                android:id="@+id/live_grid_viewPager"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"></com.pandatv.ui.live.noScrollViewPager.NoScrollViewPager>
+
+
+        </LinearLayout>
+
+
+
 
 
 

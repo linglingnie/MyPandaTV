@@ -14,6 +14,7 @@ import com.pandatv.base.BaseActivity;
 import com.pandatv.base.BaseFragment;
 import com.pandatv.manager.ActivityCollector;
 import com.pandatv.manager.FragmentManger;
+import com.pandatv.ui.bobao.BoBaoFragment;
 import com.pandatv.ui.home.HomePageFragment;
 import com.pandatv.ui.home.HomePresenter;
 import com.pandatv.ui.live.LivePageFragment;
@@ -81,6 +82,7 @@ public class MainActivity extends BaseActivity {
 
                 break;
             case R.id.homePandaBroadcast:
+                FragmentManger.getInstance().start(R.id.container, BoBaoFragment.class,false).build();
                 break;
             case R.id.homeLiveChina:
                 break;
@@ -89,7 +91,7 @@ public class MainActivity extends BaseActivity {
         }
     }
 
-    ///////////////////
+///////////////////
     /**
      * 自定义回退栈管理；
      * 获取栈顶的fragment的名字，判断名字是否和主页的名字是否一样，
@@ -141,6 +143,7 @@ public class MainActivity extends BaseActivity {
         }
         return super.onKeyDown(keyCode, event);
     }
+
 }
 
 

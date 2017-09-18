@@ -10,7 +10,6 @@ import com.pandatv.base.BaseFragment;
 public class LookTalkFragment extends BaseFragment {
 
 
-
     @Override
     protected int getLayoutRes() {
         return R.layout.fragment_look_talk;
