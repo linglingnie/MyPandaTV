@@ -6,8 +6,6 @@ package com.pandatv.config;
  */
 
 public class Urls {
-
-
     //服务器地址
     private static final String BASEURL = "http://www.ipanda.com/kehuduan/";
     //首页互动
@@ -24,7 +22,7 @@ public class Urls {
     //首页数据的滚滚视频二级数据
     public static final String PANDAHOME_GUNGUNSHIPING = BASEURL+"shipinliebieye/video/index.json";
 
-    //熊猫直播
+    //熊猫直播  http://www.ipanda.com/kehuduan/PAGE14501769230331752/index.json
     public static final String PANDALIVE = BASEURL + "PAGE14501769230331752/index.json";
 
     //首页互动
@@ -106,4 +104,10 @@ public class Urls {
     //播报跳转
     public static final String BOBAOXIANGQING="http://api.cntv.cn/article/contentinfo";
     public static final String CHINADIMING = BASEURL+"PAGE14501775094142282/index.json";
+
+    //home
+    //精彩一刻
+    public static final String MOMENT="http://www.ipanda.com/kehuduan/shipinliebieye/jingcaiyike/index.json";
+    //滚滚视频
+    public static final String VIDEO="http://www.ipanda.com/kehuduan/shipinliebieye/video/index.json";
 }

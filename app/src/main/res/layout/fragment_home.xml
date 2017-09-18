@@ -1,22 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ptr="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#eee"
+    android:background="#55ffffff"
     android:orientation="vertical">
 
-    <!--<com.youth.banner.Banner-->
-        <!--android:id="@+id/mBanner"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="200dp" />-->
 
-    <com.jcodecraeer.xrecyclerview.XRecyclerView
-        android:id="@+id/homeRecyclerView"
+    <com.handmark.pulltorefresh.library.PullToRefreshListView
+        android:id="@+id/mVideoListView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-
-    </com.jcodecraeer.xrecyclerview.XRecyclerView>
-
-
+        android:layout_height="650dp"
+        android:background="#fff"
+        android:gravity="center"
+        android:listSelector="#00000000"
+        ptr:ptrMode="both" />
 </LinearLayout>
