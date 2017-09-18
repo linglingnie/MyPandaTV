@@ -61,6 +61,7 @@ public class WhenNoLetAdapter extends BaseAdapter {
         Log.e("TAG","----------->>>>>>"+ptime);
         holder.wonderfulTime.setText(ptime);
         holder.wonderfulTitle.setText(videoBean.getT());
+        holder.timeLength.setText(videoBean.getLen());
         iHttp.loadImage(videoBean.getImg(),holder.wonderfulFirstimage);
 
         return convertView;
@@ -73,7 +74,8 @@ public class WhenNoLetAdapter extends BaseAdapter {
         TextView wonderfulTitle;
         @BindView(R.id.wonderful_time)
         TextView wonderfulTime;
-
+        @BindView(R.id.time_length)
+        TextView timeLength;
         ViewHolder(View view) {
             ButterKnife.bind(this, view);
         }

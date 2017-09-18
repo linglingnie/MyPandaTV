@@ -28,5 +28,7 @@
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:screenOrientation="landscape" />
         <activity android:name=".ui.video.PlayerActivity"></activity>
+        <activity android:name=".ui.home.activity.VideoActivity" />
+        <activity android:name=".ui.live.LiveVideoActivity"></activity>
     </application>
 </manifest>

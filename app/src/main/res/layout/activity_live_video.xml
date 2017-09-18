@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_live_video"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.pandatv.ui.live.LiveVideoActivity">
+
+    <fm.jiecao.jcvideoplayer_lib.JCVideoPlayer
+        android:id="@+id/video_jcvideoplayer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="horizontal"-->
+                <!--&gt;-->
+                <!--<ImageView-->
+
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--app:srcCompat="@drawable/collect_no"-->
+                    <!--android:layout_marginEnd="5dp"-->
+                    <!--android:id="@+id/video_collect" />-->
+
+                <!--<ImageView-->
+                    <!--android:id="@+id/video_share"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:src="@drawable/share"-->
+                    <!--/>-->
+            <!--</LinearLayout>-->
+
+    </fm.jiecao.jcvideoplayer_lib.JCVideoPlayer>
+
+
+</RelativeLayout>

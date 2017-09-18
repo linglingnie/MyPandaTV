@@ -59,6 +59,7 @@ public class ManchAngleAdapter extends BaseAdapter {
         String title = listBean.getTitle();
         holder.gridLiveTv.setText(title);
         String image = listBean.getImage();
+
         Glide.with(context).load(image).into(holder.livieGridImage);
 
         return convertView;

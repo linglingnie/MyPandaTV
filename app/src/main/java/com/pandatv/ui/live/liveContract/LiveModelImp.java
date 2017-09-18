@@ -2,6 +2,7 @@ package com.pandatv.ui.live.liveContract;
 
 import com.pandatv.config.Urls;
 import com.pandatv.ui.live.entity.LiveTitleBean;
+import com.pandatv.ui.live.entity.LiveVideoBean;
 import com.pandatv.ui.live.entity.ManchAngleofViewBean;
 import com.pandatv.modle.net.callback.NetWorkCallBack;
 import com.pandatv.ui.live.entity.PandaFiesBean;
@@ -73,5 +74,11 @@ public class LiveModelImp implements LiveTitleModel{
     public void RawCreateNews(NetWorkCallBack<RawCreateBean> callBack) {
         iHttp.get(Urls.YUANCHUANG,null,callBack);
     }
+
+    @Override
+    public void loadVideoActivity(NetWorkCallBack<LiveVideoBean> callBack, String vid) {
+        iHttp.get(Urls.PINJIE3+vid,null,callBack);
+    }
+
 
 }

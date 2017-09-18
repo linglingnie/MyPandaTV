@@ -10,7 +10,6 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.pandatv.R;
 import com.pandatv.ui.live.entity.SproutBeautifulBean;
-import com.pandatv.ui.live.entity.WonderfulBean;
 
 import java.util.List;
 
@@ -50,17 +49,20 @@ public class BeautifulAdapter extends BaseAdapter {
         ViewHolder holder;
         if (convertView == null) {
             convertView = View.inflate(context, R.layout.wonderful_item, null);
-            holder=new ViewHolder(convertView);
+            holder = new ViewHolder(convertView);
             convertView.setTag(holder);
-        }else {
-            holder= (ViewHolder) convertView.getTag();
+        } else {
+            holder = (ViewHolder) convertView.getTag();
         }
         SproutBeautifulBean.VideoBean videoBean = list.get(position);
         holder.wonderfulTitle.setText(videoBean.getT());
         holder.wonderfulTime.setText(videoBean.getPtime());
+        holder.timeLength.setText(videoBean.getLen());
         Glide.with(context).load(videoBean.getImg()).into(holder.wonderfulFirstimage);
         return convertView;
     }
+
+
 
     static class ViewHolder {
         @BindView(R.id.wonderful_firstimage)
@@ -69,9 +71,12 @@ public class BeautifulAdapter extends BaseAdapter {
         TextView wonderfulTitle;
         @BindView(R.id.wonderful_time)
         TextView wonderfulTime;
-
+        @BindView(R.id.time_length)
+        TextView timeLength;
         ViewHolder(View view) {
             ButterKnife.bind(this, view);
         }
     }
+
+
 }

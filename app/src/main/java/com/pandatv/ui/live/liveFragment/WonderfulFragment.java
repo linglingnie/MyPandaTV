@@ -1,6 +1,7 @@
 package com.pandatv.ui.live.liveFragment;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,7 @@ import android.widget.Toast;
 import com.chanven.lib.cptr.PtrClassicDefaultHeader;
 import com.pandatv.R;
 import com.pandatv.base.BaseFragment;
+import com.pandatv.ui.live.LiveVideoActivity;
 import com.pandatv.ui.live.adapter.WonderfulAdapter;
 import com.pandatv.ui.live.entity.WonderfulBean;
 import com.pandatv.ui.live.liveContract.LiveContract;
@@ -82,9 +84,10 @@ public class WonderfulFragment extends BaseFragment implements LiveContract.Wond
         wonderfulListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(getActivity(), "精彩一刻", Toast.LENGTH_SHORT).show();
-                WebView webView = new WebView(getActivity());
-                webView.loadUrl(video.get(position).getUrl());
+                WonderfulBean.VideoBean videoBean = video.get(position);
+                Intent intent=new Intent(getActivity(), LiveVideoActivity.class);
+                intent.putExtra("videoBean",videoBean);
+                startActivity(intent);
             }
         });
 

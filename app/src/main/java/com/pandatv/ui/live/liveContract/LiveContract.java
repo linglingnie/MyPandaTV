@@ -3,6 +3,7 @@ package com.pandatv.ui.live.liveContract;
 import com.pandatv.base.IBasePresenter;
 import com.pandatv.base.IBaseView;
 import com.pandatv.ui.live.entity.LiveTitleBean;
+import com.pandatv.ui.live.entity.LiveVideoBean;
 import com.pandatv.ui.live.entity.ManchAngleofViewBean;
 import com.pandatv.ui.live.entity.PandaFiesBean;
 import com.pandatv.ui.live.entity.PandaLive;
@@ -86,6 +87,11 @@ public class LiveContract {
         void showRawCreate(RawCreateBean rawCreateBean);
         void playVideo();
         void loadWebView();
+    }
+
+    public interface LiveVideoView extends IBaseView<LivePresenter>{
+        void showLiveVideo(LiveVideoBean videoBean);
+
     }
 
     public interface LivePresenter extends IBasePresenter{

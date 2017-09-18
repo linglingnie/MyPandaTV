@@ -1,6 +1,7 @@
 package com.pandatv.ui.live.liveContract;
 
 import com.pandatv.ui.live.entity.LiveTitleBean;
+import com.pandatv.ui.live.entity.LiveVideoBean;
 import com.pandatv.ui.live.entity.ManchAngleofViewBean;
 import com.pandatv.modle.dataModel.BaseModel;
 import com.pandatv.modle.net.callback.NetWorkCallBack;
@@ -31,4 +32,6 @@ public interface LiveTitleModel extends BaseModel {
    void loadThoseThing(NetWorkCallBack<ThoseThingBean> callBack);
    void loadSpecialPrograg(NetWorkCallBack<SpecialProgramBean> callBack);
    void RawCreateNews(NetWorkCallBack<RawCreateBean> callBack);
+   void loadVideoActivity(NetWorkCallBack<LiveVideoBean> callBack,String vid);
+
 }

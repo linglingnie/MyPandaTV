@@ -8,7 +8,7 @@
     <fm.jiecao.jcvideoplayer_lib.JCVideoPlayer
         android:id="@+id/live_jcvVideoPlayer"
         android:layout_width="match_parent"
-        android:layout_height="250dp"></fm.jiecao.jcvideoplayer_lib.JCVideoPlayer>
+        android:layout_height="200dp"></fm.jiecao.jcvideoplayer_lib.JCVideoPlayer>
 
     <TextView
         android:id="@+id/live_title"

@@ -1,13 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
+    android:background="#fff"
     android:layout_height="match_parent">
-<ImageView
-    android:id="@+id/livie_grid_image"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:src="@mipmap/ic_launcher"
-    />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/livie_grid_image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_launcher"
+            />
+        <LinearLayout
+            android:layout_alignParentBottom="true"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:background="@drawable/lpanda_bottom_gra"
+            android:layout_marginStart="5dp"
+            android:orientation="horizontal"
+            >
+            <ImageView
+                android:layout_marginLeft="10dp"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_marginTop="3dp"
+                android:src="@drawable/lpanda_live_layer"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Live"
+                android:layout_marginStart="5dp"
+                android:textSize="15sp"
+                />
+        </LinearLayout>
+    </RelativeLayout>
+
+
     <TextView
         android:id="@+id/grid_live_tv"
         android:layout_width="wrap_content"

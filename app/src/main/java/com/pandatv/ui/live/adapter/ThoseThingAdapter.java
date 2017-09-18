@@ -58,6 +58,7 @@ public class ThoseThingAdapter extends BaseAdapter {
         ThoseThingBean.VideoBean videoBean = list.get(position);
         holder.wonderfulTitle.setText(videoBean.getT());
         holder.wonderfulTime.setText(videoBean.getPtime());
+        holder.timeLength.setText(videoBean.getLen());
         Glide.with(context).load(videoBean.getImg()).into(holder.wonderfulFirstimage);
         return convertView;
     }
@@ -69,7 +70,8 @@ public class ThoseThingAdapter extends BaseAdapter {
         TextView wonderfulTitle;
         @BindView(R.id.wonderful_time)
         TextView wonderfulTime;
-
+        @BindView(R.id.time_length)
+        TextView timeLength;
         ViewHolder(View view) {
             ButterKnife.bind(this, view);
         }
