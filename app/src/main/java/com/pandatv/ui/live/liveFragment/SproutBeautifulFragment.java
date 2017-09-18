@@ -1,14 +1,17 @@
 package com.pandatv.ui.live.liveFragment;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.pandatv.R;
 import com.pandatv.base.BaseFragment;
+import com.pandatv.ui.live.LiveVideoActivity;
 import com.pandatv.ui.live.adapter.BeautifulAdapter;
 import com.pandatv.ui.live.entity.SproutBeautifulBean;
 import com.pandatv.ui.live.liveContract.LiveContract;
@@ -34,6 +37,7 @@ public class SproutBeautifulFragment extends BaseFragment implements LiveContrac
     Unbinder unbinder;
     private BeautifulAdapter beautifulAdapter;
     private SproutBeautifulPresenterImp sproutBeautifulPresenterImp;
+    private List<SproutBeautifulBean.VideoBean> video;
 
     @Override
     protected int getLayoutRes() {
@@ -68,6 +72,19 @@ public class SproutBeautifulFragment extends BaseFragment implements LiveContrac
                 beautifulPtr.refreshComplete();
             }
         });
+
+        beautifulListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                SproutBeautifulBean.VideoBean videoBean = video.get(position);
+                Intent intent=new Intent(getActivity(), LiveVideoActivity.class);
+                intent.putExtra("title",videoBean.getT());
+                intent.putExtra("image",videoBean.getImg());
+                intent.putExtra("url",videoBean.getUrl());
+                intent.putExtra("vid",videoBean.getVid());
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -96,9 +113,10 @@ public class SproutBeautifulFragment extends BaseFragment implements LiveContrac
 
     @Override
     public void showSproutBeautiful(SproutBeautifulBean beautifulBean) {
-        List<SproutBeautifulBean.VideoBean> video = beautifulBean.getVideo();
+        video = beautifulBean.getVideo();
         beautifulAdapter = new BeautifulAdapter(getActivity(), video);
         beautifulListView.setAdapter(beautifulAdapter);
+        beautifulAdapter.notifyDataSetChanged();
     }
 
     @Override

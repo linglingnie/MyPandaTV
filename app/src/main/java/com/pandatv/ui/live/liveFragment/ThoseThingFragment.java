@@ -1,16 +1,20 @@
 package com.pandatv.ui.live.liveFragment;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.pandatv.R;
 import com.pandatv.base.BaseFragment;
+import com.pandatv.ui.live.LiveVideoActivity;
 import com.pandatv.ui.live.adapter.ThoseThingAdapter;
 import com.pandatv.ui.live.entity.ThoseThingBean;
+import com.pandatv.ui.live.entity.WhenNoLetBean;
 import com.pandatv.ui.live.liveContract.LiveContract;
 import com.pandatv.ui.live.liveContract.ThoseThingViewImp;
 
@@ -31,6 +35,7 @@ public class ThoseThingFragment extends BaseFragment implements LiveContract.Tho
     PtrFrameLayout thoseThingPtr;
     Unbinder unbinder;
     private ThoseThingViewImp thoseThingViewImp;
+    private List<ThoseThingBean.VideoBean> video;
 
     @Override
     protected int getLayoutRes() {
@@ -66,6 +71,19 @@ public class ThoseThingFragment extends BaseFragment implements LiveContract.Tho
             }
         });
 
+        thoseThingListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                ThoseThingBean.VideoBean videoBean = video.get(position);
+                Intent intent=new Intent(getActivity(), LiveVideoActivity.class);
+                intent.putExtra("title",videoBean.getT());
+                intent.putExtra("image",videoBean.getImg());
+                intent.putExtra("url",videoBean.getUrl());
+                intent.putExtra("vid",videoBean.getVid());
+                startActivity(intent);
+            }
+        });
+
     }
 
     @Override
@@ -80,7 +98,7 @@ public class ThoseThingFragment extends BaseFragment implements LiveContract.Tho
 
     @Override
     public void showThoseThing(ThoseThingBean thoseThingBean) {
-        List<ThoseThingBean.VideoBean> video = thoseThingBean.getVideo();
+        video = thoseThingBean.getVideo();
         ThoseThingAdapter thoseThingAdapter = new ThoseThingAdapter(getActivity(), video);
         thoseThingListView.setAdapter(thoseThingAdapter);
     }
