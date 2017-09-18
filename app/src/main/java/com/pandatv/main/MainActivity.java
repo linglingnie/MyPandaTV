@@ -108,8 +108,8 @@ public class MainActivity extends BaseActivity {
         String simpleName = fragmentManager.getBackStackEntryAt(fragmentManager.getBackStackEntryCount() - 1).getName();
         if ("HomePageFragment".equals(simpleName) ||
                 "LivePageFragment".equals(simpleName) ||
-                "MyFragment".equals(simpleName)||
-                "MoreFragment".equals(simpleName)
+                "VideoFragment".equals(simpleName)||
+                "BoBaoFragment".equals(simpleName)
                 ) {
             finish();
         } else {
@@ -132,8 +132,8 @@ public class MainActivity extends BaseActivity {
         String name = fragmentManager.getBackStackEntryAt(fragmentManager.getBackStackEntryCount() - 1).getName();
         if ("HomePageFragment".equals(name) ||
                 "LivePageFragment".equals(name) ||
-                "MyFragment".equals(name)||
-                "MoreFragment".equals(name)
+                 "VideoFragment".equals(name)||
+                 "BoBaoFragment".equals(name)
                 ){
             if (keyCode == KeyEvent.KEYCODE_BACK) {//back键被按下了
                 if ((System.currentTimeMillis() - mExitTime) >2000) {//第二次点击判断是否在两秒内完成，是的话Finish掉（退出）
