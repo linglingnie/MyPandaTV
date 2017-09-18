@@ -4,12 +4,9 @@ import android.support.v4.app.FragmentManager;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.TextView;
 import android.widget.Toast;
-
 
 import com.pandatv.R;
 import com.pandatv.app.App;
@@ -20,6 +17,7 @@ import com.pandatv.manager.FragmentManger;
 import com.pandatv.ui.home.HomePageFragment;
 import com.pandatv.ui.home.HomePresenter;
 import com.pandatv.ui.live.LivePageFragment;
+import com.pandatv.ui.video.VideoFragment;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -76,9 +74,11 @@ public class MainActivity extends BaseActivity {
                 break;
             case R.id.homePandaLive:
                 FragmentManger.getInstance().start(R.id.container, LivePageFragment.class,false).build();
-
                 break;
+
             case R.id.homeRollVideo:
+                FragmentManger.getInstance().start(R.id.container, VideoFragment.class,false).build();
+
                 break;
             case R.id.homePandaBroadcast:
                 break;

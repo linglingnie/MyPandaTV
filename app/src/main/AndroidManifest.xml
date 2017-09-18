@@ -14,11 +14,14 @@
         <activity android:name=".main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.home.activity.VideoActivity"></activity>
+        <activity android:name=".ui.home.activity.VideoActivity" />
+        <activity
+            android:name=".ui.video.VideoActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="landscape" />
+        <activity android:name=".ui.video.PlayerActivity"></activity>
     </application>
-
 </manifest>
