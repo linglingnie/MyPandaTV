@@ -61,6 +61,14 @@ public class VideoActivity extends BaseActivity implements WebToContract.view {
         super.onCreate(savedInstanceState, persistentState);
         ButterKnife.bind(this);
 
+        /**
+         * 设置为横屏
+         */
+        if (getRequestedOrientation() != ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE) {
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        }
+
+
     }
 
 
@@ -76,7 +84,7 @@ public class VideoActivity extends BaseActivity implements WebToContract.view {
     public void ShowWeb2list2(Web2Entity2 list2) {
 
        String url= list2.getVideo().getChapters().get(0).getUrl();
-        videoactivityJc.setUpForFullscreen(url, "视频/MP3标题");
+        videoactivityJc.setUpForFullscreen(url, "视频/MP3标题","");
     }
 
     @Override
@@ -110,12 +118,6 @@ public class VideoActivity extends BaseActivity implements WebToContract.view {
     @Override
     protected void onResume() {
 
-     /**
-     * 设置为横屏
-     */
-        if (getRequestedOrientation() != ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE) {
-            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-        }
 
         super.onResume();
     }

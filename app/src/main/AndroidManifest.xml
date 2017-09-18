@@ -17,6 +17,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ui.home.activity.VideoActivity"></activity>
+
+        <activity android:name=".ui.bobaoWebView.VideoActivity"></activity>
+        <activity android:name=".ui.bobaoWebView.Web2Activity"></activity>
+
         <activity android:name=".ui.home.activity.VideoActivity" />
         <activity
             android:name=".ui.video.VideoActivity"

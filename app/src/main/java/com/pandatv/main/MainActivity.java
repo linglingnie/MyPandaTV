@@ -85,6 +85,10 @@ public class MainActivity extends BaseActivity {
                 FragmentManger.getInstance().start(R.id.container, BoBaoFragment.class,false).build();
                 break;
             case R.id.homeLiveChina:
+
+           //     FragmentManger.getInstance().start(R.id.container, ChinaFragment.class,false).build();
+              /*  ChinaFragment builds = (ChinaFragment) FragmentManger.getInstance().start(R.id.container, ChinaFragment.class, false).build();
+                new ChinaPresenter(builds);*/
                 break;
             case R.id.homeBottomGroup:
                 break;

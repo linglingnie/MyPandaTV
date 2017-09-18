@@ -67,6 +67,7 @@ public class BoBaoFragment extends BaseFragment implements BoBaoControct.view, X
         return R.layout.fragment_bobao;
     }
 
+
     /**
      * BaseFragment
      */
@@ -79,12 +80,14 @@ public class BoBaoFragment extends BaseFragment implements BoBaoControct.view, X
             @Override
             public void Listener(int psoo) {
                 Intent intent =new Intent(getActivity(), Web2Activity.class);
-                 intent.putExtra("url",listdata.get(psoo).getUrl());
-                intent.putExtra("title",listdata.get(psoo).getTitle());
-                intent.putExtra("time",listdata.get(psoo).getFocus_date());
+                intent.putExtra("id",listdata.get(psoo).getId());
+                intent.putExtra("url",listdata.get(psoo).getUrl());
+               intent.putExtra("title",listdata.get(psoo).getTitle());
+               intent.putExtra("time",listdata.get(psoo).getFocus_date()+"");
                 startActivity(intent);
             }
         });
+
     }
 
     /**

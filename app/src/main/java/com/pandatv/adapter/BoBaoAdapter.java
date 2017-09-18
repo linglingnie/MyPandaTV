@@ -18,12 +18,12 @@ import java.util.List;
  * Created by ASUS on 2017/9/14.
  */
 
-public class BoBaoAdapter extends RecyclerView.Adapter implements View.OnClickListener {
+public class BoBaoAdapter extends RecyclerView.Adapter implements View.OnClickListener{
 
     private List<BoBaoEntity2.ListBean> listdata ;
     private Context context;
 
-    private BoBaoAdapter.Bobaoitem bobaoitem;
+    public BoBaoAdapter.Bobaoitem bobaoitem;
 
     public void setItem(Bobaoitem bobaoitem){
         this.bobaoitem=bobaoitem;
@@ -39,8 +39,9 @@ public class BoBaoAdapter extends RecyclerView.Adapter implements View.OnClickLi
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
        View view = LayoutInflater.from(context).inflate(R.layout.bobao_item,parent,false);
         ViewHolder holder =new ViewHolder(view);
-        view.setOnClickListener(this);
+             view.setOnClickListener(this);
         return new ViewHolder(holder.myitemview);
+
 
     }
 
@@ -52,6 +53,7 @@ public class BoBaoAdapter extends RecyclerView.Adapter implements View.OnClickLi
         holder1.item_contentTv.setText(listdata.get(position).getFocus_date()+"");
         Glide.with(holder1.imageView.getContext()).load(listdata.get(position).getPicurl()).into(holder1.imageView);
         holder1.myitemview.setTag(position);
+
 
 
     }
@@ -70,6 +72,8 @@ public class BoBaoAdapter extends RecyclerView.Adapter implements View.OnClickLi
         if (bobaoitem !=null){
             bobaoitem.Listener(integer);
         }
+
+
     }
 
     private class ViewHolder extends RecyclerView.ViewHolder{
