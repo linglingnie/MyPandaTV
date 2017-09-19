@@ -1,0 +1,193 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.pandatv.user.fragment.EmailRegisterFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40px"
+        android:layout_marginTop="40px"
+        android:padding="20px"
+        android:text="@string/regist_email_tips"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="14sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="120px"
+        android:layout_marginLeft="60px"
+        android:layout_marginRight="60px"
+        android:orientation="horizontal" >
+
+        <EditText
+            android:id="@+id/edit_email"
+            android:layout_width="match_parent"
+            android:layout_height="120px"
+            android:textColorHint="#c9c9c9"
+            android:background="@drawable/pe_shape_border_gray"
+            android:hint="@string/regist_email_account_hint"
+            android:padding="15px"
+            android:textSize="14sp"
+            android:textColor="@color/gray"
+            android:textCursorDrawable="@null" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/hint_emamil"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="60px"
+        android:textColor="#f00" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="120px"
+        android:layout_marginLeft="60px"
+        android:layout_marginRight="60px"
+        android:layout_marginTop="30px"
+        android:orientation="horizontal" >
+
+        <EditText
+            android:id="@+id/edit_passwrok"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/pe_shape_border_gray"
+            android:hint="@string/regist_phone_paswd_hint"
+            android:textColorHint="#c9c9c9"
+            android:padding="15px"
+            android:password="true"
+            android:text=""
+            android:textSize="14sp"
+            android:textColor="@color/gray"
+            android:textCursorDrawable="@null" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/hint_passwork"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="60px"
+        android:textColor="#f00" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="120px"
+        android:layout_marginLeft="60px"
+        android:layout_marginRight="60px"
+        android:layout_marginTop="30px"
+        android:orientation="horizontal" >
+
+        <EditText
+            android:id="@+id/edit_again_password"
+            android:layout_width="match_parent"
+            android:layout_height="120px"
+            android:background="@drawable/pe_shape_border_gray"
+            android:hint="@string/regist_confirm_paswd"
+            android:textColorHint="#c9c9c9"
+            android:padding="15px"
+            android:password="true"
+            android:textSize="14sp"
+            android:textColor="@color/gray"
+            android:textCursorDrawable="@null" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/hint_again_passord"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:textColor="#f00" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="120px"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp" >
+
+        <EditText
+            android:id="@+id/edit_yanzhengma"
+            android:layout_width="match_parent"
+            android:layout_height="120px"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/personal_reg_imgcheck"
+            android:background="@drawable/pe_shape_border_gray"
+            android:hint="@string/forget_img_yanzhengma_hint"
+            android:textColorHint="#c9c9c9"
+            android:padding="15px"
+            android:textSize="14sp"
+            android:textColor="@color/gray"
+            android:textCursorDrawable="@null" />
+
+        <TextView
+            android:id="@+id/personal_reg_imgcheck"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="30px"
+            android:background="@color/white"
+            android:gravity="center"
+            android:text="@string/forget_image_yanzhengma" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/hint_yanzhengma"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="60px"
+        android:textColor="#f00" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="60px"
+        android:layout_marginTop="30px" >
+
+        <CheckBox
+            android:id="@+id/xieyi_check"
+            android:layout_width="74px"
+            android:layout_height="74px"
+            android:layout_marginRight="20px"
+            android:layout_centerVertical="true"
+            android:background="@drawable/selector_check"
+            android:button="@null"
+            android:checked="true" />
+        <TextView
+            android:id="@+id/personal_reg_xieyi_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/xieyi_check"
+            android:text="@string/regist_protorcal"
+            android:textColor="@color/colorPrimaryDark" />
+
+        <TextView
+            android:id="@+id/hint_xieyi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20px"
+            android:layout_alignLeft="@id/xieyi_check"
+            android:layout_below="@id/xieyi_check"
+            android:textColor="#f00" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/btn_register"
+        android:layout_width="match_parent"
+        android:layout_height="132px"
+        android:layout_marginLeft="60px"
+        android:layout_marginRight="60px"
+        android:layout_marginTop="30px"
+        android:background="@drawable/pe_login_view_bg"
+        android:gravity="center"
+        android:padding="30px"
+        android:text="@string/login_regist"
+        android:textColor="@color/white" />
+
+</LinearLayout>
