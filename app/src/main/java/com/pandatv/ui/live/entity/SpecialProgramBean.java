@@ -1,5 +1,8 @@
 package com.pandatv.ui.live.entity;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.reflect.TypeToken;
@@ -12,7 +15,7 @@ import java.util.List;
  * Created by Windows on 2017/9/16.
  */
 
-public class SpecialProgramBean {
+public class SpecialProgramBean implements Parcelable {
 
     /**
      * videoset : {"0":{"vsid":"VSET100167308855","relvsid":"","name":"熊猫频道-特别节目","img":"http://p1.img.cctvpic.com/fmspic/vms/image/2013/06/21/VSET_1371809044488847.jpg","enname":"其他","url":"http://tv.cntv.cn/videoset/VSET100167308855","cd":"","zy":"","bj":"","dy":"","js":"","nf":"","yz":"","fl":"熊猫直播","sbsj":"2013-05-01","sbpd":"其他","desc":"熊猫频道采访野生动物保护专家、熊猫守护使、到访基地的名人，以人类的角度展现熊猫世界。","playdesc":"","zcr":"","fcl":""},"count":"272"}
@@ -51,7 +54,7 @@ public class SpecialProgramBean {
         this.video = video;
     }
 
-    public static class VideosetBean {
+    public static class VideosetBean implements Parcelable {
         /**
          * 0 : {"vsid":"VSET100167308855","relvsid":"","name":"熊猫频道-特别节目","img":"http://p1.img.cctvpic.com/fmspic/vms/image/2013/06/21/VSET_1371809044488847.jpg","enname":"其他","url":"http://tv.cntv.cn/videoset/VSET100167308855","cd":"","zy":"","bj":"","dy":"","js":"","nf":"","yz":"","fl":"熊猫直播","sbsj":"2013-05-01","sbpd":"其他","desc":"熊猫频道采访野生动物保护专家、熊猫守护使、到访基地的名人，以人类的角度展现熊猫世界。","playdesc":"","zcr":"","fcl":""}
          * count : 272
@@ -90,7 +93,7 @@ public class SpecialProgramBean {
             this.count = count;
         }
 
-        public static class _$0Bean {
+        public static class _$0Bean implements Parcelable {
             /**
              * vsid : VSET100167308855
              * relvsid :
@@ -307,10 +310,108 @@ public class SpecialProgramBean {
             public void setFcl(String fcl) {
                 this.fcl = fcl;
             }
+
+            @Override
+            public int describeContents() {
+                return 0;
+            }
+
+            @Override
+            public void writeToParcel(Parcel dest, int flags) {
+                dest.writeString(this.vsid);
+                dest.writeString(this.relvsid);
+                dest.writeString(this.name);
+                dest.writeString(this.img);
+                dest.writeString(this.enname);
+                dest.writeString(this.url);
+                dest.writeString(this.cd);
+                dest.writeString(this.zy);
+                dest.writeString(this.bj);
+                dest.writeString(this.dy);
+                dest.writeString(this.js);
+                dest.writeString(this.nf);
+                dest.writeString(this.yz);
+                dest.writeString(this.fl);
+                dest.writeString(this.sbsj);
+                dest.writeString(this.sbpd);
+                dest.writeString(this.desc);
+                dest.writeString(this.playdesc);
+                dest.writeString(this.zcr);
+                dest.writeString(this.fcl);
+            }
+
+            public _$0Bean() {
+            }
+
+            protected _$0Bean(Parcel in) {
+                this.vsid = in.readString();
+                this.relvsid = in.readString();
+                this.name = in.readString();
+                this.img = in.readString();
+                this.enname = in.readString();
+                this.url = in.readString();
+                this.cd = in.readString();
+                this.zy = in.readString();
+                this.bj = in.readString();
+                this.dy = in.readString();
+                this.js = in.readString();
+                this.nf = in.readString();
+                this.yz = in.readString();
+                this.fl = in.readString();
+                this.sbsj = in.readString();
+                this.sbpd = in.readString();
+                this.desc = in.readString();
+                this.playdesc = in.readString();
+                this.zcr = in.readString();
+                this.fcl = in.readString();
+            }
+
+            public static final Creator<_$0Bean> CREATOR = new Creator<_$0Bean>() {
+                @Override
+                public _$0Bean createFromParcel(Parcel source) {
+                    return new _$0Bean(source);
+                }
+
+                @Override
+                public _$0Bean[] newArray(int size) {
+                    return new _$0Bean[size];
+                }
+            };
         }
+
+        @Override
+        public int describeContents() {
+            return 0;
+        }
+
+        @Override
+        public void writeToParcel(Parcel dest, int flags) {
+            dest.writeParcelable(this._$0, flags);
+            dest.writeString(this.count);
+        }
+
+        public VideosetBean() {
+        }
+
+        protected VideosetBean(Parcel in) {
+            this._$0 = in.readParcelable(_$0Bean.class.getClassLoader());
+            this.count = in.readString();
+        }
+
+        public static final Creator<VideosetBean> CREATOR = new Creator<VideosetBean>() {
+            @Override
+            public VideosetBean createFromParcel(Parcel source) {
+                return new VideosetBean(source);
+            }
+
+            @Override
+            public VideosetBean[] newArray(int size) {
+                return new VideosetBean[size];
+            }
+        };
     }
 
-    public static class VideoBean {
+    public static class VideoBean implements Parcelable {
         /**
          * vsid : VSET100167308855
          * order : 266
@@ -417,5 +518,82 @@ public class SpecialProgramBean {
         public void setEm(String em) {
             this.em = em;
         }
+
+        @Override
+        public int describeContents() {
+            return 0;
+        }
+
+        @Override
+        public void writeToParcel(Parcel dest, int flags) {
+            dest.writeString(this.vsid);
+            dest.writeString(this.order);
+            dest.writeString(this.vid);
+            dest.writeString(this.t);
+            dest.writeString(this.url);
+            dest.writeString(this.ptime);
+            dest.writeString(this.img);
+            dest.writeString(this.len);
+            dest.writeString(this.em);
+        }
+
+        public VideoBean() {
+        }
+
+        protected VideoBean(Parcel in) {
+            this.vsid = in.readString();
+            this.order = in.readString();
+            this.vid = in.readString();
+            this.t = in.readString();
+            this.url = in.readString();
+            this.ptime = in.readString();
+            this.img = in.readString();
+            this.len = in.readString();
+            this.em = in.readString();
+        }
+
+        public static final Creator<VideoBean> CREATOR = new Creator<VideoBean>() {
+            @Override
+            public VideoBean createFromParcel(Parcel source) {
+                return new VideoBean(source);
+            }
+
+            @Override
+            public VideoBean[] newArray(int size) {
+                return new VideoBean[size];
+            }
+        };
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeParcelable(this.videoset, flags);
+        dest.writeList(this.video);
+    }
+
+    public SpecialProgramBean() {
+    }
+
+    protected SpecialProgramBean(Parcel in) {
+        this.videoset = in.readParcelable(VideosetBean.class.getClassLoader());
+        this.video = new ArrayList<VideoBean>();
+        in.readList(this.video, VideoBean.class.getClassLoader());
+    }
+
+    public static final Parcelable.Creator<SpecialProgramBean> CREATOR = new Parcelable.Creator<SpecialProgramBean>() {
+        @Override
+        public SpecialProgramBean createFromParcel(Parcel source) {
+            return new SpecialProgramBean(source);
+        }
+
+        @Override
+        public SpecialProgramBean[] newArray(int size) {
+            return new SpecialProgramBean[size];
+        }
+    };
 }

@@ -1,16 +1,20 @@
 package com.pandatv.ui.live.liveFragment;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.pandatv.R;
 import com.pandatv.base.BaseFragment;
+import com.pandatv.ui.live.LiveVideoActivity;
 import com.pandatv.ui.live.adapter.WhenNoLetAdapter;
 import com.pandatv.ui.live.entity.WhenNoLetBean;
+import com.pandatv.ui.live.entity.WonderfulBean;
 import com.pandatv.ui.live.liveContract.LiveContract;
 import com.pandatv.ui.live.liveContract.WhenNoLetViewImp;
 
@@ -37,6 +41,7 @@ public class WhenNoLetFragment extends BaseFragment implements LiveContract.When
     ListView whenNoListView;
     private WhenNoLetViewImp whenNoLetViewImp;
     private WhenNoLetAdapter whenNoLetAdapter;
+    private List<WhenNoLetBean.VideoBean> video;
 
     @Override
     protected int getLayoutRes() {
@@ -72,7 +77,18 @@ public class WhenNoLetFragment extends BaseFragment implements LiveContract.When
             }
         });
 
-
+        whenNoListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                WhenNoLetBean.VideoBean videoBean = video.get(position);
+                Intent intent=new Intent(getActivity(), LiveVideoActivity.class);
+                intent.putExtra("title",videoBean.getT());
+                intent.putExtra("image",videoBean.getImg());
+                intent.putExtra("url",videoBean.getUrl());
+                intent.putExtra("vid",videoBean.getVid());
+                startActivity(intent);
+            }
+        });
 
     }
 
@@ -102,7 +118,7 @@ public class WhenNoLetFragment extends BaseFragment implements LiveContract.When
 
     @Override
     public void showWhenNotView(WhenNoLetBean whenNoLetBean) {
-        List<WhenNoLetBean.VideoBean> video = whenNoLetBean.getVideo();
+        video = whenNoLetBean.getVideo();
         whenNoLetAdapter = new WhenNoLetAdapter(getActivity(), video);
         whenNoListView.setAdapter(whenNoLetAdapter);
         whenNoLetAdapter.notifyDataSetChanged();

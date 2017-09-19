@@ -1,18 +1,22 @@
 package com.pandatv.ui.live.liveFragment;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.chanven.lib.cptr.PtrClassicDefaultHeader;
 import com.pandatv.R;
 import com.pandatv.base.BaseFragment;
+import com.pandatv.ui.live.LiveVideoActivity;
 import com.pandatv.ui.live.adapter.PandaFilesAdapter;
 import com.pandatv.ui.live.entity.PandaFiesBean;
+import com.pandatv.ui.live.entity.WhenNoLetBean;
 import com.pandatv.ui.live.liveContract.LiveContract;
 import com.pandatv.ui.live.liveContract.PandaFilesPresenterImp;
 
@@ -36,6 +40,7 @@ public class PandaFiesFragment extends BaseFragment implements LiveContract.Pand
     PtrFrameLayout pandaFilesPtr;
     Unbinder unbinder;
     private PandaFilesPresenterImp pandaFilesPresenterImp;
+    private List<PandaFiesBean.VideoBean> video;
 
     @Override
     protected int getLayoutRes() {
@@ -69,6 +74,17 @@ public class PandaFiesFragment extends BaseFragment implements LiveContract.Pand
                 pandaFilesPtr.refreshComplete();
             }
         });
+        pandaFilesListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                PandaFiesBean.VideoBean videoBean = video.get(position);
+                Intent intent=new Intent(getActivity(), LiveVideoActivity.class);
+                intent.putExtra("title",videoBean.getT());
+                intent.putExtra("image",videoBean.getImg());
+                intent.putExtra("url",videoBean.getUrl());
+                startActivity(intent);
+            }
+        });
 
     }
 
@@ -99,8 +115,7 @@ public class PandaFiesFragment extends BaseFragment implements LiveContract.Pand
 
     @Override
     public void showPandaFies(PandaFiesBean pandaFiesBean) {
-        List<PandaFiesBean.VideoBean> video = pandaFiesBean.getVideo();
-        Log.e("TAG",video.size()+"12333333");
+        video = pandaFiesBean.getVideo();
         PandaFilesAdapter pandaFilesAdapter = new PandaFilesAdapter(getActivity(), video);
         pandaFilesListView.setAdapter(pandaFilesAdapter);
     }

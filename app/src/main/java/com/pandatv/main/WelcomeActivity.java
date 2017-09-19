@@ -43,7 +43,9 @@ public class WelcomeActivity extends BaseActivity implements Animator.AnimatorLi
 
     @Override
     public void onAnimationEnd(Animator animation) {
+
         startActivity(new Intent(this, MainActivity.class));
+        finish();
     }
 
     @Override

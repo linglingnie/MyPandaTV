@@ -7,7 +7,7 @@
     <ImageView
         android:id="@+id/headview_picture"
         android:layout_width="match_parent"
-        android:layout_height="325px"
+        android:layout_height="420px"
         android:src="@color/colorPrimaryDark" />
 
     <ImageView

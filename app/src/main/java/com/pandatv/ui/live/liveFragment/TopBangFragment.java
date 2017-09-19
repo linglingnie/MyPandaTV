@@ -1,16 +1,20 @@
 package com.pandatv.ui.live.liveFragment;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.pandatv.R;
 import com.pandatv.base.BaseFragment;
+import com.pandatv.ui.live.LiveVideoActivity;
 import com.pandatv.ui.live.adapter.TopBangAdapter;
 import com.pandatv.ui.live.entity.TopBangBean;
+import com.pandatv.ui.live.entity.WhenNoLetBean;
 import com.pandatv.ui.live.liveContract.LiveContract;
 import com.pandatv.ui.live.liveContract.TopBangPresenterImp;
 
@@ -31,6 +35,7 @@ public class TopBangFragment extends BaseFragment implements LiveContract.TopBan
     PtrFrameLayout topBangPtr;
     Unbinder unbinder;
     private TopBangPresenterImp topBangPresenterImp;
+    private List<TopBangBean.VideoBean> video;
 
     @Override
     protected int getLayoutRes() {
@@ -64,6 +69,20 @@ public class TopBangFragment extends BaseFragment implements LiveContract.TopBan
                 topBangPtr.refreshComplete();
             }
         });
+
+        topBangListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                TopBangBean.VideoBean videoBean = video.get(position);
+                Intent intent=new Intent(getActivity(), LiveVideoActivity.class);
+                intent.putExtra("title",videoBean.getT());
+                intent.putExtra("image",videoBean.getImg());
+                intent.putExtra("url",videoBean.getUrl());
+                intent.putExtra("vid",videoBean.getVid());
+
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -92,7 +111,7 @@ public class TopBangFragment extends BaseFragment implements LiveContract.TopBan
 
     @Override
     public void showTopBang(TopBangBean topBangBean) {
-        List<TopBangBean.VideoBean> video = topBangBean.getVideo();
+        video = topBangBean.getVideo();
         TopBangAdapter topBangAdapter = new TopBangAdapter(getActivity(), video);
         topBangListView.setAdapter(topBangAdapter);
     }

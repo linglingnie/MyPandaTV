@@ -1,16 +1,20 @@
 package com.pandatv.ui.live.liveFragment;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.pandatv.R;
 import com.pandatv.base.BaseFragment;
+import com.pandatv.ui.live.LiveVideoActivity;
 import com.pandatv.ui.live.adapter.RawCreateAdapter;
 import com.pandatv.ui.live.entity.RawCreateBean;
+import com.pandatv.ui.live.entity.WhenNoLetBean;
 import com.pandatv.ui.live.liveContract.LiveContract;
 import com.pandatv.ui.live.liveContract.RawCreateViewImp;
 
@@ -32,6 +36,7 @@ public class RawCreateNewsFragment extends BaseFragment implements LiveContract.
     Unbinder unbinder;
     private RawCreateViewImp rawCreateViewImp;
     private RawCreateAdapter rawCreateAdapter;
+    private List<RawCreateBean.VideoBean> video;
 
     @Override
     protected int getLayoutRes() {
@@ -66,6 +71,19 @@ public class RawCreateNewsFragment extends BaseFragment implements LiveContract.
                 rawCreatePtr.refreshComplete();
             }
         });
+
+        rawCreateListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                RawCreateBean.VideoBean videoBean = video.get(position);
+                Intent intent=new Intent(getActivity(), LiveVideoActivity.class);
+                intent.putExtra("title",videoBean.getT());
+                intent.putExtra("image",videoBean.getImg());
+                intent.putExtra("url",videoBean.getUrl());
+                intent.putExtra("vid",videoBean.getVid());
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -80,7 +98,7 @@ public class RawCreateNewsFragment extends BaseFragment implements LiveContract.
 
     @Override
     public void showRawCreate(RawCreateBean rawCreateBean) {
-        List<RawCreateBean.VideoBean> video = rawCreateBean.getVideo();
+        video = rawCreateBean.getVideo();
         rawCreateAdapter = new RawCreateAdapter(getActivity(), video);
         rawCreateListView.setAdapter(rawCreateAdapter);
     }

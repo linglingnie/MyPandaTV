@@ -1,6 +1,7 @@
 package com.pandatv.ui.live.liveFragment;
 
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -42,6 +43,7 @@ public class WonderfulFragment extends BaseFragment implements LiveContract.Wond
 
     private WonderfulPresenterImp wonderfulPresenterImp;
     private List<WonderfulBean.VideoBean> video;
+    private ProgressDialog diaLog;
 
     @Override
     protected int getLayoutRes() {
@@ -86,7 +88,10 @@ public class WonderfulFragment extends BaseFragment implements LiveContract.Wond
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 WonderfulBean.VideoBean videoBean = video.get(position);
                 Intent intent=new Intent(getActivity(), LiveVideoActivity.class);
-                intent.putExtra("videoBean",videoBean);
+                intent.putExtra("title",videoBean.getT());
+                intent.putExtra("image",videoBean.getImg());
+                intent.putExtra("url",videoBean.getUrl());
+                intent.putExtra("vid",videoBean.getVid());
                 startActivity(intent);
             }
         });
@@ -132,12 +137,13 @@ public class WonderfulFragment extends BaseFragment implements LiveContract.Wond
 
     @Override
     public void showProgress() {
-
+        diaLog = new ProgressDialog(getActivity());
+        diaLog.show();
     }
 
     @Override
     public void dismissProgress() {
-
+        diaLog.dismiss();
     }
 
     @Override

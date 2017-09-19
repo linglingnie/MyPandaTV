@@ -10,8 +10,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -32,7 +34,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class Web2Activity extends AppCompatActivity {
+public class Web2Activity extends AppCompatActivity implements View.OnClickListener {
     @BindView(R.id.tv_content)
     TextView content;
     @BindView(R.id.web2_title2)
@@ -61,6 +63,7 @@ public class Web2Activity extends AppCompatActivity {
 
         String title = intent.getStringExtra("title");
       String time = intent.getStringExtra("time");
+        web2Sc.setOnClickListener(this);
          // String  time =  intent.getLongExtra("time",0);
 
         String s = "http://api.cntv.cn/article/contentinfo?id=" + id + "&serviceId=panda";
@@ -71,26 +74,7 @@ public class Web2Activity extends AppCompatActivity {
         web2Timer2.setText(time);
 
 
-       /* runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
 
-
-                WebSettings webSettings = webView.getSettings();
-
-                //设置WebView属性，能够执行Javascript脚本
-                webSettings.setJavaScriptEnabled(true);
-                //设置可以访问文件
-                webSettings.setAllowFileAccess(true);
-                //设置支持缩放
-                webSettings.setBuiltInZoomControls(true);
-                //加载需要显示的网页
-
-                webView.loadUrl(url);
-                //设置Web视图
-                webView.setWebViewClient(new webViewClient());
-            }
-        });*/
         queue = Volley.newRequestQueue(this);
 
         StringRequest request =new StringRequest(Request.Method.GET, s, new Response.Listener<String>() {
@@ -102,6 +86,7 @@ public class Web2Activity extends AppCompatActivity {
 
                 Xiongmao xiongmao = gson.fromJson(ss, Xiongmao.class);
                 String contents = xiongmao.getContent();
+
 
                final String text = contents;
 
@@ -170,4 +155,15 @@ public class Web2Activity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.web2_sc:
+                Toast.makeText(this, "收藏成功", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.web2_fx:
+                Toast.makeText(this, "分享成功成功", Toast.LENGTH_SHORT).show();
+                break;
+        }
+    }
 }

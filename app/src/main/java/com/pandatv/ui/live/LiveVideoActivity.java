@@ -8,7 +8,6 @@ import com.pandatv.R;
 import com.pandatv.base.BaseActivity;
 import com.pandatv.modle.net.callback.NetWorkCallBack;
 import com.pandatv.ui.live.entity.LiveVideoBean;
-import com.pandatv.ui.live.entity.WonderfulBean;
 import com.pandatv.ui.live.liveContract.LiveModelImp;
 
 import butterknife.BindView;
@@ -31,10 +30,12 @@ public class LiveVideoActivity extends BaseActivity{
         imageloader.init(configuration);
 
 
-        WonderfulBean.VideoBean videoBean = getIntent().getParcelableExtra("videoBean");
-        final String title = videoBean.getT();
-        String vid = videoBean.getVid();
-        String img = videoBean.getImg();
+        final String title = getIntent().getStringExtra("title");
+        String image = getIntent().getStringExtra("image");
+        String url = getIntent().getStringExtra("url");
+        String vid = getIntent().getStringExtra("vid");
+
+
         LiveModelImp liveModelImp = new LiveModelImp();
         liveModelImp.loadVideoActivity(new NetWorkCallBack<LiveVideoBean>() {
             @Override

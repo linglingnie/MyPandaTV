@@ -1,16 +1,20 @@
 package com.pandatv.ui.live.liveFragment;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.pandatv.R;
 import com.pandatv.base.BaseFragment;
+import com.pandatv.ui.live.LiveVideoActivity;
 import com.pandatv.ui.live.adapter.SpecialProgramAdapter;
 import com.pandatv.ui.live.entity.SpecialProgramBean;
+import com.pandatv.ui.live.entity.WhenNoLetBean;
 import com.pandatv.ui.live.liveContract.LiveContract;
 import com.pandatv.ui.live.liveContract.SpecialProgramPresenterImp;
 
@@ -31,6 +35,7 @@ public class SpecialProgramFragment extends BaseFragment implements LiveContract
     PtrFrameLayout spcialProgramPtr;
     Unbinder unbinder;
     private SpecialProgramPresenterImp specialProgramPresenterImp;
+    private List<SpecialProgramBean.VideoBean> video;
 
     @Override
     protected int getLayoutRes() {
@@ -64,6 +69,19 @@ public class SpecialProgramFragment extends BaseFragment implements LiveContract
                 spcialProgramPtr.refreshComplete();
             }
         });
+
+        spcialProgramListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                SpecialProgramBean.VideoBean videoBean = video.get(position);
+                Intent intent=new Intent(getActivity(), LiveVideoActivity.class);
+                intent.putExtra("title",videoBean.getT());
+                intent.putExtra("image",videoBean.getImg());
+                intent.putExtra("url",videoBean.getUrl());
+                intent.putExtra("vid",videoBean.getVid());
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -78,7 +96,7 @@ public class SpecialProgramFragment extends BaseFragment implements LiveContract
 
     @Override
     public void showSpecialProgram(SpecialProgramBean programBean) {
-        List<SpecialProgramBean.VideoBean> video = programBean.getVideo();
+        video = programBean.getVideo();
         SpecialProgramAdapter specialProgramAdapter = new SpecialProgramAdapter(getActivity(), video);
         spcialProgramListView.setAdapter(specialProgramAdapter);
     }
