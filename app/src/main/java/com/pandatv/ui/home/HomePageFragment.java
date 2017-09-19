@@ -22,6 +22,7 @@ import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.pandatv.R;
 import com.pandatv.base.BaseFragment;
 import com.pandatv.entity.PandaHome;
+import com.pandatv.main.InteractionActivity;
 import com.pandatv.modle.net.OkBaseHttpImpl;
 import com.pandatv.ui.home.activity.VideoActivity;
 import com.pandatv.ui.home.adapter.ChinaAdapter;
@@ -339,7 +340,7 @@ public class HomePageFragment extends BaseFragment implements AdapterView.OnItem
 
     @OnClick(R.id.hudongImg)
     public void onViewClicked() {
-        Toast.makeText(getActivity(), "11", Toast.LENGTH_SHORT).show();
+        startActivity(new Intent(getActivity(), InteractionActivity.class));
     }
 
     public class GlideImage extends ImageLoader {

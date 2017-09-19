@@ -1,6 +1,7 @@
 package com.pandatv.ui.live.liveFragment;
 
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -42,6 +43,7 @@ public class WhenNoLetFragment extends BaseFragment implements LiveContract.When
     private WhenNoLetViewImp whenNoLetViewImp;
     private WhenNoLetAdapter whenNoLetAdapter;
     private List<WhenNoLetBean.VideoBean> video;
+    private ProgressDialog diaLog;
 
     @Override
     protected int getLayoutRes() {
@@ -50,6 +52,9 @@ public class WhenNoLetFragment extends BaseFragment implements LiveContract.When
 
     @Override
     protected void initData() {
+        diaLog = new ProgressDialog(getActivity());
+        diaLog.setMessage("正在加载......");
+        diaLog.show();
         whenNoLetViewImp = new WhenNoLetViewImp(this);
         whenNoLetViewImp.start();
 
@@ -136,12 +141,12 @@ public class WhenNoLetFragment extends BaseFragment implements LiveContract.When
 
     @Override
     public void showProgress() {
-
+        diaLog.show();
     }
 
     @Override
     public void dismissProgress() {
-
+        diaLog.dismiss();
     }
 
     @Override

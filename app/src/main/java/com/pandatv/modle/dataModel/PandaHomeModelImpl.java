@@ -6,6 +6,7 @@ import com.pandatv.entity.PandaHome;
 import com.pandatv.modle.net.callback.NetWorkCallBack;
 import com.pandatv.ui.home.bean.BroadcastBean;
 import com.pandatv.ui.home.bean.ChinaBean;
+import com.pandatv.ui.home.bean.InteractionBean;
 import com.pandatv.ui.home.bean.MomentBean;
 import com.pandatv.ui.home.bean.ShowBean;
 import com.pandatv.ui.home.bean.VideoBean;
@@ -51,6 +52,11 @@ public class PandaHomeModelImpl implements IPandaHomeModel {
     @Override
     public void loadChina(String url, NetWorkCallBack<ChinaBean> callBack) {
         iHttp.get(url, null, callBack);
+    }
+
+    @Override
+    public void loadInteraction(NetWorkCallBack<InteractionBean> callBack) {
+        iHttp.get(Urls.HUDONG, null, callBack);
     }
 
 

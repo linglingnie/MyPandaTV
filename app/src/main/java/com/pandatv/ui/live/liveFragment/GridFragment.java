@@ -1,5 +1,6 @@
 package com.pandatv.ui.live.liveFragment;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -52,6 +53,8 @@ public class GridFragment extends BaseFragment implements LiveContract.PandaLive
     private List<String> titleList=new ArrayList<>();
 //
     private List<Fragment> fragmentList=new ArrayList<>();
+    private ProgressDialog diaLog;
+
     @Override
     protected int getLayoutRes() {
         return R.layout.fragment_grid;
@@ -59,6 +62,9 @@ public class GridFragment extends BaseFragment implements LiveContract.PandaLive
 
     @Override
     protected void initData() {
+        diaLog = new ProgressDialog(getActivity());
+        diaLog.setMessage("正在加载......");
+        diaLog.show();
         liveBriefImp = new PandaLiveBriefImp(this);
         liveBriefImp.start();
         //获取ImageLoader对象
@@ -155,12 +161,12 @@ public class GridFragment extends BaseFragment implements LiveContract.PandaLive
 
     @Override
     public void showProgress() {
-
+        diaLog.show();
     }
 
     @Override
     public void dismissProgress() {
-
+        diaLog.dismiss();
     }
 
     @Override

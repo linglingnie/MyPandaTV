@@ -15,6 +15,9 @@ import com.pandatv.ui.live.entity.TopBangBean;
 import com.pandatv.ui.live.entity.WhenNoLetBean;
 import com.pandatv.ui.live.entity.WonderfulBean;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Created by Windows on 2017/9/14.
  */
@@ -36,8 +39,10 @@ public class LiveModelImp implements LiveTitleModel{
     }
 
     @Override
-    public void loadWonderful(NetWorkCallBack<WonderfulBean> callBack) {
-        iHttp.get(Urls.JINGCAI,null,callBack);
+    public void loadWonderful(NetWorkCallBack<WonderfulBean> callBack,String p) {
+       Map<String,String> map=new HashMap<>();
+        map.put("p",p);
+        iHttp.get(Urls.JINGCAI,map,callBack);
     }
 
     @Override
@@ -80,5 +85,8 @@ public class LiveModelImp implements LiveTitleModel{
         iHttp.get(Urls.PINJIE3+vid,null,callBack);
     }
 
+//    public void WonderfulLoadMore(NetWorkCallBack<WonderfulBean> callBack,int page){
+//        iHttp.get();
+//    }
 
 }

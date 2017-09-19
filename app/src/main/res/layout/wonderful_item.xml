@@ -15,8 +15,10 @@
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
             android:id="@+id/wonderful_firstimage"
-            android:layout_width="200dp"
+            android:layout_width="160dp"
             android:layout_height="80dp"
+            android:layout_marginStart="5dp"
+            android:scaleType="centerCrop"
             android:src="@mipmap/ic_launcher"
             />
         <LinearLayout
@@ -25,7 +27,8 @@
             android:layout_height="20dp"
             android:layout_marginBottom="5dp"
             android:background="@drawable/lpanda_bottom_gra"
-            android:layout_marginStart="20dp"
+            android:layout_marginStart="5dp"
+
             android:orientation="horizontal"
             >
             <ImageView
@@ -60,6 +63,7 @@
             android:id="@+id/wonderful_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="3dp"
             android:textStyle="bold"
             android:text="题目"
             />
@@ -68,6 +72,7 @@
             android:layout_marginTop="25dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
             android:text="时间"
             />
 

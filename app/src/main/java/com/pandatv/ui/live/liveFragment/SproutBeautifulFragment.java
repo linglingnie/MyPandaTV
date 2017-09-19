@@ -1,6 +1,7 @@
 package com.pandatv.ui.live.liveFragment;
 
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -38,6 +39,7 @@ public class SproutBeautifulFragment extends BaseFragment implements LiveContrac
     private BeautifulAdapter beautifulAdapter;
     private SproutBeautifulPresenterImp sproutBeautifulPresenterImp;
     private List<SproutBeautifulBean.VideoBean> video;
+    private ProgressDialog diaLog;
 
     @Override
     protected int getLayoutRes() {
@@ -47,6 +49,9 @@ public class SproutBeautifulFragment extends BaseFragment implements LiveContrac
 
     @Override
     protected void initData() {
+        diaLog = new ProgressDialog(getActivity());
+        diaLog.setMessage("正在加载......");
+        diaLog.show();
         sproutBeautifulPresenterImp = new SproutBeautifulPresenterImp(this);
         sproutBeautifulPresenterImp.start();
         PtrClassicDefaultHeader header = new PtrClassicDefaultHeader(getActivity());
@@ -131,12 +136,12 @@ public class SproutBeautifulFragment extends BaseFragment implements LiveContrac
 
     @Override
     public void showProgress() {
-
+        diaLog.show();
     }
 
     @Override
     public void dismissProgress() {
-
+        diaLog.dismiss();
     }
 
     @Override

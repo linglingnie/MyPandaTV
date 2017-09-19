@@ -15,6 +15,8 @@ import com.pandatv.ui.live.entity.TopBangBean;
 import com.pandatv.ui.live.entity.WhenNoLetBean;
 import com.pandatv.ui.live.entity.WonderfulBean;
 
+import java.util.Map;
+
 
 /**
  * Created by Windows on 2017/9/14.
@@ -24,7 +26,7 @@ public interface LiveTitleModel extends BaseModel {
    void loadTitle(NetWorkCallBack<LiveTitleBean> callBack);
    void loadGridList(NetWorkCallBack<ManchAngleofViewBean> callBack);
    void loadPandaLive(NetWorkCallBack<PandaLive> callBack);
-   void loadWonderful(NetWorkCallBack<WonderfulBean> callBack);
+   void loadWonderful(NetWorkCallBack<WonderfulBean> callBack,String page);
    void loadWhenNotLet(NetWorkCallBack<WhenNoLetBean> callBack);
    void loadSproutBeautiful(NetWorkCallBack<SproutBeautifulBean> callBack);
    void loadPandaFies(NetWorkCallBack<PandaFiesBean> callBack);

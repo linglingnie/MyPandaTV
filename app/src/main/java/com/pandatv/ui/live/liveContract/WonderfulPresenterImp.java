@@ -15,6 +15,9 @@ import com.pandatv.ui.live.entity.TopBangBean;
 import com.pandatv.ui.live.entity.WhenNoLetBean;
 import com.pandatv.ui.live.entity.WonderfulBean;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Created by Windows on 2017/9/16.
  */
@@ -22,10 +25,12 @@ import com.pandatv.ui.live.entity.WonderfulBean;
 public class WonderfulPresenterImp implements LiveContract.LivePresenter {
     private LiveContract.WonderfulView wonderfulView;
     private LiveTitleModel titleModel;
+    int page=1;
 
     public WonderfulPresenterImp(LiveContract.WonderfulView wonderfulView) {
         this.wonderfulView = wonderfulView;
         this.titleModel=new LiveModelImp();
+
     }
 
     @Override
@@ -48,7 +53,7 @@ public class WonderfulPresenterImp implements LiveContract.LivePresenter {
             public void onFail(String netOff) {
 
             }
-        });
+        },(page)+"");
     }
 
 

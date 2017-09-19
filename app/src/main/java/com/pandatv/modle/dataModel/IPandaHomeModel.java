@@ -5,6 +5,7 @@ import com.pandatv.entity.PandaHome;
 import com.pandatv.modle.net.callback.NetWorkCallBack;
 import com.pandatv.ui.home.bean.BroadcastBean;
 import com.pandatv.ui.home.bean.ChinaBean;
+import com.pandatv.ui.home.bean.InteractionBean;
 import com.pandatv.ui.home.bean.MomentBean;
 import com.pandatv.ui.home.bean.ShowBean;
 import com.pandatv.ui.home.bean.VideoBean;
@@ -30,4 +31,5 @@ public interface IPandaHomeModel extends BaseModel {
 
     void loadChina(String url, NetWorkCallBack<ChinaBean> callBack);
 
+    void loadInteraction(NetWorkCallBack<InteractionBean> callBack);
 }

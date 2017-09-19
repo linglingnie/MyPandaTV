@@ -1,6 +1,7 @@
 package com.pandatv.ui.live.liveFragment;
 
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -41,6 +42,7 @@ public class PandaFiesFragment extends BaseFragment implements LiveContract.Pand
     Unbinder unbinder;
     private PandaFilesPresenterImp pandaFilesPresenterImp;
     private List<PandaFiesBean.VideoBean> video;
+    private ProgressDialog diaLog;
 
     @Override
     protected int getLayoutRes() {
@@ -49,6 +51,9 @@ public class PandaFiesFragment extends BaseFragment implements LiveContract.Pand
 
     @Override
     protected void initData() {
+        diaLog = new ProgressDialog(getActivity());
+        diaLog.setMessage("正在加载......");
+        diaLog.show();
         pandaFilesPresenterImp = new PandaFilesPresenterImp(this);
         pandaFilesPresenterImp.start();
         in.srain.cube.views.ptr.PtrClassicDefaultHeader header = new in.srain.cube.views.ptr.PtrClassicDefaultHeader(getActivity());
@@ -132,12 +137,12 @@ public class PandaFiesFragment extends BaseFragment implements LiveContract.Pand
 
     @Override
     public void showProgress() {
-
+        diaLog.show();
     }
 
     @Override
     public void dismissProgress() {
-
+        diaLog.dismiss();
     }
 
     @Override

@@ -4,6 +4,7 @@ package com.pandatv.ui.home;
 import com.pandatv.base.IBasePresenter;
 import com.pandatv.base.IBaseView;
 import com.pandatv.entity.PandaHome;
+import com.pandatv.ui.home.bean.InteractionBean;
 import com.pandatv.ui.home.bean.MomentBean;
 import com.pandatv.ui.home.bean.VideoBean;
 
@@ -21,7 +22,11 @@ public class HomeContract {
 
         void loadMoment(MomentBean momentBean);
     }
+    public interface InteractionView extends IBaseView<Presenter>{
+        void showInteraction(InteractionBean interactionBean);
+        void goToDetails();
+    }
 
-    interface Presenter extends IBasePresenter {
+    public interface Presenter extends IBasePresenter {
     }
 }

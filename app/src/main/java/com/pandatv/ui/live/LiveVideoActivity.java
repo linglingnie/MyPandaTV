@@ -1,5 +1,6 @@
 package com.pandatv.ui.live;
 
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -71,11 +72,17 @@ public class LiveVideoActivity extends BaseActivity{
         return R.layout.activity_live_video;
     }
 
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.bind(this);
+    protected void onResume() {
+        /**
+         * 设置为横屏
+         */
+        if (getRequestedOrientation() != ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE) {
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        }
+
+        super.onResume();
     }
 
 

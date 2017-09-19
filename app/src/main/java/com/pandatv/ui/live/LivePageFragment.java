@@ -1,5 +1,7 @@
 package com.pandatv.ui.live;
 
+import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -26,12 +28,15 @@ import com.pandatv.ui.live.liveFragment.TopBangFragment;
 import com.pandatv.ui.live.liveFragment.WhenNoLetFragment;
 import com.pandatv.ui.live.liveFragment.WonderfulFragment;
 import com.pandatv.ui.live.noScrollViewPager.NoScrollViewPager;
+import com.pandatv.user.activity.LoginActivity;
+import com.pandatv.user.activity.UserActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import butterknife.Unbinder;
 
 
@@ -52,10 +57,8 @@ public class LivePageFragment extends BaseFragment implements LiveContract.liveV
     private List<Fragment> list = new ArrayList<>();
     private List<String> titlelist = new ArrayList<>();
     private LivePresenterImp livePresenterImp;
-//    private ProgressDialog  dialog = new ProgressDialog(getActivity());;
-    //    private ImageView image_login;
-//    private TabLayout tabLayout;
-//    private ViewPager viewPager;
+    private ProgressDialog diaLog;
+
 
     @Override
     protected int getLayoutRes() {
@@ -64,6 +67,9 @@ public class LivePageFragment extends BaseFragment implements LiveContract.liveV
 
     @Override
     protected void initData() {
+        diaLog = new ProgressDialog(getActivity());
+        diaLog.setMessage("正在加载......");
+        diaLog.show();
         livePresenterImp = new LivePresenterImp(this);
         livePresenterImp.start();
         list.add(new GridFragment());
@@ -130,6 +136,19 @@ public class LivePageFragment extends BaseFragment implements LiveContract.liveV
             public CharSequence getPageTitle(int position) {
                 return titlelist.get(position);
             }
+
+            @Override
+            public Object instantiateItem(ViewGroup container, int position) {
+                Fragment fragment = (Fragment)super.instantiateItem(container,position);
+                getFragmentManager().beginTransaction().show(fragment).commit();
+                return fragment;
+            }
+
+            @Override
+            public void destroyItem(ViewGroup container, int position, Object object) {
+                Fragment fragment = list.get(position);
+                getFragmentManager().beginTransaction().hide(fragment).commit();
+            }
         });
         liveTablayout.setupWithViewPager(liveViewPager);
     }
@@ -146,12 +165,12 @@ public class LivePageFragment extends BaseFragment implements LiveContract.liveV
 
     @Override
     public void showProgress() {
-//            dialog.show();
+        diaLog.show();
     }
 
     @Override
     public void dismissProgress() {
-//            dialog.dismiss();
+        diaLog.dismiss();
     }
 
     @Override
@@ -162,5 +181,10 @@ public class LivePageFragment extends BaseFragment implements LiveContract.liveV
     @Override
     public void setPresenter(LiveContract.LivePresenter livePresenter) {
 
+    }
+
+    @OnClick(R.id.live_image_login)
+    public void onViewClicked() {
+        startActivity(new Intent(getActivity(), UserActivity.class));
     }
 }

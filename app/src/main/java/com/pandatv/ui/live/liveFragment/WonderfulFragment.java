@@ -44,6 +44,7 @@ public class WonderfulFragment extends BaseFragment implements LiveContract.Wond
     private WonderfulPresenterImp wonderfulPresenterImp;
     private List<WonderfulBean.VideoBean> video;
     private ProgressDialog diaLog;
+    private WonderfulAdapter wonderfulAdapter;
 
     @Override
     protected int getLayoutRes() {
@@ -52,7 +53,10 @@ public class WonderfulFragment extends BaseFragment implements LiveContract.Wond
 
     @Override
     protected void initData() {
+        diaLog = new ProgressDialog(getActivity());
+        diaLog.setMessage("正在加载......");
         wonderfulPresenterImp = new WonderfulPresenterImp(this);
+        diaLog.show();
         wonderfulPresenterImp.start();
     }
 
@@ -71,7 +75,6 @@ public class WonderfulFragment extends BaseFragment implements LiveContract.Wond
         wonderfulPtr.setPtrHandler(new PtrDefaultHandler2() {
             @Override
             public void onLoadMoreBegin(PtrFrameLayout frame) {
-
                 wonderfulPtr.refreshComplete();
 
             }
@@ -121,7 +124,7 @@ public class WonderfulFragment extends BaseFragment implements LiveContract.Wond
     @Override
     public void showWonderfu(WonderfulBean wonderfulBean) {
         video = wonderfulBean.getVideo();
-        WonderfulAdapter wonderfulAdapter = new WonderfulAdapter(getActivity(), video);
+        wonderfulAdapter = new WonderfulAdapter(getActivity(), video);
         wonderfulListView.setAdapter(wonderfulAdapter);
     }
 
@@ -137,7 +140,7 @@ public class WonderfulFragment extends BaseFragment implements LiveContract.Wond
 
     @Override
     public void showProgress() {
-        diaLog = new ProgressDialog(getActivity());
+
         diaLog.show();
     }
 

@@ -19,11 +19,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.home.activity.VideoActivity"></activity>
-
-        <activity android:name=".ui.bobaoWebView.VideoActivity"></activity>
-        <activity android:name=".ui.bobaoWebView.Web2Activity"></activity>
-
+        <activity android:name=".ui.home.activity.VideoActivity" />
+        <activity android:name=".ui.bobaoWebView.VideoActivity" />
+        <activity android:name=".ui.bobaoWebView.Web2Activity" />
         <activity
             android:name=".ui.video.VideoActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
@@ -32,8 +30,10 @@
         <activity android:name=".user.activity.UserActivity" />
         <activity android:name=".user.activity.LoginActivity" />
         <activity android:name=".user.activity.RegisterActivity" />
-        <activity android:name=".main.MainActivity"></activity>
-        <activity android:name=".ui.live.LiveVideoActivity"></activity>
+        <activity android:name=".main.MainActivity" />
+        <activity android:name=".ui.live.LiveVideoActivity" />
+        <activity android:name=".main.InteractionActivity" />
+        <activity android:name=".main.InteractionDetailsActivity"></activity>
     </application>
 
 </manifest>

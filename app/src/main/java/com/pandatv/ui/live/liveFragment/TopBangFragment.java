@@ -1,6 +1,7 @@
 package com.pandatv.ui.live.liveFragment;
 
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -36,6 +37,7 @@ public class TopBangFragment extends BaseFragment implements LiveContract.TopBan
     Unbinder unbinder;
     private TopBangPresenterImp topBangPresenterImp;
     private List<TopBangBean.VideoBean> video;
+    private ProgressDialog diaLog;
 
     @Override
     protected int getLayoutRes() {
@@ -44,6 +46,9 @@ public class TopBangFragment extends BaseFragment implements LiveContract.TopBan
 
     @Override
     protected void initData() {
+        diaLog = new ProgressDialog(getActivity());
+        diaLog.setMessage("正在加载......");
+        diaLog.show();
         topBangPresenterImp = new TopBangPresenterImp(this);
         topBangPresenterImp.start();
         in.srain.cube.views.ptr.PtrClassicDefaultHeader header = new in.srain.cube.views.ptr.PtrClassicDefaultHeader(getActivity());
@@ -128,12 +133,12 @@ public class TopBangFragment extends BaseFragment implements LiveContract.TopBan
 
     @Override
     public void showProgress() {
-
+        diaLog.show();
     }
 
     @Override
     public void dismissProgress() {
-
+        diaLog.dismiss();
     }
 
     @Override

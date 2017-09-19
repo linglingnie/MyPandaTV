@@ -1,6 +1,7 @@
 package com.pandatv.ui.live.liveFragment;
 
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -36,6 +37,7 @@ public class ThoseThingFragment extends BaseFragment implements LiveContract.Tho
     Unbinder unbinder;
     private ThoseThingViewImp thoseThingViewImp;
     private List<ThoseThingBean.VideoBean> video;
+    private ProgressDialog diaLog;
 
     @Override
     protected int getLayoutRes() {
@@ -44,6 +46,9 @@ public class ThoseThingFragment extends BaseFragment implements LiveContract.Tho
 
     @Override
     protected void initData() {
+        diaLog = new ProgressDialog(getActivity());
+        diaLog.setMessage("正在加载......");
+        diaLog.show();
         thoseThingViewImp = new ThoseThingViewImp(this);
         thoseThingViewImp.start();
 
@@ -115,12 +120,12 @@ public class ThoseThingFragment extends BaseFragment implements LiveContract.Tho
 
     @Override
     public void showProgress() {
-
+        diaLog.show();
     }
 
     @Override
     public void dismissProgress() {
-
+        diaLog.dismiss();
     }
 
     @Override
