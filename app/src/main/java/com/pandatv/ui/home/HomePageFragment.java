@@ -6,19 +6,18 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.text.format.DateUtils;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.AbsListView;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
-import com.handmark.pulltorefresh.library.PullToRefreshGridView;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.pandatv.R;
 import com.pandatv.base.BaseFragment;
@@ -26,8 +25,8 @@ import com.pandatv.entity.PandaHome;
 import com.pandatv.modle.net.OkBaseHttpImpl;
 import com.pandatv.ui.home.activity.VideoActivity;
 import com.pandatv.ui.home.adapter.ChinaAdapter;
-import com.pandatv.ui.home.adapter.ShowAdapter;
 import com.pandatv.ui.home.adapter.MomentAdapter;
+import com.pandatv.ui.home.adapter.ShowAdapter;
 import com.pandatv.ui.home.adapter.VideoAdapter;
 import com.pandatv.ui.home.bean.MomentBean;
 import com.pandatv.ui.home.bean.VideoBean;
@@ -41,10 +40,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
-
-import static com.pandatv.manager.ActivityCollector.getActivity;
 
 /**
  * Created by chj on 2017/8/20.
@@ -57,6 +55,8 @@ public class HomePageFragment extends BaseFragment implements AdapterView.OnItem
     Unbinder unbinder;
     @BindView(R.id.personImg)
     ImageView personImg;
+    @BindView(R.id.hudongImg)
+    ImageView hudongImg;
     private HomeContract.Presenter presenter;
     private List<PandaHome.DataBean.BigImgBean> bigImg;
     private View top;
@@ -220,7 +220,7 @@ public class HomePageFragment extends BaseFragment implements AdapterView.OnItem
                 listView.setAdapter(new VideoAdapter(getActivity(), videoBeanList));
             }
         });
-        
+
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -334,6 +334,12 @@ public class HomePageFragment extends BaseFragment implements AdapterView.OnItem
         }, 2000);
 
 
+    }
+
+
+    @OnClick(R.id.hudongImg)
+    public void onViewClicked() {
+        Toast.makeText(getActivity(), "11", Toast.LENGTH_SHORT).show();
     }
 
     public class GlideImage extends ImageLoader {
