@@ -58,9 +58,7 @@ public class PlayerActivity extends AppCompatActivity implements View.OnClickLis
                 } else if (count % 2 == 0) {
                     play_text.setVisibility(View.GONE);
                 }
-
                 break;
         }
     }
-
 }

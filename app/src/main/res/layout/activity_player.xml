@@ -57,6 +57,12 @@
         android:text="你好"
         android:layout_gravity="center_horizontal"
         />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="高清完整"
+        android:textSize="20dp"
+        />
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"

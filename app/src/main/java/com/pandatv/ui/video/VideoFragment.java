@@ -48,7 +48,6 @@ public class VideoFragment extends BaseFragment implements SwipeRefreshLayout.On
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         view = inflater.inflate(getLayoutRes(), null);
-
         initView(view);
         initData();
         showHomeListData(culture);
@@ -63,6 +62,7 @@ public class VideoFragment extends BaseFragment implements SwipeRefreshLayout.On
                 Intent intent=new Intent(getContext(),PlayerActivity.class);
                 intent.putExtra("title",list.get(position-1).getTitle());
                 intent.putExtra("content",list.get(position-1).getBrief());
+                intent.putExtra("url",list.get(position-1).getUrl());
                 startActivity(intent);
             }
         });
@@ -138,7 +138,7 @@ public class VideoFragment extends BaseFragment implements SwipeRefreshLayout.On
                 video_Image.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent intent=new Intent(getContext(),VideoActivity.class);
+                        Intent intent=new Intent(getContext(),VideosActivity.class);
                         intent.putExtra("title",big.get(0).getTitle());
 
                         startActivity(intent);
