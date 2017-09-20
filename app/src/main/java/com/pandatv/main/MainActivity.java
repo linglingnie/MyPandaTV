@@ -18,6 +18,7 @@ import com.pandatv.ui.bobao.BoBaoFragment;
 import com.pandatv.ui.home.HomePageFragment;
 import com.pandatv.ui.home.HomePresenter;
 import com.pandatv.ui.live.LivePageFragment;
+import com.pandatv.ui.liveChina.LiveChinaFragment;
 import com.pandatv.ui.video.VideoFragment;
 
 import butterknife.BindView;
@@ -86,7 +87,7 @@ public class MainActivity extends BaseActivity {
                 break;
             case R.id.homeLiveChina:
 
-           //     FragmentManger.getInstance().start(R.id.container, ChinaFragment.class,false).build();
+                FragmentManger.getInstance().start(R.id.container, LiveChinaFragment.class,false).build();
               /*  ChinaFragment builds = (ChinaFragment) FragmentManger.getInstance().start(R.id.container, ChinaFragment.class, false).build();
                 new ChinaPresenter(builds);*/
                 break;

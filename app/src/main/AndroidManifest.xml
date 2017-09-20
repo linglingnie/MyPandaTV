@@ -2,22 +2,22 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.pandatv">
 
-
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
-    <!--友盟权限-->
+    <!-- 友盟权限 -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+
     <application
         android:name=".app.App"
         android:allowBackup="true"
@@ -51,24 +51,25 @@
         <activity android:name=".user.activity.HistoryActivity" />
         <activity android:name=".user.activity.InfoActivity" />
         <activity android:name=".user.activity.SetActivity" />
-        <activity android:name=".user.activity.UserCollectActivity"></activity>
+        <activity android:name=".user.activity.UserCollectActivity" />
         <activity android:name=".main.MainActivity" />
         <activity android:name=".ui.live.LiveVideoActivity" />
         <activity android:name=".main.InteractionActivity" />
-        <activity android:name=".main.InteractionDetailsActivity"></activity>
+        <activity android:name=".main.InteractionDetailsActivity" />
 
-        <!--新浪-->
+        <!-- 新浪 -->
         <activity
             android:name=".wxapi.WBShareActivity"
             android:configChanges="keyboardHidden|orientation"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="com.sina.weibo.sdk.action.ACTION_SDK_REQ_ACTIVITY" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
 
-        <!--微信-->
+        <!-- 微信 -->
         <activity
             android:name=".wxapi.WXEntryActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
@@ -76,41 +77,41 @@
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
 
-        <!--QQ精简版:-->
+        <!-- QQ精简版: -->
         <activity
             android:name="com.umeng.qq.tencent.AuthActivity"
             android:launchMode="singleTask"
-            android:noHistory="true" >
-
+            android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
+
                 <data android:scheme="tencent100424468" />
             </intent-filter>
         </activity>
-
         <activity
             android:name="com.umeng.qq.tencent.AssistActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"
-            android:configChanges="orientation|keyboardHidden|screenSize"/>
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
 
-
-        <!--分享编辑页:-->
+        <!-- 分享编辑页: -->
         <activity
             android:name="com.umeng.socialize.editorpage.ShareActivity"
-            android:theme="@style/Theme.UMDefault"
             android:excludeFromRecents="true"
-            />
+            android:theme="@style/Theme.UMDefault" />
 
-
-        <!--添加友盟AppKey:-->
+        <!-- 添加友盟AppKey: -->
         <meta-data
             android:name="UMENG_APPKEY"
-            android:value="59c1d1d4a40fa3163f00002f" >
-            <!--//自己应用的key-->
+            android:value="59c1d1d4a40fa3163f00002f">
+
+            <!-- //自己应用的key -->
         </meta-data>
+
+        <activity android:name=".ui.liveChina.AddFragmentActivity"></activity>
     </application>
 
 </manifest>

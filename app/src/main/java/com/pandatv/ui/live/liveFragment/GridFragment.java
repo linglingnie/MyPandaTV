@@ -77,6 +77,9 @@ public class GridFragment extends BaseFragment implements LiveContract.PandaLive
 
     @Override
     protected void initView(View view) {
+        liveTvBrief.setVisibility(View.GONE);
+        liveChinaUp.setVisibility(View.GONE);
+        liveChinaDown.setVisibility(View.VISIBLE);
         liveChinaDown.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

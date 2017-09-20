@@ -110,4 +110,22 @@ public class Urls {
     public static final String MOMENT="http://www.ipanda.com/kehuduan/shipinliebieye/jingcaiyike/index.json";
     //滚滚视频
     public static final String VIDEO="http://www.ipanda.com/kehuduan/shipinliebieye/video/index.json";
+
+//    livechina
+    //八达岭
+    public static final String BADALING="http://www.ipanda.com/kehuduan/liebiao/badaling/index.json";
+
+    //泰山
+    public static final String FATHER_IN_LAW="http://www.ipanda.com/kehuduan/liebiao/taishan/index.json";
+
+    //黄山
+    public static final String COUNT_HUANG="http://www.ipanda.com/kehuduan/liebiao/huangshan/index.json";
+
+    //凤凰古城
+    public static final String PHENIX="http://www.ipanda.com/kehuduan/liebiao/fenghuanggucheng/index.json";
+
+    //峨眉山
+    public static final String EMEI="http://www.ipanda.com/kehuduan/liebiao/emeishan/index.json";
+
+
 }
