@@ -45,6 +45,15 @@
         <activity android:name=".user.activity.RegisterActivity" />
         <activity android:name=".main.MainActivity" />
         <activity android:name=".ui.live.LiveVideoActivity" />
+        <activity android:name=".user.activity.AboutActivity" />
+        <activity android:name=".user.activity.BackActivity" />
+        <activity android:name=".user.activity.FindPwdActivity" />
+        <activity android:name=".user.activity.HistoryActivity" />
+        <activity android:name=".user.activity.InfoActivity" />
+        <activity android:name=".user.activity.SetActivity" />
+        <activity android:name=".user.activity.UserCollectActivity"></activity>
+        <activity android:name=".main.MainActivity" />
+        <activity android:name=".ui.live.LiveVideoActivity" />
         <activity android:name=".main.InteractionActivity" />
         <activity android:name=".main.InteractionDetailsActivity"></activity>
 

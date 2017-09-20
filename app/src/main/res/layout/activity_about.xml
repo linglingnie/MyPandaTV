@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_register"
+    android:id="@+id/activity_about"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/pe_bg_light_blue"
-    android:orientation="vertical"
-    tools:context=".user.activity.RegisterActivity">
+    android:background="@color/white"
+    android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -31,19 +30,34 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:text="注册"
+            android:text="关于熊猫频道"
             android:textColor="@color/white"
             android:textSize="20sp" />
     </RelativeLayout>
 
-    <android.support.design.widget.TabLayout
-        android:id="@+id/mRegisterTab"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"></android.support.design.widget.TabLayout>
+    <ImageView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/about_sign"
+        android:scaleType="fitXY" />
 
-    <android.support.v4.view.ViewPager
-        android:id="@+id/mViewPager"
+    <TextView
+        android:id="@+id/about_version"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></android.support.v4.view.ViewPager>
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="@string/set_about_version" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:lineSpacingExtra="5dp"
+        android:lineSpacingMultiplier="1"
+        android:padding="10dp"
+        android:text="@string/set_about_content" />
 
 </LinearLayout>

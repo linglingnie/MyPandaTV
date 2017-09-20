@@ -1,5 +1,6 @@
 package com.pandatv.user.activity;
 
+import android.content.Intent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -48,14 +49,19 @@ public class UserActivity extends BaseActivity {
                 finish();
                 break;
             case R.id.person_have_login_layout:
+                startActivity(new Intent(this, LoginActivity.class));
                 break;
             case R.id.personal_history_layout:
+                startActivity(new Intent(this, HistoryActivity.class));
                 break;
             case R.id.personal_shoucang_layout:
+                startActivity(new Intent(this, UserCollectActivity.class));
                 break;
             case R.id.personal_set_layout:
+                startActivity(new Intent(this, SetActivity.class));
                 break;
             case R.id.personal_callback_layout:
+                startActivity(new Intent(this, LoginActivity.class));
                 break;
         }
     }

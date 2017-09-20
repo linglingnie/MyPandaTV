@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_findpwd"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/pe_bg_light_blue"
+    android:orientation="vertical"
+    tools:context="com.pandatv.user.activity.FindPwdActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryDark"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/mBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/personal_back_img"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:text="忘记密码"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+    </RelativeLayout>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40px"
+        android:layout_marginTop="30px"
+        android:padding="30px"
+        android:text="@string/forget_tips"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="15sp" />
+
+
+    <EditText
+        android:id="@+id/edit_phonenumber"
+        android:layout_width="match_parent"
+        android:layout_height="120px"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="60px"
+        android:layout_marginRight="60px"
+        android:layout_marginTop="30px"
+        android:background="@drawable/pe_shape_border_gray"
+        android:hint="@string/forget_account_hint"
+        android:padding="15px"
+        android:textColor="@color/gray"
+        android:textColorHint="#c9c9c9"
+        android:textCursorDrawable="@null"
+        android:textSize="14sp" />
+
+
+    <TextView
+        android:id="@+id/hint_phonenumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="60px"
+        android:textColor="#f00" />
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="120px"
+        android:layout_marginLeft="60px"
+        android:layout_marginRight="60px"
+        android:layout_marginTop="30px">
+
+        <EditText
+            android:id="@+id/edit_checkimage"
+            android:layout_width="match_parent"
+            android:layout_height="120px"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/personal_reg_imgcheck"
+            android:background="@drawable/pe_shape_border_gray"
+            android:hint="@string/forget_img_yanzhengma_hint"
+            android:padding="15px"
+            android:textColor="@color/gray"
+            android:textColorHint="#c9c9c9"
+            android:textCursorDrawable="@null"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/personal_reg_imgcheck"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="30px"
+            android:background="@color/white"
+            android:gravity="center"
+            android:text="@string/forget_image_yanzhengma" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/hint_checkimage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="60px"
+        android:textColor="#f00" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="120px"
+        android:layout_marginLeft="60px"
+        android:layout_marginRight="60px"
+        android:layout_marginTop="30px">
+
+        <EditText
+            android:id="@+id/edit_checkphone"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/personal_reg_phonecheck"
+            android:background="@drawable/pe_shape_border_gray"
+            android:hint="@string/forget_phone_yanzhengma_hint"
+            android:padding="15px"
+            android:textColor="@color/gray"
+            android:textColorHint="#c9c9c9"
+            android:textCursorDrawable="@null"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/personal_reg_phonecheck"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="30px"
+            android:background="@drawable/pe_login_view_bg"
+            android:gravity="center"
+            android:text="@string/regist_yanzhengma"
+            android:textColor="@color/white" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/hint_checkphone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="60px"
+        android:textColor="#f00" />
+
+    <EditText
+        android:id="@+id/edit_newpssword"
+        android:layout_width="match_parent"
+        android:layout_height="120px"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="60px"
+        android:layout_marginRight="60px"
+        android:layout_marginTop="30px"
+        android:background="@drawable/pe_shape_border_gray"
+        android:hint="@string/forget_set_newpaswd_hint"
+        android:padding="15px"
+        android:password="true"
+        android:textColor="@color/gray"
+        android:textColorHint="#c9c9c9"
+        android:textCursorDrawable="@null"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/hint_newpssword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="60px"
+        android:textColor="#f00" />
+
+    <TextView
+        android:id="@+id/tvfoundpswd"
+        android:layout_width="match_parent"
+        android:layout_height="132px"
+        android:layout_marginLeft="60px"
+        android:layout_marginRight="60px"
+        android:layout_marginTop="80px"
+        android:background="@drawable/pe_login_view_bg"
+        android:gravity="center"
+        android:padding="30px"
+        android:text="@string/forget_found_pswd"
+        android:textColor="@color/white" />
+</LinearLayout>
