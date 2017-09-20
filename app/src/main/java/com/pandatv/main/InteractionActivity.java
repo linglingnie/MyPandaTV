@@ -19,7 +19,11 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import in.srain.cube.views.ptr.PtrClassicDefaultFooter;
+import in.srain.cube.views.ptr.PtrDefaultHandler2;
 import in.srain.cube.views.ptr.PtrFrameLayout;
+
+import static com.pandatv.manager.ActivityCollector.getActivity;
 
 
 public class InteractionActivity extends BaseActivity implements HomeContract.InteractionView {
@@ -71,6 +75,29 @@ public class InteractionActivity extends BaseActivity implements HomeContract.In
                 intent.putExtra("urlhtml",interactiveBean.getUrl());
                 intent.putExtra("webtitle",interactiveBean.getTitle());
                 startActivity(intent);
+            }
+        });
+
+        in.srain.cube.views.ptr.PtrClassicDefaultHeader header = new in.srain.cube.views.ptr.PtrClassicDefaultHeader(getActivity());
+        PtrClassicDefaultFooter footer = new PtrClassicDefaultFooter(getActivity());
+
+
+        interactionPtr.setHeaderView(header);
+        interactionPtr.addPtrUIHandler(header);
+        interactionPtr.setFooterView(footer);
+        interactionPtr.addPtrUIHandler(footer);
+
+        interactionPtr.setPtrHandler(new PtrDefaultHandler2() {
+            @Override
+            public void onLoadMoreBegin(PtrFrameLayout frame) {
+                interactionPtr.refreshComplete();
+
+            }
+
+            @Override
+            public void onRefreshBegin(PtrFrameLayout frame) {
+
+                interactionPtr.refreshComplete();
             }
         });
     }
