@@ -13,16 +13,16 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"
         android:background="#fff"
         android:orientation="vertical">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="20dp"
-            android:paddingLeft="15dp"
-            android:paddingTop="20dp"
+            android:padding="10dp"
             android:text="熊猫播报"
             android:textColor="@color/colorPrimary" />
 
@@ -56,25 +56,26 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="15dp"
                         android:background="@drawable/bg_home_back"
-                        android:paddingBottom="10dp"
+                        android:paddingBottom="7dp"
                         android:paddingLeft="30dp"
                         android:paddingRight="30dp"
-                        android:paddingTop="10dp"
+                        android:paddingTop="7dp"
                         android:text="怀念" />
 
                     <TextView
                         android:id="@+id/mYearning"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginTop="5dp" />
+                        android:layout_marginLeft="10dp"
+                        android:textColor="@color/black" />
                 </LinearLayout>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
+                    android:layout_marginTop="10dp"
                     android:background="@color/radio_down_background" />
 
                 <LinearLayout
@@ -85,12 +86,12 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="15dp"
                         android:background="@drawable/bg_home_red"
-                        android:paddingBottom="10dp"
+                        android:paddingBottom="7dp"
                         android:paddingLeft="30dp"
                         android:paddingRight="30dp"
-                        android:paddingTop="10dp"
+                        android:paddingTop="7dp"
                         android:text="出没"
                         android:textColor="#FF0000" />
 
@@ -98,8 +99,9 @@
                         android:id="@+id/mHaunt"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginTop="10dp" />
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="5dp"
+                        android:textColor="@color/black" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -109,6 +111,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
         android:layout_marginTop="5dp"
         android:background="#fff"
         android:orientation="vertical">
@@ -116,9 +120,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="20dp"
-            android:paddingLeft="15dp"
-            android:paddingTop="20dp"
+            android:padding="10dp"
             android:text="直播秀场"
             android:textColor="@color/colorPrimary" />
 
@@ -130,13 +132,16 @@
         <GridView
             android:id="@+id/mShowGridView"
             android:layout_width="match_parent"
-            android:layout_height="400dp"
-            android:numColumns="3"></GridView>
+            android:layout_height="330dp"
+            android:numColumns="3"
+            android:scrollbars="none"></GridView>
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
         android:layout_marginTop="5dp"
         android:background="#fff"
         android:orientation="vertical">
@@ -144,9 +149,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="20dp"
-            android:paddingLeft="15dp"
-            android:paddingTop="20dp"
+            android:padding="10dp"
             android:text="精彩一刻"
             android:textColor="@color/colorPrimary" />
 
@@ -158,23 +161,27 @@
         <GridView
             android:id="@+id/mMomentGridView"
             android:layout_width="match_parent"
-            android:layout_height="400dp"
-            android:numColumns="2"></GridView>
+            android:layout_height="300dp"
+            android:numColumns="2"
+            android:scrollbars="none"></GridView>
     </LinearLayout>
 
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"
         android:background="#fff"
-        android:paddingBottom="20dp"
-        android:paddingLeft="15dp"
-        android:paddingTop="20dp"
+        android:padding="10dp"
         android:text="滚滚视频"
         android:textColor="@color/colorPrimary" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="1dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
         android:background="@color/radio_down_background" />
 </LinearLayout>
