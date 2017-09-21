@@ -3,10 +3,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="#fff"
     tools:context="com.pandatv.ui.video.VideoFragment">
     <android.support.v7.widget.Toolbar
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:background="@color/colorPrimaryDark"
         android:id="@+id/tool"
         >
@@ -18,7 +19,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="滚滚视频"
-                android:textSize="20dp"
+                android:textSize="25dp"
+                android:textColor="#fff"
                 android:layout_centerHorizontal="true"
                 />
             <ImageButton
@@ -27,24 +29,14 @@
                 android:id="@+id/person"
                 android:background="@drawable/person_sign"
                 android:layout_alignParentRight="true"
+                android:layout_marginRight="11dp"
                 />
         </RelativeLayout>
     </android.support.v7.widget.Toolbar>
     <!-- TODO: Update blank fragment layout -->
-    <android.support.v4.widget.SwipeRefreshLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/swipeRefresh"
-        >
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
             <ListView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/mListView"
                 ></ListView>
-        </FrameLayout>
-    </android.support.v4.widget.SwipeRefreshLayout>
 </LinearLayout>
