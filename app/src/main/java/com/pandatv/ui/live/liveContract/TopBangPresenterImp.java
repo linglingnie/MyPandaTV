@@ -4,6 +4,8 @@ import com.pandatv.modle.net.callback.NetWorkCallBack;
 import com.pandatv.ui.live.entity.TopBangBean;
 import com.pandatv.ui.live.entity.WonderfulBean;
 
+import java.util.Map;
+
 /**
  * Created by Windows on 2017/9/16.
  */
@@ -41,4 +43,26 @@ public class TopBangPresenterImp implements LiveContract.LivePresenter {
     }
 
 
+    @Override
+    public void loadMore(Map<String, String> map) {
+        topBangView.showProgress();
+        titleModel.loadTopBang(new NetWorkCallBack<TopBangBean>() {
+            @Override
+            public void onSuccess(TopBangBean topBangBean) {
+                topBangView.showTopBang(topBangBean);
+                topBangView.dismissProgress();
+            }
+
+            @Override
+            public void onError(int errorCode, String errorMsg) {
+                topBangView.showMessage(errorMsg);
+                topBangView.dismissProgress();
+            }
+
+            @Override
+            public void onFail(String netOff) {
+
+            }
+        });
+    }
 }

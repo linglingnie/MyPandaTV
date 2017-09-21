@@ -3,6 +3,8 @@ package com.pandatv.ui.live.liveContract;
 import com.pandatv.modle.net.callback.NetWorkCallBack;
 import com.pandatv.ui.live.entity.PandaLive;
 
+import java.util.Map;
+
 /**
  * Created by Windows on 2017/9/15.
  */
@@ -37,5 +39,10 @@ public class PandaLiveBriefImp implements LiveContract.LivePresenter{
 
             }
         });
+    }
+
+    @Override
+    public void loadMore(Map<String, String> map) {
+
     }
 }

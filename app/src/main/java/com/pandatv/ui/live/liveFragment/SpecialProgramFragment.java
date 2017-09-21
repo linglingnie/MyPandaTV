@@ -19,7 +19,10 @@ import com.pandatv.ui.live.entity.WhenNoLetBean;
 import com.pandatv.ui.live.liveContract.LiveContract;
 import com.pandatv.ui.live.liveContract.SpecialProgramPresenterImp;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -37,8 +40,10 @@ public class SpecialProgramFragment extends BaseFragment implements LiveContract
     Unbinder unbinder;
     private SpecialProgramPresenterImp specialProgramPresenterImp;
     private List<SpecialProgramBean.VideoBean> video;
+    private List<SpecialProgramBean.VideoBean> list=new ArrayList<>();
     private ProgressDialog diaLog;
-
+    private Map<String, String> map = new HashMap<>();
+    private int p=1;
     @Override
     protected int getLayoutRes() {
         return R.layout.fragment_special;
@@ -50,7 +55,8 @@ public class SpecialProgramFragment extends BaseFragment implements LiveContract
         diaLog.setMessage("正在加载......");
         diaLog.show();
         specialProgramPresenterImp = new SpecialProgramPresenterImp(this);
-        specialProgramPresenterImp.start();
+        map.put("p",p+"");
+        specialProgramPresenterImp.loadMore(map);
         in.srain.cube.views.ptr.PtrClassicDefaultHeader header = new in.srain.cube.views.ptr.PtrClassicDefaultHeader(getActivity());
         PtrClassicDefaultFooter footer = new PtrClassicDefaultFooter(getActivity());
 
@@ -63,14 +69,17 @@ public class SpecialProgramFragment extends BaseFragment implements LiveContract
         spcialProgramPtr.setPtrHandler(new PtrDefaultHandler2() {
             @Override
             public void onLoadMoreBegin(PtrFrameLayout frame) {
-
+                p++;
+                map.put("p",p+"");
+                specialProgramPresenterImp.loadMore(map);
                 spcialProgramPtr.refreshComplete();
 
             }
 
             @Override
             public void onRefreshBegin(PtrFrameLayout frame) {
-
+                video.clear();
+                specialProgramPresenterImp.loadMore(map);
                 spcialProgramPtr.refreshComplete();
             }
         });
@@ -102,6 +111,7 @@ public class SpecialProgramFragment extends BaseFragment implements LiveContract
     @Override
     public void showSpecialProgram(SpecialProgramBean programBean) {
         video = programBean.getVideo();
+        list.addAll(video);
         SpecialProgramAdapter specialProgramAdapter = new SpecialProgramAdapter(getActivity(), video);
         spcialProgramListView.setAdapter(specialProgramAdapter);
     }

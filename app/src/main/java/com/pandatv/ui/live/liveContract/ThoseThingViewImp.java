@@ -4,6 +4,8 @@ import com.pandatv.modle.net.callback.NetWorkCallBack;
 import com.pandatv.ui.live.entity.ThoseThingBean;
 import com.pandatv.ui.live.entity.WhenNoLetBean;
 
+import java.util.Map;
+
 /**
  * Created by Windows on 2017/9/17.
  */
@@ -19,6 +21,11 @@ public class ThoseThingViewImp implements LiveContract.LivePresenter{
 
     @Override
     public void start() {
+
+    }
+
+    @Override
+    public void loadMore(Map<String, String> map) {
         thoseThingView.showProgress();
         titleModel.loadThoseThing(new NetWorkCallBack<ThoseThingBean>() {
             @Override

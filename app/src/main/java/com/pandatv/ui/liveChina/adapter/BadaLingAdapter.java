@@ -6,10 +6,10 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.pandatv.R;
 import com.pandatv.ui.liveChina.entity.BadalingBean;
-import com.pandatv.ui.liveChina.entity.LiveChinaBean;
 
 import java.util.List;
 
@@ -23,6 +23,7 @@ import static com.pandatv.modle.dataModel.BaseModel.iHttp;
  */
 
 public class BadaLingAdapter extends BaseAdapter {
+
     private Context context;
     private List<BadalingBean.LiveBean> list;
 
@@ -49,12 +50,12 @@ public class BadaLingAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         final ViewHolder holder;
-        if (convertView==null){
+        if (convertView == null) {
             convertView = View.inflate(context, R.layout.live_china_item, null);
-            holder=new ViewHolder(convertView);
+            holder = new ViewHolder(convertView);
             convertView.setTag(holder);
-        }else {
-            holder= (ViewHolder) convertView.getTag();
+        } else {
+            holder = (ViewHolder) convertView.getTag();
         }
         holder.liveChinaBrief.setVisibility(View.GONE);
         holder.liveChinaUp.setVisibility(View.GONE);
@@ -62,7 +63,7 @@ public class BadaLingAdapter extends BaseAdapter {
         holder.liveChinaDown.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!holder.liveChinaBrief.isShown()){
+                if (!holder.liveChinaBrief.isShown()) {
                     holder.liveChinaUp.setVisibility(View.VISIBLE);
                     holder.liveChinaDown.setVisibility(View.GONE);
                     holder.liveChinaBrief.setVisibility(View.VISIBLE);
@@ -73,7 +74,7 @@ public class BadaLingAdapter extends BaseAdapter {
         holder.liveChinaUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (holder.liveChinaBrief.isShown()){
+                if (holder.liveChinaBrief.isShown()) {
                     holder.liveChinaUp.setVisibility(View.GONE);
                     holder.liveChinaDown.setVisibility(View.VISIBLE);
                     holder.liveChinaBrief.setVisibility(View.GONE);
@@ -81,12 +82,15 @@ public class BadaLingAdapter extends BaseAdapter {
             }
         });
         BadalingBean.LiveBean liveBean = list.get(position);
-        holder.livechinaTitle.setText("[正在直播]"+liveBean.getTitle());
+        holder.livechinaTitle.setText("[正在直播]" + liveBean.getTitle());
         holder.liveChinaBrief.setText(liveBean.getBrief());
-        iHttp.loadImage(liveBean.getImage(),holder.livechinaItemImage);
-
-
-
+        iHttp.loadImage(liveBean.getImage(), holder.livechinaItemImage);
+        holder.liveChinaNourl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(context, "不好意思,只是个假的布局而已,因为拿不到直播地址!!!", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         return convertView;
     }
@@ -102,7 +106,8 @@ public class BadaLingAdapter extends BaseAdapter {
         ImageView liveChinaUp;
         @BindView(R.id.live_china_brief)
         TextView liveChinaBrief;
-
+        @BindView(R.id.live_china_nourl)
+        ImageView liveChinaNourl;
         ViewHolder(View view) {
             ButterKnife.bind(this, view);
         }

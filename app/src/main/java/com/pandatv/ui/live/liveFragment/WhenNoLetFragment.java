@@ -4,6 +4,7 @@ package com.pandatv.ui.live.liveFragment;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,16 +20,21 @@ import com.pandatv.ui.live.entity.WonderfulBean;
 import com.pandatv.ui.live.liveContract.LiveContract;
 import com.pandatv.ui.live.liveContract.WhenNoLetViewImp;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import in.srain.cube.views.ptr.PtrClassicDefaultFooter;
 import in.srain.cube.views.ptr.PtrClassicDefaultHeader;
+import in.srain.cube.views.ptr.PtrDefaultHandler;
 import in.srain.cube.views.ptr.PtrDefaultHandler2;
 import in.srain.cube.views.ptr.PtrFrameLayout;
 
+import static com.umeng.qq.handler.a.p;
 
 
 public class WhenNoLetFragment extends BaseFragment implements LiveContract.WhenNotLetView {
@@ -36,14 +42,16 @@ public class WhenNoLetFragment extends BaseFragment implements LiveContract.When
     @BindView(R.id.when_ptr)
     PtrFrameLayout whenPtr;
     private String url = "http://api.cntv.cn/video/videolistById?vsid=VSET100332640004&serviceId=panda&n=7&o=desc&of=time&p=";
-    private int page = 1;
+    private int p = 1;
     Unbinder unbinder;
     @BindView(R.id.when_no_ListView)
     ListView whenNoListView;
     private WhenNoLetViewImp whenNoLetViewImp;
     private WhenNoLetAdapter whenNoLetAdapter;
     private List<WhenNoLetBean.VideoBean> video;
+    private List<WhenNoLetBean.VideoBean> list=new ArrayList<>();
     private ProgressDialog diaLog;
+    private Map<String, String> map = new HashMap<>();
 
     @Override
     protected int getLayoutRes() {
@@ -56,7 +64,8 @@ public class WhenNoLetFragment extends BaseFragment implements LiveContract.When
         diaLog.setMessage("正在加载......");
         diaLog.show();
         whenNoLetViewImp = new WhenNoLetViewImp(this);
-        whenNoLetViewImp.start();
+        map.put("p", "1");
+        whenNoLetViewImp.loadMore(map);
 
         PtrClassicDefaultHeader header = new PtrClassicDefaultHeader(getActivity());
         PtrClassicDefaultFooter footer = new PtrClassicDefaultFooter(getActivity());
@@ -71,15 +80,41 @@ public class WhenNoLetFragment extends BaseFragment implements LiveContract.When
             @Override
             public void onLoadMoreBegin(PtrFrameLayout frame) {
 
-                whenPtr.refreshComplete();
+                frame.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        p++;
+                        map.put("p",p+"");
+                        whenNoLetViewImp.loadMore(map);
+                        whenPtr.refreshComplete();
+                    }
+                },2000);
 
             }
 
             @Override
             public void onRefreshBegin(PtrFrameLayout frame) {
 
-                whenPtr.refreshComplete();
+                frame.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        video.clear();
+                        whenNoLetViewImp.loadMore(map);
+                        whenPtr.refreshComplete();
+                    }
+                },2000);
             }
+
+            @Override
+            public boolean checkCanDoLoadMore(PtrFrameLayout frame, View content, View footer) {
+                return super.checkCanDoLoadMore(frame, content, footer);
+            }
+
+            @Override
+            public boolean checkCanDoRefresh(PtrFrameLayout frame, View content, View header) {
+                return PtrDefaultHandler.checkContentCanBePulledDown(frame, content, header);
+            }
+
         });
 
         whenNoListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -124,7 +159,8 @@ public class WhenNoLetFragment extends BaseFragment implements LiveContract.When
     @Override
     public void showWhenNotView(WhenNoLetBean whenNoLetBean) {
         video = whenNoLetBean.getVideo();
-        whenNoLetAdapter = new WhenNoLetAdapter(getActivity(), video);
+        list.addAll(video);
+        whenNoLetAdapter = new WhenNoLetAdapter(getActivity(), list);
         whenNoListView.setAdapter(whenNoLetAdapter);
         whenNoLetAdapter.notifyDataSetChanged();
     }

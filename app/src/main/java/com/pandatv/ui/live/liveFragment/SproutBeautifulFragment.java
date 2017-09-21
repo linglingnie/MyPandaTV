@@ -18,7 +18,10 @@ import com.pandatv.ui.live.entity.SproutBeautifulBean;
 import com.pandatv.ui.live.liveContract.LiveContract;
 import com.pandatv.ui.live.liveContract.SproutBeautifulPresenterImp;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -39,7 +42,10 @@ public class SproutBeautifulFragment extends BaseFragment implements LiveContrac
     private BeautifulAdapter beautifulAdapter;
     private SproutBeautifulPresenterImp sproutBeautifulPresenterImp;
     private List<SproutBeautifulBean.VideoBean> video;
+    private List<SproutBeautifulBean.VideoBean> list=new ArrayList<>();
     private ProgressDialog diaLog;
+    private Map<String, String> map = new HashMap<>();
+    private int p=1;
 
     @Override
     protected int getLayoutRes() {
@@ -53,7 +59,8 @@ public class SproutBeautifulFragment extends BaseFragment implements LiveContrac
         diaLog.setMessage("正在加载......");
         diaLog.show();
         sproutBeautifulPresenterImp = new SproutBeautifulPresenterImp(this);
-        sproutBeautifulPresenterImp.start();
+        map.put("p",p+"");
+        sproutBeautifulPresenterImp.loadMore(map);
         PtrClassicDefaultHeader header = new PtrClassicDefaultHeader(getActivity());
         PtrClassicDefaultFooter footer = new PtrClassicDefaultFooter(getActivity());
 
@@ -67,13 +74,17 @@ public class SproutBeautifulFragment extends BaseFragment implements LiveContrac
             @Override
             public void onLoadMoreBegin(PtrFrameLayout frame) {
 
+                p++;
+                map.put("p",p+"");
+                sproutBeautifulPresenterImp.loadMore(map);
                 beautifulPtr.refreshComplete();
 
             }
 
             @Override
             public void onRefreshBegin(PtrFrameLayout frame) {
-
+                video.clear();
+                sproutBeautifulPresenterImp.loadMore(map);
                 beautifulPtr.refreshComplete();
             }
         });
@@ -119,7 +130,8 @@ public class SproutBeautifulFragment extends BaseFragment implements LiveContrac
     @Override
     public void showSproutBeautiful(SproutBeautifulBean beautifulBean) {
         video = beautifulBean.getVideo();
-        beautifulAdapter = new BeautifulAdapter(getActivity(), video);
+        list.addAll(video);
+        beautifulAdapter = new BeautifulAdapter(getActivity(), list);
         beautifulListView.setAdapter(beautifulAdapter);
         beautifulAdapter.notifyDataSetChanged();
     }

@@ -4,6 +4,8 @@ import com.pandatv.modle.net.callback.NetWorkCallBack;
 import com.pandatv.ui.live.entity.RawCreateBean;
 import com.pandatv.ui.live.entity.WhenNoLetBean;
 
+import java.util.Map;
+
 /**
  * Created by Windows on 2017/9/17.
  */
@@ -19,6 +21,11 @@ public class RawCreateViewImp implements LiveContract.LivePresenter{
 
     @Override
     public void start() {
+
+    }
+
+    @Override
+    public void loadMore(Map<String, String> map) {
         rawCreateView.showProgress();
         titleModel.RawCreateNews(new NetWorkCallBack<RawCreateBean>() {
             @Override

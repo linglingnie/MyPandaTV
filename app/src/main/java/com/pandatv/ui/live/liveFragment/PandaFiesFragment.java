@@ -21,7 +21,10 @@ import com.pandatv.ui.live.entity.WhenNoLetBean;
 import com.pandatv.ui.live.liveContract.LiveContract;
 import com.pandatv.ui.live.liveContract.PandaFilesPresenterImp;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -42,8 +45,10 @@ public class PandaFiesFragment extends BaseFragment implements LiveContract.Pand
     Unbinder unbinder;
     private PandaFilesPresenterImp pandaFilesPresenterImp;
     private List<PandaFiesBean.VideoBean> video;
+    private List<PandaFiesBean.VideoBean> list=new ArrayList<>();
     private ProgressDialog diaLog;
-
+    private Map<String, String> map = new HashMap<>();
+    private int p=1;
     @Override
     protected int getLayoutRes() {
         return R.layout.fragment_panda_fies;
@@ -55,7 +60,8 @@ public class PandaFiesFragment extends BaseFragment implements LiveContract.Pand
         diaLog.setMessage("正在加载......");
         diaLog.show();
         pandaFilesPresenterImp = new PandaFilesPresenterImp(this);
-        pandaFilesPresenterImp.start();
+        map.put("p",p+"");
+        pandaFilesPresenterImp.loadMore(map);
         in.srain.cube.views.ptr.PtrClassicDefaultHeader header = new in.srain.cube.views.ptr.PtrClassicDefaultHeader(getActivity());
         PtrClassicDefaultFooter footer = new PtrClassicDefaultFooter(getActivity());
 
@@ -68,14 +74,16 @@ public class PandaFiesFragment extends BaseFragment implements LiveContract.Pand
         pandaFilesPtr.setPtrHandler(new PtrDefaultHandler2() {
             @Override
             public void onLoadMoreBegin(PtrFrameLayout frame) {
-
+                p++;
+                map.put("p",p+"");
+                pandaFilesPresenterImp.loadMore(map);
                 pandaFilesPtr.refreshComplete();
-
             }
 
             @Override
             public void onRefreshBegin(PtrFrameLayout frame) {
-
+                video.clear();
+                pandaFilesPresenterImp.loadMore(map);
                 pandaFilesPtr.refreshComplete();
             }
         });
@@ -121,7 +129,8 @@ public class PandaFiesFragment extends BaseFragment implements LiveContract.Pand
     @Override
     public void showPandaFies(PandaFiesBean pandaFiesBean) {
         video = pandaFiesBean.getVideo();
-        PandaFilesAdapter pandaFilesAdapter = new PandaFilesAdapter(getActivity(), video);
+        list.addAll(video);
+        PandaFilesAdapter pandaFilesAdapter = new PandaFilesAdapter(getActivity(), list);
         pandaFilesListView.setAdapter(pandaFilesAdapter);
     }
 

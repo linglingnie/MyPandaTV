@@ -3,6 +3,8 @@ package com.pandatv.ui.live.liveContract;
 import com.pandatv.ui.live.entity.ManchAngleofViewBean;
 import com.pandatv.modle.net.callback.NetWorkCallBack;
 
+import java.util.Map;
+
 
 /**
  * Created by Windows on 2017/9/14.
@@ -38,5 +40,10 @@ public class ManchAngleOfViewPresenterImp implements LiveContract.LivePresenter 
 
             }
         });
+    }
+
+    @Override
+    public void loadMore(Map<String, String> map) {
+
     }
 }

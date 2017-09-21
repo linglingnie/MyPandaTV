@@ -15,6 +15,8 @@ import com.pandatv.ui.live.entity.TopBangBean;
 import com.pandatv.ui.live.entity.WhenNoLetBean;
 import com.pandatv.ui.live.entity.WonderfulBean;
 
+import java.util.Map;
+
 /**
  * Created by Windows on 2017/9/14.
  */
@@ -95,6 +97,6 @@ public class LiveContract {
     }
 
     public interface LivePresenter extends IBasePresenter{
-
+        void loadMore(Map<String,String> map);
     }
 }

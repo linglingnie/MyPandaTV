@@ -1,12 +1,15 @@
 package com.pandatv.ui.liveChina.fragment;
 
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.pandatv.R;
 import com.pandatv.base.BaseFragment;
 import com.pandatv.ui.liveChina.adapter.BadaLingAdapter;
@@ -29,6 +32,7 @@ public class BadaLingFragment extends BaseFragment implements LiveChinaContract.
     @BindView(R.id.badaling_ptr)
     PtrFrameLayout badalingPtr;
     private BaDaLingPresenterImp baDaLingPresenterImp;
+    private ProgressDialog diaLog;
 
     @Override
     protected int getLayoutRes() {
@@ -38,7 +42,16 @@ public class BadaLingFragment extends BaseFragment implements LiveChinaContract.
     @Override
     protected void initData() {
         baDaLingPresenterImp = new BaDaLingPresenterImp(this);
+        diaLog = new ProgressDialog(getActivity());
+        diaLog.setMessage("正在加载......");
+        diaLog.show();
         baDaLingPresenterImp.start();
+        //获取ImageLoader对象
+//        ImageLoader imageloader= ImageLoader.getInstance();
+//        //使用默认的ImageLoaderConfiguration
+//        ImageLoaderConfiguration configuration=ImageLoaderConfiguration.createDefault(this.getActivity());
+//        //初始化ImageLoader的配置
+//        imageloader.init(configuration);
     }
 
     @Override
@@ -79,12 +92,12 @@ public class BadaLingFragment extends BaseFragment implements LiveChinaContract.
 
     @Override
     public void showProgress() {
-
+        diaLog.show();
     }
 
     @Override
     public void dismissProgress() {
-
+        diaLog.dismiss();
     }
 
     @Override

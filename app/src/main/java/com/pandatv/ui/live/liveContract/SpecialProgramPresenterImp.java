@@ -4,6 +4,8 @@ import com.pandatv.modle.net.callback.NetWorkCallBack;
 import com.pandatv.ui.live.entity.SpecialProgramBean;
 import com.pandatv.ui.live.entity.WonderfulBean;
 
+import java.util.Map;
+
 /**
  * Created by Windows on 2017/9/16.
  */
@@ -19,6 +21,12 @@ public class SpecialProgramPresenterImp implements LiveContract.LivePresenter {
 
     @Override
     public void start() {
+
+    }
+
+
+    @Override
+    public void loadMore(Map<String, String> map) {
         specialProgramView.showProgress();
         titleModel.loadSpecialPrograg(new NetWorkCallBack<SpecialProgramBean>() {
             @Override
@@ -39,6 +47,4 @@ public class SpecialProgramPresenterImp implements LiveContract.LivePresenter {
             }
         });
     }
-
-
 }

@@ -19,7 +19,10 @@ import com.pandatv.ui.live.entity.WhenNoLetBean;
 import com.pandatv.ui.live.liveContract.LiveContract;
 import com.pandatv.ui.live.liveContract.RawCreateViewImp;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -38,8 +41,10 @@ public class RawCreateNewsFragment extends BaseFragment implements LiveContract.
     private RawCreateViewImp rawCreateViewImp;
     private RawCreateAdapter rawCreateAdapter;
     private List<RawCreateBean.VideoBean> video;
+    private List<RawCreateBean.VideoBean> list=new ArrayList<>();
     private ProgressDialog diaLog;
-
+    private Map<String, String> map = new HashMap<>();
+    private int p=1;
     @Override
     protected int getLayoutRes() {
         return R.layout.fragment_raw_create_news;
@@ -51,7 +56,8 @@ public class RawCreateNewsFragment extends BaseFragment implements LiveContract.
         diaLog.setMessage("正在加载......");
         diaLog.show();
         rawCreateViewImp = new RawCreateViewImp(this);
-        rawCreateViewImp.start();
+        map.put("p",p+"");
+        rawCreateViewImp.loadMore(map);
 
         in.srain.cube.views.ptr.PtrClassicDefaultHeader header = new in.srain.cube.views.ptr.PtrClassicDefaultHeader(getActivity());
         PtrClassicDefaultFooter footer = new PtrClassicDefaultFooter(getActivity());
@@ -65,14 +71,17 @@ public class RawCreateNewsFragment extends BaseFragment implements LiveContract.
         rawCreatePtr.setPtrHandler(new PtrDefaultHandler2() {
             @Override
             public void onLoadMoreBegin(PtrFrameLayout frame) {
-
+                p++;
+                map.put("p",p+"");
+                rawCreateViewImp.loadMore(map);
                 rawCreatePtr.refreshComplete();
 
             }
 
             @Override
             public void onRefreshBegin(PtrFrameLayout frame) {
-
+                video.clear();
+                rawCreateViewImp.loadMore(map);
                 rawCreatePtr.refreshComplete();
             }
         });
@@ -104,7 +113,8 @@ public class RawCreateNewsFragment extends BaseFragment implements LiveContract.
     @Override
     public void showRawCreate(RawCreateBean rawCreateBean) {
         video = rawCreateBean.getVideo();
-        rawCreateAdapter = new RawCreateAdapter(getActivity(), video);
+        list.addAll(video);
+        rawCreateAdapter = new RawCreateAdapter(getActivity(), list);
         rawCreateListView.setAdapter(rawCreateAdapter);
     }
 

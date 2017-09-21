@@ -71,25 +71,25 @@ public class Urls {
     public static String JINGCAI = "http://api.cntv.cn/video/videolistById?vsid=VSET100167216881&n=7&serviceId=panda&o=desc&of=time&p=";
 
     //    当熊不让
-    public static String DANGXIONG ="http://api.cntv.cn/video/videolistById?vsid=VSET100332640004&serviceId=panda&n=7&o=desc&of=time&p=1";
+    public static String DANGXIONG ="http://api.cntv.cn/video/videolistById?vsid=VSET100332640004&serviceId=panda&n=7&o=desc&of=time&p=";
 
     //    超萌滚滚秀
-    public static String CHAOMENG = "http://api.cntv.cn/video/videolistById?vsid=VSET100272959126&n=7&serviceId=panda&o=desc&of=time&p=1";
+    public static String CHAOMENG = "http://api.cntv.cn/video/videolistById?vsid=VSET100272959126&n=7&serviceId=panda&o=desc&of=time&p=";
 
     //    熊猫档案
-    public static String DANGAN =    "http://api.cntv.cn/video/videolistById?vsid=VSET100340574858&n=7&serviceId=panda&o=desc&of=time&p=1";
+    public static String DANGAN =    "http://api.cntv.cn/video/videolistById?vsid=VSET100340574858&n=7&serviceId=panda&o=desc&of=time&p=";
 
     //    熊猫Top榜
-    public static String TOP = "http://api.cntv.cn/video/videolistById?vsid=VSET100284428835&n=7&serviceId=panda&o=desc&of=time&p=1";
+    public static String TOP = "http://api.cntv.cn/video/videolistById?vsid=VSET100284428835&n=7&serviceId=panda&o=desc&of=time&p=";
 
     //    熊猫那些事儿
-    public static String NAXIE = "http://api.cntv.cn/video/videolistById?vsid=VSET100237714751&n=7&serviceId=panda&o=desc&of=time&p=1";
+    public static String NAXIE = "http://api.cntv.cn/video/videolistById?vsid=VSET100237714751&n=7&serviceId=panda&o=desc&of=time&p=";
 
     //    特别节目
-    public static String TEBIE = "http://api.cntv.cn/video/videolistById?vsid=VSET100167308855&n=7&serviceId=panda&o=desc&of=time&p=1";
+    public static String TEBIE = "http://api.cntv.cn/video/videolistById?vsid=VSET100167308855&n=7&serviceId=panda&o=desc&of=time&p=";
 
     //    原创新闻
-    public static String YUANCHUANG = "http://api.cntv.cn/video/videolistById?vsid=VSET100219009515&n=7&serviceId=panda&o=desc&of=time&p=1";
+    public static String YUANCHUANG = "http://api.cntv.cn/video/videolistById?vsid=VSET100219009515&n=7&serviceId=panda&o=desc&of=time&p=";
 
     //滚滚视频
     public static final String GUNGUNVIDEO = "http://www.ipanda.com/kehuduan/video/index.json";

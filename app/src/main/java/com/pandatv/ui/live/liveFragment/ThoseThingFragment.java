@@ -19,7 +19,10 @@ import com.pandatv.ui.live.entity.WhenNoLetBean;
 import com.pandatv.ui.live.liveContract.LiveContract;
 import com.pandatv.ui.live.liveContract.ThoseThingViewImp;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -37,8 +40,10 @@ public class ThoseThingFragment extends BaseFragment implements LiveContract.Tho
     Unbinder unbinder;
     private ThoseThingViewImp thoseThingViewImp;
     private List<ThoseThingBean.VideoBean> video;
+    private List<ThoseThingBean.VideoBean> list=new ArrayList<>();
     private ProgressDialog diaLog;
-
+    private Map<String, String> map = new HashMap<>();
+    private int p=1;
     @Override
     protected int getLayoutRes() {
         return R.layout.fragment_those_thing;
@@ -50,7 +55,8 @@ public class ThoseThingFragment extends BaseFragment implements LiveContract.Tho
         diaLog.setMessage("正在加载......");
         diaLog.show();
         thoseThingViewImp = new ThoseThingViewImp(this);
-        thoseThingViewImp.start();
+        map.put("p",p+"");
+        thoseThingViewImp.loadMore(map);
 
         in.srain.cube.views.ptr.PtrClassicDefaultHeader header = new in.srain.cube.views.ptr.PtrClassicDefaultHeader(getActivity());
         PtrClassicDefaultFooter footer = new PtrClassicDefaultFooter(getActivity());
@@ -64,14 +70,17 @@ public class ThoseThingFragment extends BaseFragment implements LiveContract.Tho
         thoseThingPtr.setPtrHandler(new PtrDefaultHandler2() {
             @Override
             public void onLoadMoreBegin(PtrFrameLayout frame) {
-
+                p++;
+                map.put("p",p+"");
+                thoseThingViewImp.loadMore(map);
                 thoseThingPtr.refreshComplete();
-
             }
 
             @Override
             public void onRefreshBegin(PtrFrameLayout frame) {
 
+                video.clear();
+                thoseThingViewImp.loadMore(map);
                 thoseThingPtr.refreshComplete();
             }
         });
@@ -104,7 +113,8 @@ public class ThoseThingFragment extends BaseFragment implements LiveContract.Tho
     @Override
     public void showThoseThing(ThoseThingBean thoseThingBean) {
         video = thoseThingBean.getVideo();
-        ThoseThingAdapter thoseThingAdapter = new ThoseThingAdapter(getActivity(), video);
+        list.addAll(video);
+        ThoseThingAdapter thoseThingAdapter = new ThoseThingAdapter(getActivity(), list);
         thoseThingListView.setAdapter(thoseThingAdapter);
     }
 

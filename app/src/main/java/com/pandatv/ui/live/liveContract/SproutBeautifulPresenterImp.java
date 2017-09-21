@@ -3,6 +3,8 @@ package com.pandatv.ui.live.liveContract;
 import com.pandatv.modle.net.callback.NetWorkCallBack;
 import com.pandatv.ui.live.entity.SproutBeautifulBean;
 
+import java.util.Map;
+
 /**
  * Created by Windows on 2017/9/17.
  */
@@ -18,6 +20,11 @@ public class SproutBeautifulPresenterImp implements LiveContract.LivePresenter {
 
     @Override
     public void start() {
+
+    }
+
+    @Override
+    public void loadMore(Map<String, String> map) {
         sproutBeautifulView.showProgress();
         titleModel.loadSproutBeautiful(new NetWorkCallBack<SproutBeautifulBean>() {
             @Override

@@ -4,6 +4,8 @@ import com.pandatv.modle.net.callback.NetWorkCallBack;
 import com.pandatv.ui.live.entity.PandaFiesBean;
 import com.pandatv.ui.live.entity.WonderfulBean;
 
+import java.util.Map;
+
 import static android.webkit.WebSettings.PluginState.ON;
 
 /**
@@ -21,6 +23,12 @@ public class PandaFilesPresenterImp implements LiveContract.LivePresenter {
 
     @Override
     public void start() {
+
+    }
+
+
+    @Override
+    public void loadMore(Map<String, String> map) {
         pandaFiesView.showProgress();
         titleModel.loadPandaFies(new NetWorkCallBack<PandaFiesBean>() {
             @Override
@@ -41,6 +49,4 @@ public class PandaFilesPresenterImp implements LiveContract.LivePresenter {
             }
         });
     }
-
-
 }

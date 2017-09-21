@@ -4,6 +4,8 @@ package com.pandatv.ui.live.liveContract;
 import com.pandatv.ui.live.entity.LiveTitleBean;
 import com.pandatv.modle.net.callback.NetWorkCallBack;
 
+import java.util.Map;
+
 /**
  * Created by Windows on 2017/9/14.
  */
@@ -39,5 +41,10 @@ public class LivePresenterImp implements LiveContract.LivePresenter {
 
             }
         });
+    }
+
+    @Override
+    public void loadMore(Map<String, String> map) {
+
     }
 }

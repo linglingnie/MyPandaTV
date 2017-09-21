@@ -4,15 +4,13 @@ package com.pandatv.ui.live.liveFragment;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebView;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
-import com.chanven.lib.cptr.PtrClassicDefaultHeader;
 import com.pandatv.R;
 import com.pandatv.base.BaseFragment;
 import com.pandatv.ui.live.LiveVideoActivity;
@@ -21,12 +19,16 @@ import com.pandatv.ui.live.entity.WonderfulBean;
 import com.pandatv.ui.live.liveContract.LiveContract;
 import com.pandatv.ui.live.liveContract.WonderfulPresenterImp;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import in.srain.cube.views.ptr.PtrClassicDefaultFooter;
+import in.srain.cube.views.ptr.PtrDefaultHandler;
 import in.srain.cube.views.ptr.PtrDefaultHandler2;
 import in.srain.cube.views.ptr.PtrFrameLayout;
 
@@ -43,9 +45,11 @@ public class WonderfulFragment extends BaseFragment implements LiveContract.Wond
 
     private WonderfulPresenterImp wonderfulPresenterImp;
     private List<WonderfulBean.VideoBean> video;
+    private List<WonderfulBean.VideoBean> list=new ArrayList<>();
     private ProgressDialog diaLog;
     private WonderfulAdapter wonderfulAdapter;
-
+    private Map<String, String> map = new HashMap<>();
+    int p=1;
     @Override
     protected int getLayoutRes() {
         return R.layout.fragment_wonderful;
@@ -57,11 +61,14 @@ public class WonderfulFragment extends BaseFragment implements LiveContract.Wond
         diaLog.setMessage("正在加载......");
         wonderfulPresenterImp = new WonderfulPresenterImp(this);
         diaLog.show();
-        wonderfulPresenterImp.start();
+      wonderfulPresenterImp.start();
+//        map.put("p", "1");
+//        wonderfulPresenterImp.loadMore(map);
+
     }
 
     @Override
-    protected void initView(View view) {
+    protected void initView(final View view) {
 
         in.srain.cube.views.ptr.PtrClassicDefaultHeader header = new in.srain.cube.views.ptr.PtrClassicDefaultHeader(getActivity());
         PtrClassicDefaultFooter footer = new PtrClassicDefaultFooter(getActivity());
@@ -71,30 +78,65 @@ public class WonderfulFragment extends BaseFragment implements LiveContract.Wond
         wonderfulPtr.addPtrUIHandler(header);
         wonderfulPtr.setFooterView(footer);
         wonderfulPtr.addPtrUIHandler(footer);
-
+        footer.setLastUpdateTimeRelateObject(this);
         wonderfulPtr.setPtrHandler(new PtrDefaultHandler2() {
             @Override
             public void onLoadMoreBegin(PtrFrameLayout frame) {
-                wonderfulPtr.refreshComplete();
+
+                frame.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        p++;
+                        map.put("p",p+"");
+                        Log.e("TAG","加到第"+p+"页了!!");
+                        Log.e("TAG",video.size()+"");
+                        wonderfulPresenterImp.loadMore(map);
+                        wonderfulPtr.refreshComplete();
+                    }
+                },2000);
+
+
 
             }
 
             @Override
             public void onRefreshBegin(PtrFrameLayout frame) {
 
-                wonderfulPtr.refreshComplete();
+                frame.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+
+                        video.clear();
+                        wonderfulPresenterImp.loadMore(map);
+                        wonderfulPtr.refreshComplete();
+                    }
+                },2000);
             }
+
+            @Override
+            public boolean checkCanDoLoadMore(PtrFrameLayout frame, View content, View footer) {
+                return super.checkCanDoLoadMore(frame, content, footer);
+            }
+
+            @Override
+            public boolean checkCanDoRefresh(PtrFrameLayout frame, View content, View header) {
+                return PtrDefaultHandler.checkContentCanBePulledDown(frame, content, header);
+            }
+
+
+
         });
+
 
         wonderfulListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 WonderfulBean.VideoBean videoBean = video.get(position);
-                Intent intent=new Intent(getActivity(), LiveVideoActivity.class);
-                intent.putExtra("title",videoBean.getT());
-                intent.putExtra("image",videoBean.getImg());
-                intent.putExtra("url",videoBean.getUrl());
-                intent.putExtra("vid",videoBean.getVid());
+                Intent intent = new Intent(getActivity(), LiveVideoActivity.class);
+                intent.putExtra("title", videoBean.getT());
+                intent.putExtra("image", videoBean.getImg());
+                intent.putExtra("url", videoBean.getUrl());
+                intent.putExtra("vid", videoBean.getVid());
                 startActivity(intent);
             }
         });
@@ -124,7 +166,8 @@ public class WonderfulFragment extends BaseFragment implements LiveContract.Wond
     @Override
     public void showWonderfu(WonderfulBean wonderfulBean) {
         video = wonderfulBean.getVideo();
-        wonderfulAdapter = new WonderfulAdapter(getActivity(), video);
+        list.addAll(video);
+        wonderfulAdapter = new WonderfulAdapter(getActivity(), list);
         wonderfulListView.setAdapter(wonderfulAdapter);
     }
 

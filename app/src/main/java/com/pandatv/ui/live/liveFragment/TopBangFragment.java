@@ -19,14 +19,20 @@ import com.pandatv.ui.live.entity.WhenNoLetBean;
 import com.pandatv.ui.live.liveContract.LiveContract;
 import com.pandatv.ui.live.liveContract.TopBangPresenterImp;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import in.srain.cube.views.ptr.PtrClassicDefaultFooter;
+import in.srain.cube.views.ptr.PtrDefaultHandler;
 import in.srain.cube.views.ptr.PtrDefaultHandler2;
 import in.srain.cube.views.ptr.PtrFrameLayout;
+
+import static com.umeng.qq.handler.a.p;
 
 public class TopBangFragment extends BaseFragment implements LiveContract.TopBangView{
 
@@ -37,8 +43,10 @@ public class TopBangFragment extends BaseFragment implements LiveContract.TopBan
     Unbinder unbinder;
     private TopBangPresenterImp topBangPresenterImp;
     private List<TopBangBean.VideoBean> video;
+    private List<TopBangBean.VideoBean> list=new ArrayList<>();
     private ProgressDialog diaLog;
-
+    private int p = 1;
+    private Map<String, String> map = new HashMap<>();
     @Override
     protected int getLayoutRes() {
         return R.layout.fragment_top_bang;
@@ -50,7 +58,8 @@ public class TopBangFragment extends BaseFragment implements LiveContract.TopBan
         diaLog.setMessage("正在加载......");
         diaLog.show();
         topBangPresenterImp = new TopBangPresenterImp(this);
-        topBangPresenterImp.start();
+        map.put("p", "1");
+        topBangPresenterImp.loadMore(map);
         in.srain.cube.views.ptr.PtrClassicDefaultHeader header = new in.srain.cube.views.ptr.PtrClassicDefaultHeader(getActivity());
         PtrClassicDefaultFooter footer = new PtrClassicDefaultFooter(getActivity());
 
@@ -63,15 +72,40 @@ public class TopBangFragment extends BaseFragment implements LiveContract.TopBan
         topBangPtr.setPtrHandler(new PtrDefaultHandler2() {
             @Override
             public void onLoadMoreBegin(PtrFrameLayout frame) {
+                frame.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        p++;
+                        map.put("p",p+"");
+                        topBangPresenterImp.loadMore(map);
+                        topBangPtr.refreshComplete();
+                    }
+                },2000);
 
-                topBangPtr.refreshComplete();
 
             }
 
             @Override
             public void onRefreshBegin(PtrFrameLayout frame) {
+                frame.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        video.clear();
+                        topBangPresenterImp.loadMore(map);
+                        topBangPtr.refreshComplete();
+                    }
+                },2000);
 
-                topBangPtr.refreshComplete();
+            }
+
+            @Override
+            public boolean checkCanDoLoadMore(PtrFrameLayout frame, View content, View footer) {
+                return super.checkCanDoLoadMore(frame, content, footer);
+            }
+
+            @Override
+            public boolean checkCanDoRefresh(PtrFrameLayout frame, View content, View header) {
+                return PtrDefaultHandler.checkContentCanBePulledDown(frame, content, header);
             }
         });
 
@@ -117,7 +151,8 @@ public class TopBangFragment extends BaseFragment implements LiveContract.TopBan
     @Override
     public void showTopBang(TopBangBean topBangBean) {
         video = topBangBean.getVideo();
-        TopBangAdapter topBangAdapter = new TopBangAdapter(getActivity(), video);
+        list.addAll(video);
+        TopBangAdapter topBangAdapter = new TopBangAdapter(getActivity(), list);
         topBangListView.setAdapter(topBangAdapter);
     }
 
