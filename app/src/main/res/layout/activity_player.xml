@@ -16,6 +16,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             >
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/return_butt"
+                android:src="@drawable/fenlei_fanhui"
+                android:background="@null"
+                />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -46,7 +53,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/play_image_butt"
-        android:src="@drawable/selector"
+        android:src="@drawable/com_facebook_tooltip_blue_bottomnub"
         android:background="@null"
         android:layout_gravity="center_horizontal"
         />
@@ -54,7 +61,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/play_text"
-        android:text="你好"
+
         android:layout_gravity="center_horizontal"
         />
     <TextView
@@ -63,9 +70,46 @@
         android:text="高清完整"
         android:textSize="20dp"
         />
-    <ListView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/paly_listview"
-        ></ListView>
+        android:orientation="vertical"
+        >
+        <com.jcodecraeer.xrecyclerview.XRecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:id="@+id/X_recyler"
+            ></com.jcodecraeer.xrecyclerview.XRecyclerView>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+            <ImageButton
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/collect"
+                android:src="@drawable/collect_no"
+                android:background="@null"
+                android:layout_marginLeft="120dp"
+                />
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1"
+                />
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/share"
+                android:src="@drawable/share"
+                android:background="@null"
+                android:layout_marginRight="120dp"
+                />
+
+        </LinearLayout>
+    </LinearLayout>
+
+
 </LinearLayout>

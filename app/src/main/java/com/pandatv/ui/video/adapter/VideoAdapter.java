@@ -1,4 +1,4 @@
-package com.pandatv.ui.video;
+package com.pandatv.ui.video.adapter;
 
 import android.content.Context;
 import android.view.View;
@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.pandatv.R;
+import com.pandatv.ui.video.user.PandaCulture;
 
 import java.util.ArrayList;
 import java.util.List;

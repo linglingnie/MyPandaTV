@@ -19,6 +19,9 @@ import com.pandatv.R;
 import com.pandatv.base.BaseFragment;
 import com.pandatv.modle.net.OkBaseHttpImpl;
 import com.pandatv.modle.net.callback.NetWorkCallBack;
+import com.pandatv.ui.video.adapter.VideoAdapter;
+import com.pandatv.ui.video.user.PandaCulture;
+import com.pandatv.user.activity.UserActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +29,7 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class VideoFragment extends BaseFragment implements SwipeRefreshLayout.OnRefreshListener, VideoContract.View{
+public class VideoFragment extends BaseFragment implements  VideoContract.View{
     private View view;
     private List<PandaCulture.ListBean> list;
     private List<PandaCulture.BigImgBean> big;
@@ -63,6 +66,7 @@ public class VideoFragment extends BaseFragment implements SwipeRefreshLayout.On
                 intent.putExtra("title",list.get(position-1).getTitle());
                 intent.putExtra("content",list.get(position-1).getBrief());
                 intent.putExtra("url",list.get(position-1).getUrl());
+                intent.putExtra("id",list.get(position-1).getId());
                 startActivity(intent);
             }
         });
@@ -81,12 +85,8 @@ public class VideoFragment extends BaseFragment implements SwipeRefreshLayout.On
 
     @Override
     protected void initData() {
-
         list = new ArrayList<>();
         big = new ArrayList<>();
-
-
-
     }
 
     @Override
@@ -95,7 +95,13 @@ public class VideoFragment extends BaseFragment implements SwipeRefreshLayout.On
         mListView = (ListView) view.findViewById(R.id.mListView);
         dialog = new ProgressDialog(getContext());
         person = (ImageButton) view.findViewById(R.id.person);
-        swipeRefresh = (SwipeRefreshLayout) view.findViewById(R.id.swipeRefresh);
+        person.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(getContext(), UserActivity.class);
+                startActivity(intent);
+            }
+        });
         inflate = view.inflate(getContext(), R.layout.video_header, null);
 
     }
@@ -103,16 +109,6 @@ public class VideoFragment extends BaseFragment implements SwipeRefreshLayout.On
     public void setBundle(Bundle bundle) {
 
     }
-    @Override
-    public void onRefresh() {
-        swipeRefresh.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                swipeRefresh.setRefreshing(false);
-            }
-        }, 2000);
-    }
-
     @Override
     public void showHomeListData(PandaCulture pandaCulture) {
         OkBaseHttpImpl.getInstance().get(URL, null, new NetWorkCallBack<PandaCulture>() {
@@ -127,9 +123,7 @@ public class VideoFragment extends BaseFragment implements SwipeRefreshLayout.On
                 final List<PandaCulture.BigImgBean> bigImg = pandaCulture.getBigImg();
                 big.addAll(bigImg);
                 ImageView video_Image=video_Image= (ImageView) inflate.findViewById(R.id.video_Image);
-
                 Glide.with(getContext()).load(big.get(0).getImage()).into(video_Image);
-
                 mListView.addHeaderView(inflate);
                 adapter=new VideoAdapter(getContext(),list);
                 mListView.setAdapter(adapter);
@@ -140,7 +134,6 @@ public class VideoFragment extends BaseFragment implements SwipeRefreshLayout.On
                     public void onClick(View v) {
                         Intent intent=new Intent(getContext(),VideosActivity.class);
                         intent.putExtra("title",big.get(0).getTitle());
-
                         startActivity(intent);
                     }
                 });

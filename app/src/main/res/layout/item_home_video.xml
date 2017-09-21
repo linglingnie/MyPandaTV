@@ -4,63 +4,71 @@
     android:layout_height="match_parent"
     android:orientation="horizontal">
 
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:background="@color/white">
 
-        <ImageView
-            android:id="@+id/image"
-            android:layout_width="170dp"
-            android:layout_height="105dp" />
-
-        <LinearLayout
-            android:layout_width="75dp"
-            android:layout_marginBottom="5dp"
+        <RelativeLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@id/image"
-            android:background="@drawable/lpanda_bottom_gra"
-            android:orientation="horizontal">
+            android:layout_margin="10dp">
 
             <ImageView
-                android:layout_width="15dp"
-                android:layout_height="15dp"
-                android:padding="2dp"
-                android:layout_gravity="center"
-                android:src="@drawable/play" />
+                android:id="@+id/image"
+                android:layout_width="140dp"
+                android:layout_height="80dp"
+                android:scaleType="fitXY" />
+
+            <LinearLayout
+                android:layout_width="80dp"
+                android:layout_height="25dp"
+                android:layout_alignBottom="@id/image"
+                android:background="@drawable/lpanda_bottom_gra"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="13dp"
+                    android:layout_height="13dp"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="5dp"
+                    android:src="@drawable/play" />
+
+                <TextView
+                    android:id="@+id/time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="5dp"
+                    android:text="Live"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
             <TextView
-                android:id="@+id/time"
-                android:padding="1dp"
+                android:id="@+id/title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="Live" />
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:textColor="#000"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/timer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="25dp"
+                android:textSize="12sp" />
         </LinearLayout>
-
-    </RelativeLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <TextView
-            android:textSize="16sp"
-            android:id="@+id/title"
-            android:textColor="#000"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
-            android:layout_marginLeft="10dp"/>
-
-        <TextView
-            android:id="@+id/timer"
-            android:textSize="12sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="30dp" />
     </LinearLayout>
-
 </LinearLayout>

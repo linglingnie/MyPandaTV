@@ -3,7 +3,7 @@
     xmlns:ptr="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#55ffffff"
+    android:background="@color/cctv_grey"
     android:orientation="vertical">
 
     <RelativeLayout
@@ -50,14 +50,14 @@
 
     </RelativeLayout>
 
-    <com.handmark.pulltorefresh.library.PullToRefreshListView
-        android:id="@+id/mVideoListView"
-        android:layout_width="match_parent"
-        android:layout_height="500dp"
-        android:background="#fff"
-        android:gravity="center"
-        android:listSelector="#00000000"
-        ptr:ptrMode="both" />
 
+        <com.handmark.pulltorefresh.library.PullToRefreshListView
+            android:id="@+id/mVideoListView"
+            android:layout_width="match_parent"
+            android:layout_height="500dp"
+            android:gravity="center"
+            android:listSelector="#00000000"
+            android:scrollbars="none"
+            ptr:ptrMode="both" />
 
 </LinearLayout>

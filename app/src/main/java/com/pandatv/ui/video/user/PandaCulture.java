@@ -1,4 +1,4 @@
-package com.pandatv.ui.video;
+package com.pandatv.ui.video.user;
 
 import java.util.List;
 

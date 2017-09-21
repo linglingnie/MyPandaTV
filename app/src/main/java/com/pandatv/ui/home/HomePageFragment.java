@@ -49,7 +49,7 @@ import butterknife.Unbinder;
  * Created by chj on 2017/8/20.
  */
 
-public class HomePageFragment extends BaseFragment implements AdapterView.OnItemClickListener, PullToRefreshBase.OnRefreshListener<ListView>, View.OnClickListener, OnBannerListener, HomeContract.View {
+public class HomePageFragment extends BaseFragment implements AdapterView.OnItemClickListener, PullToRefreshBase.OnRefreshListener<ListView>, View.OnClickListener, OnBannerListener, PullToRefreshBase.OnLastItemVisibleListener, HomeContract.View {
 
     @BindView(R.id.mVideoListView)
     PullToRefreshListView mVideoListView;
@@ -92,6 +92,7 @@ public class HomePageFragment extends BaseFragment implements AdapterView.OnItem
 
         mVideoListView.setOnItemClickListener(this);
         mVideoListView.setOnRefreshListener(this);
+        mVideoListView.setOnLastItemVisibleListener(this);
 
     }
 
@@ -324,7 +325,7 @@ public class HomePageFragment extends BaseFragment implements AdapterView.OnItem
 
         mVideoListView.setMode(PullToRefreshBase.Mode.PULL_FROM_START);
 
-        mVideoListView.setRefreshing();
+   //     mVideoListView.setRefreshing();
 
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
@@ -341,6 +342,11 @@ public class HomePageFragment extends BaseFragment implements AdapterView.OnItem
     @OnClick(R.id.hudongImg)
     public void onViewClicked() {
         startActivity(new Intent(getActivity(), InteractionActivity.class));
+    }
+
+    @Override
+    public void onLastItemVisible() {
+
     }
 
     public class GlideImage extends ImageLoader {
