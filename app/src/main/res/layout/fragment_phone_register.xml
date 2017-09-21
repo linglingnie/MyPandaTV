@@ -24,7 +24,7 @@
         android:orientation="horizontal">
 
         <EditText
-            android:id="@+id/edit_phone"
+            android:id="@+id/mEditPhone"
             android:layout_width="match_parent"
             android:layout_height="120px"
             android:background="@drawable/pe_shape_border_gray"
@@ -51,7 +51,7 @@
         android:layout_marginTop="30px">
 
         <EditText
-            android:id="@+id/edit_imgyanzhengma"
+            android:id="@+id/mEditVerify"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_centerVertical="true"
@@ -64,8 +64,8 @@
             android:textCursorDrawable="@null"
             android:textSize="14sp" />
 
-        <TextView
-            android:id="@+id/personal_reg_imgcheck"
+        <ImageView
+            android:id="@+id/mImgCheck"
             android:layout_width="100dp"
             android:layout_height="match_parent"
             android:layout_alignParentRight="true"
@@ -91,7 +91,7 @@
         android:layout_marginTop="10dp">
 
         <EditText
-            android:id="@+id/edit_phoneyanzhengma"
+            android:id="@+id/mEditPhoneVerify"
             android:layout_width="match_parent"
             android:layout_height="120px"
             android:layout_centerVertical="true"
@@ -105,7 +105,7 @@
             android:textSize="14sp" />
 
         <TextView
-            android:id="@+id/personal_reg_phonecheck"
+            android:id="@+id/mPhoneCheck"
             android:layout_width="100dp"
             android:layout_height="120px"
             android:layout_alignParentRight="true"
@@ -133,7 +133,7 @@
         android:orientation="horizontal">
 
         <EditText
-            android:id="@+id/edit_inputpasswrod"
+            android:id="@+id/mEditInput"
             android:layout_width="match_parent"
             android:layout_height="120px"
             android:background="@drawable/pe_shape_border_gray"
@@ -161,7 +161,7 @@
         android:layout_marginTop="30px">
 
         <CheckBox
-            android:id="@+id/xieyi_check"
+            android:id="@+id/mCheck"
             android:layout_width="74px"
             android:layout_height="74px"
             android:layout_centerVertical="true"
@@ -171,7 +171,7 @@
             android:checked="true" />
 
         <TextView
-            android:id="@+id/personal_reg_xieyi_view"
+            android:id="@+id/mDeal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
@@ -190,7 +190,7 @@
     </RelativeLayout>
 
     <TextView
-        android:id="@+id/btn_register"
+        android:id="@+id/mRegisterBtn"
         android:layout_width="match_parent"
         android:layout_height="132px"
         android:layout_marginLeft="60px"

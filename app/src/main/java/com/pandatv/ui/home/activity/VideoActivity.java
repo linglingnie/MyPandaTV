@@ -3,6 +3,8 @@ package com.pandatv.ui.home.activity;
 
 import android.content.pm.ActivityInfo;
 import android.util.Log;
+import android.view.Window;
+import android.view.WindowManager;
 
 import com.google.gson.Gson;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -48,8 +50,7 @@ public class VideoActivity extends BaseActivity {
         castPid = getIntent().getStringExtra("castPid");
         momentPid = getIntent().getStringExtra("momentPid");
         videoPid = getIntent().getStringExtra("videoPid");
-       // wheelTitle = getIntent().getStringExtra("wheelTitle");
-
+        // wheelTitle = getIntent().getStringExtra("wheelTitle");
         initVideo();
     }
 
@@ -126,8 +127,7 @@ public class VideoActivity extends BaseActivity {
 
                 }
             });
-        }
-        else if (videoPid != null) {
+        } else if (videoPid != null) {
             new PandaHomeModelImpl().loadWheel(Urls.PINJIE3 + videoPid, new NetWorkCallBack<WheelBean>() {
                 @Override
                 public void onSuccess(WheelBean wheelBean) {
@@ -160,6 +160,8 @@ public class VideoActivity extends BaseActivity {
 
     @Override
     protected int getLayoutId() {
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         return R.layout.activity_home_video;
     }
 

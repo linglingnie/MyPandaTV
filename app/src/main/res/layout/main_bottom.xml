@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rlTabBottom"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="60dp"
+    android:background="@color/white"
+    android:gravity="center"
     android:orientation="vertical">
-
-    <FrameLayout
-        android:id="@+id/container"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"></FrameLayout>
 
     <TextView
         android:id="@+id/textView1"
@@ -18,44 +14,53 @@
         android:background="@color/tab_top_line_color" />
 
     <RadioGroup
-        android:id="@+id/homeBottomGroup"
+        android:id="@+id/tabGroup"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
         <RadioButton
-            android:id="@+id/homePage"
+            android:id="@+id/rbTabHome"
             style="@style/TabBtn"
             android:checked="true"
             android:drawableTop="@drawable/tab_home_button"
             android:text="@string/home" />
 
         <RadioButton
-            android:id="@+id/homePandaLive"
+            android:id="@+id/rbTabLovePanda"
             style="@style/TabBtn"
             android:checked="false"
             android:drawableTop="@drawable/tab_love_panda_button"
             android:text="@string/love_panda" />
 
         <RadioButton
-            android:id="@+id/homeRollVideo"
+            android:id="@+id/rbTabPandCulture"
             style="@style/TabBtn"
             android:drawableTop="@drawable/tab_cctv_button"
             android:text="@string/panda_culture" />
 
         <RadioButton
-            android:id="@+id/homePandaBroadcast"
+            android:id="@+id/rbTabPandaEye"
             style="@style/TabBtn"
             android:drawableTop="@drawable/tab_panda_eye_button"
             android:text="@string/panda_eye" />
 
 
         <RadioButton
-            android:id="@+id/homeLiveChina"
+            android:id="@+id/rbTabLiveChina"
             style="@style/TabBtn"
             android:drawableTop="@drawable/tab_live_china_button"
             android:text="@string/live_china" />
+
+        <!-- <RadioButton
+             android:id="@+id/rbTabCCTV"
+             style="@style/TabBtn"
+             android:visibility="gone"
+             android:drawableTop="@drawable/tab_cctv_button"
+             android:text="@string/cctv" />-->
+
     </RadioGroup>
 
 </LinearLayout>

@@ -199,8 +199,8 @@
     <string name="love_panda">熊猫直播</string>
     <string name="live_china">直播中国</string>
     <string name="cctv">CCTV</string>
-    <string name="panda_eye">熊猫观察</string>
-    <string name="panda_culture">熊猫文化</string>
+    <string name="panda_eye">熊猫播报</string>
+    <string name="panda_culture">滚滚视频</string>
 
     <!-- 首页title -->
     <string name="panda_channel">熊猫频道</string>
