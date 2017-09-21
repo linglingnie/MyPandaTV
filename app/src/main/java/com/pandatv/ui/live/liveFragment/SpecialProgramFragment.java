@@ -112,7 +112,7 @@ public class SpecialProgramFragment extends BaseFragment implements LiveContract
     public void showSpecialProgram(SpecialProgramBean programBean) {
         video = programBean.getVideo();
         list.addAll(video);
-        SpecialProgramAdapter specialProgramAdapter = new SpecialProgramAdapter(getActivity(), video);
+        SpecialProgramAdapter specialProgramAdapter = new SpecialProgramAdapter(getActivity(), list);
         spcialProgramListView.setAdapter(specialProgramAdapter);
     }
 
