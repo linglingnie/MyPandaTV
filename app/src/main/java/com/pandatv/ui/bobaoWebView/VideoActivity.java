@@ -27,11 +27,17 @@ public class VideoActivity extends BaseActivity implements WebToContract.view {
     private WebToContract.presenter presenter;
     /**
      * byx
-     * BaseActivity
+     * BaseActivity88#88 95533
      **/
     @Override
     protected void initData() {
 
+       /* //获取ImageLoader对象
+        ImageLoader imageloader= ImageLoader.getInstance();
+//使用默认的ImageLoaderConfiguration
+        ImageLoaderConfiguration configuration=ImageLoaderConfiguration.createDefault(this.getApplicationContext());
+//初始化ImageLoader的配置
+        imageloader.init(configuration);*/
     }
 
     /**
@@ -40,8 +46,10 @@ public class VideoActivity extends BaseActivity implements WebToContract.view {
     @Override
     protected void initView() {
 
+
         Intent intent =getIntent();
     String stringextra= intent.getStringExtra("pid");
+
     presenter=new WebTopresenter(this);
         presenter.second(stringextra);
     }
@@ -53,6 +61,15 @@ public class VideoActivity extends BaseActivity implements WebToContract.view {
 
     @Override
     protected int getLayoutId() {
+
+/*
+ requestWindowFeature(Window.FEATURE_NO_TITLE);//隐藏标题
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);//设置全屏
+
+
+*/
+
         return R.layout.activity_video;
     }
 
@@ -61,15 +78,9 @@ public class VideoActivity extends BaseActivity implements WebToContract.view {
         super.onCreate(savedInstanceState, persistentState);
         ButterKnife.bind(this);
 
-        /**
-         * 设置为横屏
-         */
-        if (getRequestedOrientation() != ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE) {
-            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-        }
-
 
     }
+
 
 
 
@@ -118,7 +129,17 @@ public class VideoActivity extends BaseActivity implements WebToContract.view {
     @Override
     protected void onResume() {
 
+     /**
+      * 设置为横屏 注意！和清单文件结合使用
+      *
+      * 清单文件：    android:configChanges="keyboardHidden|orientation|screenSize"
+      android:screenOrientation="landscape"
+      *
+      * ***/
 
+        if (getRequestedOrientation() != ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE) {
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        }
         super.onResume();
     }
 }

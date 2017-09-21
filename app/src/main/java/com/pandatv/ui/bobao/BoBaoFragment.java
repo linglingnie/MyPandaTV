@@ -21,6 +21,7 @@ import com.pandatv.entity.bobaoBean.BoBaoEntity1;
 import com.pandatv.entity.bobaoBean.BoBaoEntity2;
 import com.pandatv.ui.bobaoWebView.VideoActivity;
 import com.pandatv.ui.bobaoWebView.Web2Activity;
+import com.pandatv.user.activity.UserActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,19 +39,21 @@ public class BoBaoFragment extends BaseFragment implements BoBaoControct.view, X
     @BindView(R.id.bobao_xrecycler)
     XRecyclerView bobaoXrecycler;
     Unbinder unbinder;
+    @BindView(R.id.live_image_login)
+    ImageView liveImageLogin;
     private BoBaoControct.presenters presenters;
     private ImageView headview_picture;
     private ImageView headview_iv;
     private TextView headview_title;
-    private List<BoBaoEntity2.ListBean> listdata =new ArrayList<>();
+    private List<BoBaoEntity2.ListBean> listdata = new ArrayList<>();
     private BoBaoAdapter boBaoAdapter;
-    private int i=3;
-    private Handler handler =new Handler(){
+    private int i = 3;
+    private Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
 
-            switch (msg.what){
+            switch (msg.what) {
                 case 1:
                     boBaoAdapter.notifyDataSetChanged();
                     break;
@@ -79,11 +82,11 @@ public class BoBaoFragment extends BaseFragment implements BoBaoControct.view, X
         boBaoAdapter.setItem(new BoBaoAdapter.Bobaoitem() {
             @Override
             public void Listener(int psoo) {
-                Intent intent =new Intent(getActivity(), Web2Activity.class);
-                intent.putExtra("id",listdata.get(psoo).getId());
-                intent.putExtra("url",listdata.get(psoo).getUrl());
-               intent.putExtra("title",listdata.get(psoo).getTitle());
-               intent.putExtra("time",listdata.get(psoo).getFocus_date()+"");
+                Intent intent = new Intent(getActivity(), Web2Activity.class);
+                intent.putExtra("id", listdata.get(psoo).getId());
+                intent.putExtra("url", listdata.get(psoo).getUrl());
+                intent.putExtra("title", listdata.get(psoo).getTitle());
+                intent.putExtra("time", listdata.get(psoo).getFocus_date() + "");
                 startActivity(intent);
             }
         });
@@ -105,14 +108,13 @@ public class BoBaoFragment extends BaseFragment implements BoBaoControct.view, X
 
 
         bobaoXrecycler.setLayoutManager(new LinearLayoutManager(getActivity()));
-        boBaoAdapter =new BoBaoAdapter(listdata,getActivity());
+        boBaoAdapter = new BoBaoAdapter(listdata, getActivity());
         bobaoXrecycler.setAdapter(boBaoAdapter);
 
         bobaoXrecycler.addHeaderView(inflater);
         bobaoXrecycler.setLoadingListener(this);
 
-          presenters.second(i+"");
-
+        presenters.second(i + "");
 
 
     }
@@ -142,8 +144,16 @@ public class BoBaoFragment extends BaseFragment implements BoBaoControct.view, X
             public void onClick(View v) {
                 //跳转页面，传值传数据
 
-                Intent intent =new Intent(getActivity(), VideoActivity.class);
-                intent.putExtra("pid",boBaoEntity1.getData().getBigImg().get(0).getPid());
+                Intent intent = new Intent(getActivity(), VideoActivity.class);
+                intent.putExtra("pid", boBaoEntity1.getData().getBigImg().get(0).getPid());
+                startActivity(intent);
+            }
+        });
+        liveImageLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent =new Intent(getActivity(), UserActivity.class);
+
                 startActivity(intent);
             }
         });
@@ -156,10 +166,10 @@ public class BoBaoFragment extends BaseFragment implements BoBaoControct.view, X
     @Override
     public void shouBoBaolistto(List<BoBaoEntity2.ListBean> list) {
 
-            listdata.addAll(list);
-            handler.sendEmptyMessage(1);
-            bobaoXrecycler.refreshComplete();//刷新
-            bobaoXrecycler.loadMoreComplete();//加载
+        listdata.addAll(list);
+        handler.sendEmptyMessage(1);
+        bobaoXrecycler.refreshComplete();//刷新
+        bobaoXrecycler.loadMoreComplete();//加载
     }
 
     /**
@@ -193,7 +203,7 @@ public class BoBaoFragment extends BaseFragment implements BoBaoControct.view, X
     @Override
     public void setPresenter(BoBaoControct.presenters presenters) {
 
-            this.presenters = presenters;
+        this.presenters = presenters;
 
     }
 
@@ -226,8 +236,8 @@ public class BoBaoFragment extends BaseFragment implements BoBaoControct.view, X
     @Override
     public void onRefresh() {
         listdata.clear();
-        i=3;
-        presenters.second(i+"");
+        i = 3;
+        presenters.second(i + "");
     }
 
     /**
@@ -237,6 +247,6 @@ public class BoBaoFragment extends BaseFragment implements BoBaoControct.view, X
     public void onLoadMore() {
 
         i++;
-        presenters.second(i+"");
+        presenters.second(i + "");
     }
 }
