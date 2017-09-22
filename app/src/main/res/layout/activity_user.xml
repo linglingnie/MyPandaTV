@@ -4,8 +4,10 @@
     android:id="@+id/activity_user"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/pe_bg_light_blue"
     android:orientation="vertical"
     tools:context=".user.activity.UserActivity">
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -33,6 +35,7 @@
             android:textColor="@color/white"
             android:textSize="20sp" />
     </RelativeLayout>
+
     <RelativeLayout
         android:id="@+id/person_have_login_layout"
         android:layout_width="match_parent"
@@ -44,19 +47,19 @@
         android:padding="10dp">
 
         <ImageView
-            android:id="@+id/nicknm_img"
+            android:id="@+id/nickImg"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_alignParentLeft="true"
             android:src="@drawable/personal_login_head" />
 
         <TextView
-            android:id="@+id/person_nickname"
+            android:id="@+id/personNickname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="10dp"
-            android:layout_toRightOf="@+id/nicknm_img"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@+id/nickImg"
             android:drawablePadding="10dp"
             android:gravity="center_vertical"
             android:text="@string/personal_nickname"

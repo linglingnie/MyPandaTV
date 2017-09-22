@@ -154,9 +154,10 @@
         android:textColor="#f00" />
 
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
         android:layout_marginLeft="60px"
         android:layout_marginTop="30px">
 
@@ -174,8 +175,6 @@
             android:id="@+id/mDeal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_toRightOf="@id/xieyi_check"
             android:text="@string/regist_protorcal"
             android:textColor="@color/colorPrimaryDark" />
 
@@ -187,7 +186,7 @@
             android:layout_below="@id/xieyi_check"
             android:layout_marginTop="20px"
             android:textColor="#f00" />
-    </RelativeLayout>
+    </LinearLayout>
 
     <TextView
         android:id="@+id/mRegisterBtn"
