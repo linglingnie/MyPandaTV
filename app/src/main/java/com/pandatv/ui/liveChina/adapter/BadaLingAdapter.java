@@ -9,14 +9,19 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.pandatv.R;
+import com.pandatv.modle.net.callback.NetWorkCallBack;
 import com.pandatv.ui.liveChina.entity.BadalingBean;
+import com.pandatv.ui.liveChina.entity.LiveChinaZhiBoBean;
 
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import fm.jiecao.jcvideoplayer_lib.JCVideoPlayer;
 
+import static android.os.Build.VERSION_CODES.N;
 import static com.pandatv.modle.dataModel.BaseModel.iHttp;
+import static com.umeng.qq.handler.a.n;
 
 /**
  * Created by Windows on 2017/9/20.
@@ -81,14 +86,32 @@ public class BadaLingAdapter extends BaseAdapter {
                 }
             }
         });
-        BadalingBean.LiveBean liveBean = list.get(position);
+        final BadalingBean.LiveBean liveBean = list.get(position);
         holder.livechinaTitle.setText("[正在直播]" + liveBean.getTitle());
         holder.liveChinaBrief.setText(liveBean.getBrief());
-        iHttp.loadImage(liveBean.getImage(), holder.livechinaItemImage);
-        holder.liveChinaNourl.setOnClickListener(new View.OnClickListener() {
+//        iHttp.loadImage(liveBean.getImage(), holder.livechinaItemImage);
+//        holder.liveChinaNourl.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Toast.makeText(context, "不好意思,只是个假的布局而已,因为拿不到直播地址!!!", Toast.LENGTH_SHORT).show();
+//            }
+//        });
+        String id = liveBean.getId();
+        final String liveurl="http://vdn.live.cntv.cn/api2/live.do?channel=pa://cctv_p2p_hd"+id+"&amp;client=androidapp";
+        iHttp.get(liveurl, null, new NetWorkCallBack<LiveChinaZhiBoBean>() {
             @Override
-            public void onClick(View v) {
-                Toast.makeText(context, "不好意思,只是个假的布局而已,因为拿不到直播地址!!!", Toast.LENGTH_SHORT).show();
+            public void onSuccess(LiveChinaZhiBoBean liveChinaZhiBoBean) {
+                holder.livechinaItemImage.setUp(liveChinaZhiBoBean.getHls_url().getHls1(),liveBean.getImage(),null);
+            }
+
+            @Override
+            public void onError(int errorCode, String errorMsg) {
+
+            }
+
+            @Override
+            public void onFail(String netOff) {
+
             }
         });
 
@@ -97,7 +120,7 @@ public class BadaLingAdapter extends BaseAdapter {
 
     static class ViewHolder {
         @BindView(R.id.livechina_item_image)
-        ImageView livechinaItemImage;
+        JCVideoPlayer livechinaItemImage;
         @BindView(R.id.livechina_title)
         TextView livechinaTitle;
         @BindView(R.id.live_china_down)
@@ -106,8 +129,7 @@ public class BadaLingAdapter extends BaseAdapter {
         ImageView liveChinaUp;
         @BindView(R.id.live_china_brief)
         TextView liveChinaBrief;
-        @BindView(R.id.live_china_nourl)
-        ImageView liveChinaNourl;
+
         ViewHolder(View view) {
             ButterKnife.bind(this, view);
         }

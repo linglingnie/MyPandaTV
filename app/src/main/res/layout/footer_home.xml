@@ -30,7 +30,7 @@
             android:scrollbars="none"
             android:id="@+id/mChinaGridView"
             android:layout_width="match_parent"
-            android:layout_height="300dp"
+            android:layout_height="311dp"
             android:numColumns="3" />
     </LinearLayout>
 </LinearLayout>

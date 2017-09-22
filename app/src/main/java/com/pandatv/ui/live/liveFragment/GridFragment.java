@@ -15,12 +15,19 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.pandatv.R;
 import com.pandatv.base.BaseFragment;
+import com.pandatv.event.EventBusBean;
+import com.pandatv.modle.dataModel.BaseModel;
+import com.pandatv.modle.net.callback.NetWorkCallBack;
 import com.pandatv.ui.live.MoreFragment.LiveFragment;
 import com.pandatv.ui.live.MoreFragment.LookTalkFragment;
 import com.pandatv.ui.live.entity.PandaLive;
 import com.pandatv.ui.live.liveContract.LiveContract;
 import com.pandatv.ui.live.liveContract.PandaLiveBriefImp;
 import com.pandatv.ui.live.noScrollViewPager.NoScrollViewPager;
+import com.pandatv.ui.liveChina.entity.LiveChinaZhiBoBean;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +36,9 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import fm.jiecao.jcvideoplayer_lib.JCVideoPlayer;
+
+import static android.R.attr.id;
+import static com.pandatv.modle.dataModel.BaseModel.iHttp;
 
 
 public class GridFragment extends BaseFragment implements LiveContract.PandaLiveBriefView {
@@ -54,6 +64,10 @@ public class GridFragment extends BaseFragment implements LiveContract.PandaLive
 //
     private List<Fragment> fragmentList=new ArrayList<>();
     private ProgressDialog diaLog;
+    private String liveurl;
+    private Bundle bundle;
+    private Boolean flag=false;
+    private String id;
 
     @Override
     protected int getLayoutRes() {
@@ -62,6 +76,9 @@ public class GridFragment extends BaseFragment implements LiveContract.PandaLive
 
     @Override
     protected void initData() {
+        EventBus.getDefault().register(this);
+        liveurl = "http://vdn.live.cntv.cn/api2/live.do?channel=pa://cctv_p2p_hd"+id+"&client=androidapp";
+
         diaLog = new ProgressDialog(getActivity());
         diaLog.setMessage("正在加载......");
         diaLog.show();
@@ -110,7 +127,7 @@ public class GridFragment extends BaseFragment implements LiveContract.PandaLive
 
     @Override
     public void showPandaLive(PandaLive pandaLive) {
-        PandaLive.LiveBean liveBean = pandaLive.getLive().get(0);
+        final PandaLive.LiveBean liveBean = pandaLive.getLive().get(0);
         String title1 = liveBean.getTitle();
 
         liveTitle.setText("[正在直播]"+title1);
@@ -119,6 +136,8 @@ public class GridFragment extends BaseFragment implements LiveContract.PandaLive
         PandaLive.BookmarkBean bookmark = pandaLive.getBookmark();
         List<PandaLive.BookmarkBean.MultipleBean> multiple = bookmark.getMultiple();
         List<PandaLive.BookmarkBean.WatchTalkBean> watchTalk = bookmark.getWatchTalk();
+        String url="http://ipanda.vtime.cntv.cloudcdn.net/live/ipandahls_/index.m3u8?AUTH=WtTptdiEtMkfEYYpsfNmBEfzmeKtgcD1Yh5ObNIaLQWB2Z8Rs9rMVK4ffNeGDHsCWokinrYJ0FiDrtKBWqDBsw==";
+
 
         if (titleList.size()<2){
              String title = multiple.get(0).getTitle();
@@ -129,7 +148,6 @@ public class GridFragment extends BaseFragment implements LiveContract.PandaLive
             fragmentList.add(new LiveFragment());
             fragmentList.add(new LookTalkFragment());
             liveGridViewPager.setAdapter(new FragmentPagerAdapter(getChildFragmentManager()) {
-                //            String[] str = {"多视角直播","边看边聊"};
                 @Override
                 public Fragment getItem(int position) {
                     return fragmentList.get(position);
@@ -149,7 +167,37 @@ public class GridFragment extends BaseFragment implements LiveContract.PandaLive
             gridTablayout.setupWithViewPager(liveGridViewPager);
         }
 
-        liveJcvVideoPlayer.setUp(liveBean.getUrl(),liveBean.getImage(),"成都基地高清精切线路");
+
+            liveJcvVideoPlayer.setUp(url,liveBean.getImage(),"成都基地高清精切线路");
+
+
+//            iHttp.get(liveurl, null, new NetWorkCallBack<LiveChinaZhiBoBean>() {
+//                @Override
+//                public void onSuccess(LiveChinaZhiBoBean liveChinaZhiBoBean) {
+//                    liveJcvVideoPlayer.setUp(liveChinaZhiBoBean.getHls_url().getHls1(),liveBean.getImage(),null);
+//                }
+//
+//                @Override
+//                public void onError(int errorCode, String errorMsg) {
+//
+//                }
+//
+//                @Override
+//                public void onFail(String netOff) {
+//
+//                }
+//            });
+
+
+
+
+
+
+
+
+
+
+
     }
 
     @Override
@@ -200,5 +248,11 @@ public class GridFragment extends BaseFragment implements LiveContract.PandaLive
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
+        EventBus.getDefault().unregister(this);
+    }
+
+    @Subscribe
+    public void getLiveId(EventBusBean busBean){
+        id = busBean.getId();
     }
 }

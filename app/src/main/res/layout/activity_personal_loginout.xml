@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_info"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/pe_bg_light_blue"
-    android:orientation="vertical"
-    tools:context="com.pandatv.user.activity.InfoActivity">
+    android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -31,7 +28,7 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:text="个人信息"
+            android:text="个人中心"
             android:textColor="@color/white"
             android:textSize="20sp" />
     </RelativeLayout>
@@ -48,7 +45,7 @@
         android:visibility="gone" />
 
     <RelativeLayout
-        android:id="@+id/person_have_login_layout"
+        android:id="@+id/mLoginImg"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
@@ -76,7 +73,7 @@
             android:background="@drawable/personal_enter_img" />
 
         <ImageView
-            android:id="@+id/headIcon"
+            android:id="@+id/mHeadIcon"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_toLeftOf="@+id/tv_headjiantou"
@@ -85,7 +82,7 @@
     </RelativeLayout>
 
     <RelativeLayout
-        android:id="@+id/personal_nickname_layout"
+        android:id="@+id/mNickname"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
@@ -95,7 +92,6 @@
         android:padding="15dp">
 
         <TextView
-            android:id="@+id/nic"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
@@ -106,7 +102,7 @@
             android:textColor="@color/black" />
 
         <TextView
-            android:id="@+id/nick_name"
+            android:id="@+id/tv_nichengjiantou"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
@@ -114,13 +110,11 @@
             android:background="@drawable/personal_enter_img" />
 
         <TextView
-            android:id="@+id/nickName"
+            android:id="@+id/nick_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_toLeftOf="@id/nick_name"
-            android:gravity="center"
-            android:paddingRight="30dp"
+            android:layout_toLeftOf="@+id/tv_nichengjiantou"
             android:text=""
             android:textColor="#000000" />
     </RelativeLayout>
@@ -141,7 +135,7 @@
             android:visibility="gone" />
 
         <TextView
-            android:id="@+id/btn_login_out"
+            android:id="@+id/mLoginOutBtn"
             android:layout_width="match_parent"
             android:layout_height="132px"
             android:layout_alignParentBottom="true"
@@ -154,4 +148,5 @@
             android:textColor="@color/white" />
 
     </RelativeLayout>
+
 </LinearLayout>

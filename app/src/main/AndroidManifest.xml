@@ -18,6 +18,12 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
 
+
+    <!-- 手机获取音量亮度权限 -->
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <application
         android:name=".app.App"
         android:allowBackup="true"
@@ -32,8 +38,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.home.activity.VideoActivity" />
-        <activity android:name=".ui.bobaoWebView.VideoActivity" />
+        <activity android:name=".ui.home.activity.VideoActivity"
+            />
+        <activity android:name=".ui.bobaoWebView.VideoActivity"
+
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="landscape"
+            />
         <activity android:name=".ui.bobaoWebView.Web2Activity" />
         <activity
             android:name=".ui.video.VideoActivity"

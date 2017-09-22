@@ -6,15 +6,20 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.GridView;
 
 import com.pandatv.R;
 import com.pandatv.base.BaseFragment;
+import com.pandatv.event.EventBusBean;
 import com.pandatv.ui.live.adapter.ManchAngleAdapter;
 import com.pandatv.ui.live.entity.ManchAngleofViewBean;
 import com.pandatv.ui.live.liveContract.LiveContract;
 import com.pandatv.ui.live.liveContract.ManchAngleOfViewPresenterImp;
 import com.pandatv.ui.live.liveContract.WonderfulPresenterImp;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,6 +47,8 @@ public class LiveFragment extends BaseFragment implements LiveContract.MuchAngle
     protected void initData() {
         presenterImp = new ManchAngleOfViewPresenterImp(this);
         presenterImp.start();
+
+
     }
 
     @Override
@@ -50,8 +57,17 @@ public class LiveFragment extends BaseFragment implements LiveContract.MuchAngle
     }
 
     @Override
-    public void setBundle(Bundle bundle) {
+    public void setBundle(final Bundle bundle) {
+        liveGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
+                ManchAngleofViewBean.ListBean listBean = list.get(position);
+                String id1 = listBean.getId();
+                EventBus.getDefault().post(new EventBusBean(id1));
+
+            }
+        });
     }
 
     @Override
@@ -71,7 +87,6 @@ public class LiveFragment extends BaseFragment implements LiveContract.MuchAngle
     @Override
     public void showAngleOfView(ManchAngleofViewBean manchAngleofViewBean) {
         List<ManchAngleofViewBean.ListBean> list2 = manchAngleofViewBean.getList();
-        Log.e("TAG",list2.get(2).getTitle());
         list.addAll(list2);
         manchAngleAdapter = new ManchAngleAdapter(getActivity(), list);
         liveGridView.setAdapter(manchAngleAdapter);
@@ -107,4 +122,8 @@ public class LiveFragment extends BaseFragment implements LiveContract.MuchAngle
     public void setPresenter(LiveContract.LivePresenter livePresenter) {
 
     }
+
+
+
+
 }

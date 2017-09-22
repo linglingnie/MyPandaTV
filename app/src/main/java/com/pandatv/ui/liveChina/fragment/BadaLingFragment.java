@@ -41,6 +41,17 @@ public class BadaLingFragment extends BaseFragment implements LiveChinaContract.
 
     @Override
     protected void initData() {
+        //获取ImageLoader对象
+        ImageLoader imageloader=ImageLoader.getInstance();
+//使用默认的ImageLoaderConfiguration
+        ImageLoaderConfiguration configuration=ImageLoaderConfiguration.createDefault(getActivity());
+//初始化ImageLoader的配置
+        imageloader.init(configuration);
+
+
+
+
+
         baDaLingPresenterImp = new BaDaLingPresenterImp(this);
         diaLog = new ProgressDialog(getActivity());
         diaLog.setMessage("正在加载......");

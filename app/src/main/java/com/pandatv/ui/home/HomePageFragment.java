@@ -1,5 +1,6 @@
 package com.pandatv.ui.home;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -79,6 +80,7 @@ public class HomePageFragment extends BaseFragment implements AdapterView.OnItem
     private List<MomentBean.ListBean> momentBeanList;
     private List<PandaHome.DataBean.ChinaliveBean.ListBeanXX> chinaLiveList;
     private List<PandaHome.DataBean.PandaliveBean.ListBean> showBeanList;
+    private ProgressDialog diaLog;
 
     @Override
     protected int getLayoutRes() {
@@ -88,6 +90,9 @@ public class HomePageFragment extends BaseFragment implements AdapterView.OnItem
     @Override
     protected void initData() {
         presenter = new HomePresenter(this);
+        diaLog = new ProgressDialog(getActivity());
+        diaLog.setMessage("正在加载......");
+        diaLog.show();
         presenter.start();
 
         mVideoListView.setOnItemClickListener(this);
@@ -275,13 +280,12 @@ public class HomePageFragment extends BaseFragment implements AdapterView.OnItem
 
     @Override
     public void showProgress() {
-
+        diaLog.show();
     }
 
     @Override
     public void dismissProgress() {
-
-
+        diaLog.dismiss();
     }
 
     @Override
@@ -325,7 +329,7 @@ public class HomePageFragment extends BaseFragment implements AdapterView.OnItem
 
         mVideoListView.setMode(PullToRefreshBase.Mode.PULL_FROM_START);
 
-   //     mVideoListView.setRefreshing();
+        mVideoListView.setRefreshing();
 
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {

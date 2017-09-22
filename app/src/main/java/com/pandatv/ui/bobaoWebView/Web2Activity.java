@@ -24,6 +24,9 @@ import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 import com.pandatv.R;
 import com.pandatv.entity.Xiongmao;
+import com.umeng.socialize.ShareAction;
+import com.umeng.socialize.UMShareListener;
+import com.umeng.socialize.bean.SHARE_MEDIA;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -49,6 +52,7 @@ public class Web2Activity extends AppCompatActivity implements View.OnClickListe
     private Handler handler;
     private RequestQueue queue;
     private List<Xiongmao> lists =new ArrayList<>();
+    private String s ;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,9 +68,10 @@ public class Web2Activity extends AppCompatActivity implements View.OnClickListe
         String title = intent.getStringExtra("title");
       String time = intent.getStringExtra("time");
         web2Sc.setOnClickListener(this);
+        web2Fx.setOnClickListener(this);
          // String  time =  intent.getLongExtra("time",0);
 
-        String s = "http://api.cntv.cn/article/contentinfo?id=" + id + "&serviceId=panda";
+         s = "http://api.cntv.cn/article/contentinfo?id=" + id + "&serviceId=panda";
 
         Log.e("TAG",s );
         web2Title2.setText(title);
@@ -162,7 +167,31 @@ public class Web2Activity extends AppCompatActivity implements View.OnClickListe
                 Toast.makeText(this, "收藏成功", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.web2_fx:
-                Toast.makeText(this, "分享成功成功", Toast.LENGTH_SHORT).show();
+                new ShareAction(Web2Activity.this)
+                        .withText(s)
+                        .setDisplayList(SHARE_MEDIA.SINA,SHARE_MEDIA.QQ,SHARE_MEDIA.WEIXIN)
+                        .setCallback(new UMShareListener() {
+                            @Override
+                            public void onStart(SHARE_MEDIA share_media) {
+
+                            }
+
+                            @Override
+                            public void onResult(SHARE_MEDIA share_media) {
+
+                            }
+
+                            @Override
+                            public void onError(SHARE_MEDIA share_media, Throwable throwable) {
+
+                            }
+
+                            @Override
+                            public void onCancel(SHARE_MEDIA share_media) {
+
+                            }
+                        })
+                        .open();
                 break;
         }
     }
