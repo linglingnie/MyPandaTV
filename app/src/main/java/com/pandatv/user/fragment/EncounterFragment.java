@@ -6,25 +6,47 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import com.pandatv.R;
+import com.pandatv.base.BaseFragment;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class EncounterFragment extends Fragment {
+public class EncounterFragment extends BaseFragment {
 
 
-    public EncounterFragment() {
-        // Required empty public constructor
-    }
-
+    @BindView(R.id.content)
+    EditText content;
+    @BindView(R.id.contact)
+    EditText contact;
+    @BindView(R.id.submit)
+    TextView submit;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_encounter, container, false);
+    protected int getLayoutRes() {
+        return R.layout.fragment_encounter;
+    }
+
+    @Override
+    protected void initData() {
+
+    }
+
+    @Override
+    protected void initView(View view) {
+
+    }
+
+    @Override
+    public void setBundle(Bundle bundle) {
+
     }
 
 }
