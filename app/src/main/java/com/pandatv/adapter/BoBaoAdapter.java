@@ -45,6 +45,7 @@ public class BoBaoAdapter extends RecyclerView.Adapter implements View.OnClickLi
 
     }
 
+
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         ViewHolder holder1 = (ViewHolder) holder;
