@@ -2,10 +2,8 @@ package com.pandatv.user.activity;
 
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
-import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.view.Gravity;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.PopupWindow;
@@ -14,10 +12,8 @@ import android.widget.Toast;
 
 import com.pandatv.R;
 import com.pandatv.base.BaseActivity;
-import com.pandatv.main.MainActivity;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class ChangeActivity extends BaseActivity {
@@ -31,6 +27,7 @@ public class ChangeActivity extends BaseActivity {
     EditText editNickname;
     private String uid;
     private String mName;
+    private String name;
 
     @Override
     protected void initData() {
@@ -41,9 +38,10 @@ public class ChangeActivity extends BaseActivity {
     protected void initView() {
         uid = getIntent().getStringExtra("uid");
         mName = getIntent().getStringExtra("mName");
+        // name = getIntent().getStringExtra("name");
         if (uid != null) {
             editNickname.setText(uid);
-        } else {
+        } else if (mName != null) {
             editNickname.setText(mName);
         }
     }
@@ -58,9 +56,11 @@ public class ChangeActivity extends BaseActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.mBack:
+                startActivity(new Intent(this, InfoActivity.class).putExtra("uid",uid));
                 finish();
                 break;
             case R.id.mConfirm:
+                final String trim = editNickname.getText().toString().trim();
                 if (editNickname.getText().toString().trim().equals(uid)) {
 
                     Toast.makeText(this, "没有修改", Toast.LENGTH_SHORT).show();
@@ -68,13 +68,13 @@ public class ChangeActivity extends BaseActivity {
                     View pop = View.inflate(this, R.layout.item_changename, null);
                     PopupWindow popupWindow = new PopupWindow(pop, ActionBar.LayoutParams.MATCH_PARENT, ActionBar.LayoutParams.MATCH_PARENT, true);
                     popupWindow.setBackgroundDrawable(new ColorDrawable(0x55000000));
-                    popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
+                    popupWindow.showAtLocation(pop, Gravity.CENTER, 0, 0);
                     TextView can = (TextView) pop.findViewById(R.id.cancel);
                     can.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            startActivity(new Intent(ChangeActivity.this, InfoActivity.class).putExtra("name", editNickname.getText().toString().trim()));
-                   finish();
+                            startActivity(new Intent(ChangeActivity.this, InfoActivity.class).putExtra("name", trim));
+                            finish();
                         }
                     });
                 }

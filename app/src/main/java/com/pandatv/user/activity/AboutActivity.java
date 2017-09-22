@@ -1,7 +1,5 @@
 package com.pandatv.user.activity;
 
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 
@@ -9,7 +7,6 @@ import com.pandatv.R;
 import com.pandatv.base.BaseActivity;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class AboutActivity extends BaseActivity {

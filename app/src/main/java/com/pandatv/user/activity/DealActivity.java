@@ -1,13 +1,11 @@
 package com.pandatv.user.activity;
 
-import android.os.Bundle;
 import android.widget.Button;
 
 import com.pandatv.R;
 import com.pandatv.base.BaseActivity;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class DealActivity extends BaseActivity {

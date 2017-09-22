@@ -21,8 +21,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-import static android.R.attr.x;
-
 public class SetActivity extends AppCompatActivity {
 
     @BindView(R.id.mBack)
@@ -55,16 +53,39 @@ public class SetActivity extends AppCompatActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.mBack:
+                startActivity(new Intent(this, UserActivity.class));
                 finish();
                 break;
             case R.id.pe_set_push_view:
+                peSetPushView.setImageResource(R.drawable.switch_open);
                 break;
             case R.id.pe_set_play_view:
+                peSetPlayView.setImageResource(R.drawable.switch_open);
                 break;
             case R.id.mClearNum:
                 break;
             case R.id.mClear:
-                mClearNum.setText(" ");
+                View pop1 = View.inflate(this, R.layout.item_clear_popup, null);
+                final PopupWindow popupWindow1 = new PopupWindow(pop1, ActionBar.LayoutParams.MATCH_PARENT, ActionBar.LayoutParams.MATCH_PARENT, true);
+                popupWindow1.setBackgroundDrawable(new ColorDrawable(0x99000800));
+                popupWindow1.showAtLocation(view, Gravity.CENTER, 0, 0);
+
+                TextView cancel = (TextView) pop1.findViewById(R.id.btn_cancel);
+                TextView ok = (TextView) pop1.findViewById(R.id.btn_ok);
+                cancel.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        popupWindow1.dismiss();
+                    }
+                });
+                ok.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        mClearNum.setText("0.00MB");
+                        popupWindow1.dismiss();
+                    }
+                });
+
                 break;
             case R.id.mFeedback:
                 startActivity(new Intent(this, BackActivity.class));
@@ -74,8 +95,8 @@ public class SetActivity extends AppCompatActivity {
                 break;
             case R.id.mSetPing:
                 View pop = View.inflate(this, R.layout.item_set_popup, null);
-                final PopupWindow popupWindow = new PopupWindow(pop, 800, ActionBar.LayoutParams.WRAP_CONTENT, true);
-                popupWindow.setBackgroundDrawable(new ColorDrawable(0x77191970));
+                final PopupWindow popupWindow = new PopupWindow(pop, ActionBar.LayoutParams.MATCH_PARENT, ActionBar.LayoutParams.MATCH_PARENT, true);
+                popupWindow.setBackgroundDrawable(new ColorDrawable(0x55000000));
                 popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
                 TextView mLike = (TextView) pop.findViewById(R.id.mLike);
                 TextView mCommon = (TextView) pop.findViewById(R.id.mCommon);

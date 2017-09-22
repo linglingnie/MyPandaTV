@@ -52,7 +52,7 @@
 
         <EditText
             android:id="@+id/mEditVerify"
-            android:layout_width="match_parent"
+            android:layout_width="260dp"
             android:layout_height="match_parent"
             android:layout_centerVertical="true"
             android:layout_toLeftOf="@+id/personal_reg_imgcheck"
@@ -73,6 +73,7 @@
             android:layout_marginLeft="30px"
             android:background="@color/white"
             android:gravity="center"
+            android:scaleType="fitXY"
             android:text="@string/forget_image_yanzhengma" />
     </RelativeLayout>
 
@@ -92,7 +93,7 @@
 
         <EditText
             android:id="@+id/mEditPhoneVerify"
-            android:layout_width="match_parent"
+            android:layout_width="260dp"
             android:layout_height="120px"
             android:layout_centerVertical="true"
             android:layout_toLeftOf="@+id/personal_reg_phonecheck"
@@ -157,9 +158,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_marginLeft="60px"
-        android:layout_marginTop="30px">
+        android:layout_marginTop="30px"
+        android:orientation="horizontal">
 
         <CheckBox
             android:id="@+id/mCheck"

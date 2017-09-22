@@ -13,7 +13,6 @@ import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.support.v7.app.ActionBar;
 import android.view.Gravity;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -27,7 +26,6 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.BitmapImageViewTarget;
 import com.pandatv.R;
 import com.pandatv.base.BaseActivity;
-import com.pandatv.main.MainActivity;
 import com.umeng.socialize.UMAuthListener;
 import com.umeng.socialize.UMShareAPI;
 import com.umeng.socialize.bean.SHARE_MEDIA;
@@ -35,10 +33,8 @@ import com.umeng.socialize.bean.SHARE_MEDIA;
 import java.util.Map;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-import static android.R.attr.data;
 import static android.R.attr.name;
 
 public class InfoActivity extends BaseActivity {
@@ -63,24 +59,28 @@ public class InfoActivity extends BaseActivity {
     private static int TAKE_PHOTO = 1;
     private static int RESULT_LOAD_IMAGE = 1;
     private String mName;
+    private String name;
 
     @Override
     protected void initData() {
-        Glide.with(this).load(icon).asBitmap().centerCrop().into(new BitmapImageViewTarget(headIcon) {
-            @Override
-            protected void setResource(Bitmap resource) {
-                RoundedBitmapDrawable ciDrawable = RoundedBitmapDrawableFactory.create(InfoActivity.this.getResources(), resource);
-                ciDrawable.setCircular(true);
-                headIcon.setImageDrawable(ciDrawable);
-            }
-        });
-
-        nickName.setText(uid);
 
 
         if (mName != null) {
             nickName.setText(mName);
 
+        } else if (name != null) {
+            nickName.setText(name);
+        } else {
+            Glide.with(this).load(icon).asBitmap().centerCrop().into(new BitmapImageViewTarget(headIcon) {
+                @Override
+                protected void setResource(Bitmap resource) {
+                    RoundedBitmapDrawable ciDrawable = RoundedBitmapDrawableFactory.create(InfoActivity.this.getResources(), resource);
+                    ciDrawable.setCircular(true);
+                    headIcon.setImageDrawable(ciDrawable);
+                }
+            });
+
+            nickName.setText(uid);
         }
     }
 
@@ -88,7 +88,8 @@ public class InfoActivity extends BaseActivity {
     protected void initView() {
         uid = getIntent().getStringExtra("uid");
         icon = getIntent().getStringExtra("icon");
-        mName = getIntent().getStringExtra("name");
+        mName = getIntent().getStringExtra("mName");
+        name = getIntent().getStringExtra("name");
 
 
     }
@@ -102,18 +103,26 @@ public class InfoActivity extends BaseActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.mBack:
-                startActivity(new Intent(this, UserActivity.class).putExtra("mName", mName));
+                if (mName != null) {
+                    startActivity(new Intent(this, UserActivity.class).putExtra("mName", mName));
+
+                } else if (name != null) {
+                    startActivity(new Intent(this, UserActivity.class).putExtra("mName", name));
+                }else {
+                    startActivity(new Intent(this, UserActivity.class).putExtra("mName", uid));
+                }
+
                 finish();
                 break;
             case R.id.person_have_login_layout:
                 initPop();
                 break;
             case R.id.personal_nickname_layout:
-                if (mName == null) {
-                    startActivity(new Intent(this, ChangeActivity.class).putExtra("uid", uid));
+                if (mName != null) {
+                    startActivity(new Intent(this, ChangeActivity.class).putExtra("mName", mName));
                     finish();
                 } else {
-                    startActivity(new Intent(this, ChangeActivity.class).putExtra("mName", mName));
+                    startActivity(new Intent(this, ChangeActivity.class).putExtra("uid", uid));
                     finish();
                 }
                 break;

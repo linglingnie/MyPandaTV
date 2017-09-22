@@ -1,7 +1,7 @@
 package com.pandatv.user.activity;
 
 import android.content.Intent;
-import android.os.Bundle;
+import android.content.SharedPreferences;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -11,7 +11,6 @@ import android.widget.Toast;
 
 import com.pandatv.R;
 import com.pandatv.base.BaseActivity;
-import com.pandatv.main.MainActivity;
 import com.umeng.socialize.UMAuthListener;
 import com.umeng.socialize.UMShareAPI;
 import com.umeng.socialize.bean.SHARE_MEDIA;
@@ -19,7 +18,6 @@ import com.umeng.socialize.bean.SHARE_MEDIA;
 import java.util.Map;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class LoginActivity extends BaseActivity {
@@ -42,6 +40,7 @@ public class LoginActivity extends BaseActivity {
     LinearLayout llqqlogin;
     @BindView(R.id.llsinalogin)
     LinearLayout llsinalogin;
+    private SharedPreferences.Editor editor;
 
     @Override
     protected void initData() {
@@ -69,7 +68,19 @@ public class LoginActivity extends BaseActivity {
                 startActivity(new Intent(this, RegisterActivity.class));
                 break;
             case R.id.loding_btn:
-                startActivity(new Intent(this, UserActivity.class));
+                String account = editAccount.getText().toString().trim();
+                String password = editPassword.getText().toString().trim();
+                SharedPreferences pre = getSharedPreferences("data", MODE_PRIVATE);
+
+                if (account.equals(pre.getString("name", "")) && password.equals(pre.getString("password", ""))) {
+                    editor = pre.edit();
+                    editor.commit();
+                    startActivity(new Intent(this, UserActivity.class).putExtra("spName", account));
+                    finish();
+                } else {
+                    Toast.makeText(LoginActivity.this, "用户名或密码不对", Toast.LENGTH_LONG).show();
+                }
+                //  startActivity(new Intent(this, UserActivity.class));
                 break;
             case R.id.personal_login_forget_pwd:
                 startActivity(new Intent(this, FindPwdActivity.class));
@@ -97,7 +108,7 @@ public class LoginActivity extends BaseActivity {
                                 Log.e("qq", "uid:" + uid + "\nname:" + name + "\nicon:" + iconurl + "\ngender:" + gender);
 
                                 startActivity(new Intent(LoginActivity.this, UserActivity.class).putExtra("uid", name).putExtra("icon", iconurl));
-finish();
+                                finish();
                             }
 
                             @Override
