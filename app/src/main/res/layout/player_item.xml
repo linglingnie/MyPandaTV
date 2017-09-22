@@ -2,20 +2,56 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    >
+    android:orientation="horizontal">
 
-    <ImageView
-        android:layout_width="200dp"
-        android:layout_height="120dp"
-        android:id="@+id/player_item_image"
-        android:layout_marginTop="10dp"
-
-        />
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/player_item_content"
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="100dp">
+        <ImageView
+            android:id="@+id/player_item_image"
+            android:layout_width="200dp"
+            android:layout_height="100dp"
             android:layout_marginTop="10dp"
-            />
+            android:scaleType="centerCrop"
+            android:src="@mipmap/ic_launcher" />
+        <LinearLayout
+            android:layout_alignParentBottom="true"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:background="@drawable/lpanda_bottom_gra"
+            android:layout_marginStart="2dp"
+            android:orientation="horizontal"
+            >
+            <ImageView
+                android:layout_marginLeft="10dp"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_marginTop="3dp"
+                android:src="@drawable/lpanda_live_layer"
+                android:layout_marginBottom="5dp"
+                />
+            <TextView
+                android:id="@+id/video_time_length"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#fff"
+                android:text="Live"
+                android:layout_marginStart="5dp"
+                android:textSize="15sp"
+                />
+        </LinearLayout>
+    </RelativeLayout>
+
+
+
+
+
+    <TextView
+        android:id="@+id/player_item_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="10dp"
+        android:text="lsdkjflak;s"
+        android:textStyle="bold" />
 </LinearLayout>
