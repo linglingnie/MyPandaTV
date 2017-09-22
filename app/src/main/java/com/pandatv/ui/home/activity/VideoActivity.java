@@ -2,9 +2,18 @@ package com.pandatv.ui.home.activity;
 
 
 import android.content.pm.ActivityInfo;
+import android.graphics.drawable.ColorDrawable;
+import android.support.v7.app.ActionBar;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.MotionEvent;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ImageView;
+import android.widget.PopupWindow;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -12,6 +21,7 @@ import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.pandatv.R;
 import com.pandatv.base.BaseActivity;
 import com.pandatv.config.Urls;
+import com.pandatv.main.MainActivity;
 import com.pandatv.modle.dataModel.PandaHomeModelImpl;
 import com.pandatv.modle.net.OkBaseHttpImpl;
 import com.pandatv.modle.net.callback.NetWorkCallBack;
@@ -34,9 +44,7 @@ public class VideoActivity extends BaseActivity {
 
     @BindView(R.id.mVideoController)
     JCVideoPlayer mVideoController;
-    private String videoUrl;
     private String wheelPid;
-    private String wheelTitle;
     private String broadPid;
     private String castPid;
     private String momentPid;
@@ -50,8 +58,35 @@ public class VideoActivity extends BaseActivity {
         castPid = getIntent().getStringExtra("castPid");
         momentPid = getIntent().getStringExtra("momentPid");
         videoPid = getIntent().getStringExtra("videoPid");
-        // wheelTitle = getIntent().getStringExtra("wheelTitle");
+
+   //     mVideoController.setUp("http://3811.liveplay.myqcloud.com/live/flv/3811_channel349.flv?AUTH=/h/gBtQU7WOQaFzNwVypMUmXngZAAqdEH6wPHyLaaaaocGqSiOu8wkxB92D0ImGGSXH6nlJncdJe8P3TMidUkA==", "https://imgsa.baidu.com/forum/w%3D580/sign=99f9e2f88acb39dbc1c0675ee01609a7/6c086e061d950a7b4635c8d601d162d9f2d3c9a4.jpg", "直播");
         initVideo();
+
+
+    }
+
+    private void initPop() {
+        final View pop = View.inflate(VideoActivity.this, R.layout.player_tip, null);
+        final PopupWindow popupWindow = new PopupWindow(pop, ActionBar.LayoutParams.MATCH_PARENT, ActionBar.LayoutParams.MATCH_PARENT, true);
+        popupWindow.setBackgroundDrawable(new ColorDrawable(0x55000000));
+        popupWindow.showAtLocation(pop, Gravity.CENTER, 0, 0);
+
+        TextView cancel = (TextView) pop.findViewById(R.id.btn_cancel);
+        TextView ok = (TextView) pop.findViewById(R.id.btn_ok);
+
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                popupWindow.dismiss();
+            }
+        });
+        ok.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                popupWindow.dismiss();
+                initVideo();
+            }
+        });
     }
 
     private void initVideo() {
@@ -145,11 +180,15 @@ public class VideoActivity extends BaseActivity {
 
                 }
             });
+        } else {
+            mVideoController.setUp("http://3811.liveplay.myqcloud.com/live/flv/3811_channel349.flv?AUTH=/h/gBtQU7WOQaFzNwVypMUmXngZAAqdEH6wPHyLaaaaocGqSiOu8wkxB92D0ImGGSXH6nlJncdJe8P3TMidUkA==", "https://imgsa.baidu.com/forum/w%3D580/sign=99f9e2f88acb39dbc1c0675ee01609a7/6c086e061d950a7b4635c8d601d162d9f2d3c9a4.jpg", "直播");
+
         }
     }
 
     @Override
     protected void initView() {
+
         //获取ImageLoader对象
         ImageLoader imageloader = ImageLoader.getInstance();
         //使用默认的ImageLoaderConfiguration

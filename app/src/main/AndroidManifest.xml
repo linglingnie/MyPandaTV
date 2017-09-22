@@ -41,7 +41,7 @@
             />
         <activity android:name=".ui.bobaoWebView.Web2Activity" />
         <activity
-            android:name=".ui.video.VideoActivity"
+            android:name=".ui.video.VideosActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:screenOrientation="landscape" />
         <activity android:name=".ui.video.PlayerActivity" />
@@ -116,9 +116,10 @@
             <!-- //自己应用的key -->
         </meta-data>
 
-        <activity android:name=".ui.liveChina.AddFragmentActivity"></activity>
+        <activity android:name=".ui.liveChina.AddFragmentActivity" />
         <activity android:name=".main.InteractionDetailsActivity" />
-        <activity android:name=".user.activity.DealActivity"></activity>
+        <activity android:name=".user.activity.DealActivity" />
+        <activity android:name=".user.activity.ChangeActivity"></activity>
     </application>
 
 </manifest>

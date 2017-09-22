@@ -2,15 +2,24 @@ package com.pandatv.user.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.pandatv.R;
 import com.pandatv.base.BaseActivity;
 import com.pandatv.main.MainActivity;
+import com.umeng.socialize.UMAuthListener;
+import com.umeng.socialize.UMShareAPI;
+import com.umeng.socialize.bean.SHARE_MEDIA;
+
+import java.util.Map;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class LoginActivity extends BaseActivity {
@@ -27,6 +36,12 @@ public class LoginActivity extends BaseActivity {
     EditText editAccount;
     @BindView(R.id.edit_password)
     EditText editPassword;
+    @BindView(R.id.llweixinlogin)
+    LinearLayout llweixinlogin;
+    @BindView(R.id.llqqlogin)
+    LinearLayout llqqlogin;
+    @BindView(R.id.llsinalogin)
+    LinearLayout llsinalogin;
 
     @Override
     protected void initData() {
@@ -43,10 +58,11 @@ public class LoginActivity extends BaseActivity {
         return R.layout.activity_login;
     }
 
-    @OnClick({R.id.mBack, R.id.mRegister, R.id.loding_btn, R.id.personal_login_forget_pwd})
+    @OnClick({R.id.mBack, R.id.mRegister, R.id.loding_btn, R.id.personal_login_forget_pwd, R.id.llweixinlogin, R.id.llqqlogin, R.id.llsinalogin})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.mBack:
+                startActivity(new Intent(this, UserActivity.class));
                 finish();
                 break;
             case R.id.mRegister:
@@ -58,8 +74,57 @@ public class LoginActivity extends BaseActivity {
             case R.id.personal_login_forget_pwd:
                 startActivity(new Intent(this, FindPwdActivity.class));
                 break;
+            case R.id.llweixinlogin:
+                Toast.makeText(this, "换个试试", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.llqqlogin:
+                UMShareAPI.get(this).
+                        getPlatformInfo(this, SHARE_MEDIA.QQ, new UMAuthListener() {
+                            @Override
+                            public void onStart(SHARE_MEDIA share_media) {
+                                Log.e("TAG", "start");
+                            }
+
+                            @Override
+                            public void onComplete(SHARE_MEDIA share_media, int i, Map<String, String> map) {
+                                Log.e("TAG", "Complete");
+
+                                String uid = map.get("uid");
+                                String name = map.get("name");
+                                String iconurl = map.get("iconurl");
+                                String gender = map.get("gender");
+
+                                Log.e("qq", "uid:" + uid + "\nname:" + name + "\nicon:" + iconurl + "\ngender:" + gender);
+
+                                startActivity(new Intent(LoginActivity.this, UserActivity.class).putExtra("uid", name).putExtra("icon", iconurl));
+finish();
+                            }
+
+                            @Override
+                            public void onError(SHARE_MEDIA share_media, int i, Throwable throwable) {
+
+                                Log.e("TAG", "Error");
+
+                            }
+
+                            @Override
+                            public void onCancel(SHARE_MEDIA share_media, int i) {
+
+                                Log.e("TAG", "Cancel");
+
+                            }
+                        });
+                break;
+            case R.id.llsinalogin:
+                break;
         }
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        UMShareAPI.get(this).onActivityResult(requestCode, resultCode, data);
+
+    }
 
 }
