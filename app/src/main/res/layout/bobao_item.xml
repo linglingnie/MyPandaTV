@@ -12,15 +12,14 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10px"
-            android:layout_marginRight="10px"
+
             android:background="@color/colorWhite">
 
             <ImageView
                 android:id="@+id/bobao_item_iv"
-                android:layout_width="250px"
-                android:layout_height="160px"
-                android:layout_margin="15px" />
+                android:layout_width="320px"
+                android:layout_height="220px"
+                />
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -35,14 +34,14 @@
                     android:layout_alignParentBottom="true"
                     android:layout_marginTop="15px"
                     android:text="qwerty"
-                    android:textSize="20px" />
+                    android:textSize="40px" />
 
                 <TextView
                     android:id="@+id/bobao_item_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="wakwkaksaks"
-                    android:textSize="30px"
+                    android:textSize="50px"
                     android:textStyle="bold"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentLeft="true"
