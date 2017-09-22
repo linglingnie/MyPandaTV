@@ -61,12 +61,12 @@ public class GridFragment extends BaseFragment implements LiveContract.PandaLive
     Unbinder unbinder;
     private PandaLiveBriefImp liveBriefImp;
     private List<String> titleList=new ArrayList<>();
-//
+
     private List<Fragment> fragmentList=new ArrayList<>();
     private ProgressDialog diaLog;
     private String liveurl;
     private Bundle bundle;
-    private Boolean flag=false;
+
     private String id;
 
     @Override

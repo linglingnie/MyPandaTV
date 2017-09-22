@@ -4,28 +4,67 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     >
-    <ImageView
-        android:layout_width="200dp"
-        android:layout_height="100dp"
-        android:id="@+id/video_item_image"
-        android:layout_marginTop="10dp"
-        />
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="100dp">
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="100dp"
+            android:id="@+id/video_item_image"
+            android:layout_marginTop="10dp"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/ic_launcher"
+            />
+        <LinearLayout
+            android:layout_alignParentBottom="true"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:background="@drawable/lpanda_bottom_gra"
+            android:layout_marginStart="2dp"
+            android:orientation="horizontal"
+            >
+            <ImageView
+                android:layout_marginLeft="10dp"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_marginTop="3dp"
+                android:src="@drawable/lpanda_live_layer"
+                android:layout_marginBottom="5dp"
+                />
+            <TextView
+                android:id="@+id/video_time_length"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#fff"
+                android:text="Live"
+                android:layout_marginStart="5dp"
+                android:textSize="15sp"
+                />
+        </LinearLayout>
+    </RelativeLayout>
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:orientation="vertical"
+        android:layout_marginLeft="5dp"
         >
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/video_item_title"
+            android:text="l;kljalkd"
+            android:textStyle="bold"
+            android:textSize="16sp"
             />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/video_item_content"
+            android:text="asdg"
             />
     </LinearLayout>
 </LinearLayout>
