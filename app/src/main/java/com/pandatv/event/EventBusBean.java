@@ -7,6 +7,7 @@ package com.pandatv.event;
 public class EventBusBean {
     private String id;
 
+    
     public EventBusBean(String id) {
         this.id = id;
     }

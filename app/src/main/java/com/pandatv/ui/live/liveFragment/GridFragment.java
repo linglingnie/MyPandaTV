@@ -170,6 +170,7 @@ public class GridFragment extends BaseFragment implements LiveContract.PandaLive
 
             liveJcvVideoPlayer.setUp(url,liveBean.getImage(),"成都基地高清精切线路");
 
+
 //            iHttp.get(liveurl, null, new NetWorkCallBack<LiveChinaZhiBoBean>() {
 //                @Override
 //                public void onSuccess(LiveChinaZhiBoBean liveChinaZhiBoBean) {

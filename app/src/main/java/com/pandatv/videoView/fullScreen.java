@@ -13,7 +13,6 @@ import android.widget.VideoView;
 
 public class fullScreen extends VideoView {
     GestureDetector mGesture;
-
     public fullScreen(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
 // TODO Auto-generated constructor stub
