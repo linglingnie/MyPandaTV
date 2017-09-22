@@ -21,7 +21,7 @@
             android:layout_marginTop="13dp"
             android:gravity="center_horizontal"
             android:layout_weight="1"
-            android:text="熊猫直播"
+            android:text="滚滚视频"
             />
         <ImageButton
             android:id="@+id/person"

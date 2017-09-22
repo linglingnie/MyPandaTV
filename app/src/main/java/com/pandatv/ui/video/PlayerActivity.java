@@ -248,6 +248,7 @@ public class PlayerActivity extends AppCompatActivity implements View.OnClickLis
         public void onBindViewHolder(ViewHolder holder, final int position) {
             Glide.with(PlayerActivity.this).load(list.get(position).getImg()).into(holder.player_Image);
             holder.player_Text.setText(list.get(position).getT());
+            holder.player_Time.setText(list.get(position).getLen());
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -293,11 +294,13 @@ public class PlayerActivity extends AppCompatActivity implements View.OnClickLis
         public class ViewHolder extends RecyclerView.ViewHolder {
             private ImageView player_Image;
             private TextView player_Text;
+            private TextView player_Time;
 
             public ViewHolder(View itemView) {
                 super(itemView);
                 player_Image = (ImageView) itemView.findViewById(R.id.player_item_image);
                 player_Text = (TextView) itemView.findViewById(R.id.player_item_content);
+                player_Time= (TextView) itemView.findViewById(R.id.video_time_size);
             }
         }
     }

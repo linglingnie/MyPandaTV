@@ -13,6 +13,7 @@ import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.pandatv.R;
@@ -29,7 +30,7 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class VideoFragment extends BaseFragment implements  VideoContract.View{
+public class VideoFragment extends BaseFragment implements VideoContract.View {
     private View view;
     private List<PandaCulture.ListBean> list;
     private List<PandaCulture.BigImgBean> big;
@@ -58,15 +59,16 @@ public class VideoFragment extends BaseFragment implements  VideoContract.View{
         initListener();
         return view;
     }
+
     private void initListener() {
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent=new Intent(getContext(),PlayerActivity.class);
-                intent.putExtra("title",list.get(position-1).getTitle());
-                intent.putExtra("content",list.get(position-1).getBrief());
-                intent.putExtra("url",list.get(position-1).getUrl());
-                intent.putExtra("id",list.get(position-1).getId());
+                Intent intent = new Intent(getContext(), PlayerActivity.class);
+                intent.putExtra("title", list.get(position - 1).getTitle());
+                intent.putExtra("content", list.get(position - 1).getBrief());
+                intent.putExtra("url", list.get(position - 1).getUrl());
+                intent.putExtra("id", list.get(position - 1).getId());
                 startActivity(intent);
             }
         });
@@ -98,17 +100,21 @@ public class VideoFragment extends BaseFragment implements  VideoContract.View{
         person.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(getContext(), UserActivity.class);
+                Intent intent = new Intent(getContext(), UserActivity.class);
                 startActivity(intent);
             }
         });
         inflate = view.inflate(getContext(), R.layout.video_header, null);
 
+
+
     }
+
     @Override
     public void setBundle(Bundle bundle) {
 
     }
+
     @Override
     public void showHomeListData(PandaCulture pandaCulture) {
         OkBaseHttpImpl.getInstance().get(URL, null, new NetWorkCallBack<PandaCulture>() {
@@ -119,22 +125,26 @@ public class VideoFragment extends BaseFragment implements  VideoContract.View{
                 //列表数据
                 final List<PandaCulture.ListBean> lists = pandaCulture.getList();
                 list.addAll(lists);
+
                 //图片集合
                 final List<PandaCulture.BigImgBean> bigImg = pandaCulture.getBigImg();
                 big.addAll(bigImg);
-                ImageView video_Image= (ImageView) inflate.findViewById(R.id.video_Image);
+                ImageView video_Image = (ImageView) inflate.findViewById(R.id.video_Image);
                 Glide.with(getContext()).load(big.get(0).getImage()).into(video_Image);
+                TextView video_tv_title = (TextView) inflate.findViewById(R.id.video_tv_title);
+                String title = big.get(0).getTitle();
+                video_tv_title.setText(title);
                 mListView.addHeaderView(inflate);
-                adapter=new VideoAdapter(getContext(),list);
+                adapter = new VideoAdapter(getContext(), list);
                 mListView.setAdapter(adapter);
                 showProgress();
 
                 video_Image.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent intent=new Intent(getContext(),VideosActivity.class);
-                        intent.putExtra("title",big.get(0).getTitle());
-                        intent.putExtra("pid",big.get(0).getPid());
+                        Intent intent = new Intent(getContext(), VideosActivity.class);
+                        intent.putExtra("title", big.get(0).getTitle());
+                        intent.putExtra("pid", big.get(0).getPid());
                         startActivity(intent);
                     }
                 });
@@ -156,10 +166,8 @@ public class VideoFragment extends BaseFragment implements  VideoContract.View{
 
 
     }
+
     private void initAdapter() {
-
-
-
 
 
     }

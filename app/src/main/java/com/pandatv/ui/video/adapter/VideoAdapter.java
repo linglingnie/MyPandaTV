@@ -53,6 +53,7 @@ public class VideoAdapter extends BaseAdapter {
             holder.video_item_image= (ImageView) convertView.findViewById(R.id.video_item_image);
             holder.video_item_title= (TextView) convertView.findViewById(R.id.video_item_title);
             holder.video_item_content= (TextView) convertView.findViewById(R.id.video_item_content);
+            holder.videoTime= (TextView) convertView.findViewById(R.id.video_time_length);
             convertView.setTag(holder);
         }else{
             holder= (ViewHolder) convertView.getTag();
@@ -60,6 +61,7 @@ public class VideoAdapter extends BaseAdapter {
         Glide.with(context).load(list.get(position).getImage()).into(holder.video_item_image);
         holder.video_item_title.setText(list.get(position).getTitle());
         holder.video_item_content.setText(list.get(position).getBrief());
+        holder.videoTime.setText(list.get(position).getVideoLength());
 
         return convertView;
     }
@@ -68,6 +70,7 @@ public class VideoAdapter extends BaseAdapter {
        ImageView video_item_image;
        TextView video_item_title;
        TextView video_item_content;
+       TextView videoTime;
 
     }
 }
