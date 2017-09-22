@@ -3,7 +3,7 @@ package com.pandatv.user.activity;
 import com.pandatv.R;
 import com.pandatv.base.BaseActivity;
 
-public class FindPwdActivity extends BaseActivity {
+class FindPwdActivity extends BaseActivity {
 
     @Override
     protected void initData() {

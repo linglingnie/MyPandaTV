@@ -3,7 +3,7 @@ apply plugin: 'android-apt'
 apply plugin: 'com.jakewharton.butterknife'
 android {
     compileSdkVersion 25
-    buildToolsVersion "25.0.3"
+    buildToolsVersion "22.0.1"
     defaultConfig {
         applicationId "com.pandatv"
         minSdkVersion 17
@@ -55,7 +55,7 @@ dependencies {
     compile files('libs/umeng_social_tool.jar')
     compile 'fm.jiecao:jiecaovideoplayer:1.6'
     compile 'fm.jiecao:jiecaovideoplayer:1.6'
-    compile 'com.android.support:appcompat-v7:25.3.1'
+    compile 'com.android.support:appcompat-v7:22.0.1'
     compile 'com.zhy:autolayout:1.4.3'
     compile 'com.android.support:multidex:1.0.1'
     compile 'com.chanven.lib:cptr:1.1.0'
@@ -70,9 +70,11 @@ dependencies {
     compile 'com.squareup.retrofit2:retrofit:2.1.0'
     compile 'com.squareup.retrofit2:adapter-rxjava:2.0.2'
     compile 'com.squareup.okhttp3:logging-interceptor:3.3.0'
-    compile 'com.android.support:support-v4:25.3.1'
+    compile 'com.android.support:support-v4:22.0.1'
     compile 'in.srain.cube:ptr-load-more:1.0.6'
     compile 'eu.the4thfloor.volley:com.android.volley:2015.05.28'
     testCompile 'junit:junit:4.12'
     apt 'com.jakewharton:butterknife-compiler:8.4.0'
+    compile 'org.greenrobot:eventbus:3.0.0'
+
 }
