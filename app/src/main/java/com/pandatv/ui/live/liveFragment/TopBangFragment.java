@@ -15,7 +15,6 @@ import com.pandatv.base.BaseFragment;
 import com.pandatv.ui.live.LiveVideoActivity;
 import com.pandatv.ui.live.adapter.TopBangAdapter;
 import com.pandatv.ui.live.entity.TopBangBean;
-import com.pandatv.ui.live.entity.WhenNoLetBean;
 import com.pandatv.ui.live.liveContract.LiveContract;
 import com.pandatv.ui.live.liveContract.TopBangPresenterImp;
 
@@ -31,8 +30,6 @@ import in.srain.cube.views.ptr.PtrClassicDefaultFooter;
 import in.srain.cube.views.ptr.PtrDefaultHandler;
 import in.srain.cube.views.ptr.PtrDefaultHandler2;
 import in.srain.cube.views.ptr.PtrFrameLayout;
-
-import static com.umeng.qq.handler.a.p;
 
 public class TopBangFragment extends BaseFragment implements LiveContract.TopBangView{
 
@@ -81,8 +78,6 @@ public class TopBangFragment extends BaseFragment implements LiveContract.TopBan
                         topBangPtr.refreshComplete();
                     }
                 },2000);
-
-
             }
 
             @Override

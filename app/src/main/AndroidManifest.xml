@@ -18,6 +18,12 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
 
+
+    <!-- 手机获取音量亮度权限 -->
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <application
         android:name=".app.App"
         android:allowBackup="true"
@@ -41,7 +47,7 @@
             />
         <activity android:name=".ui.bobaoWebView.Web2Activity" />
         <activity
-            android:name=".ui.video.VideoActivity"
+            android:name=".ui.video.VideosActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:screenOrientation="landscape" />
         <activity android:name=".ui.video.PlayerActivity" />
@@ -57,8 +63,6 @@
         <activity android:name=".user.activity.InfoActivity" />
         <activity android:name=".user.activity.SetActivity" />
         <activity android:name=".user.activity.UserCollectActivity" />
-        <activity android:name=".main.MainActivity" />
-        <activity android:name=".ui.live.LiveVideoActivity" />
         <activity android:name=".main.InteractionActivity" />
         <activity android:name=".main.InteractionDetailsActivity" />
 
@@ -117,7 +121,6 @@
         </meta-data>
 
         <activity android:name=".ui.liveChina.AddFragmentActivity"></activity>
-        <activity android:name=".main.InteractionDetailsActivity" />
         <activity android:name=".user.activity.DealActivity"></activity>
     </application>
 
