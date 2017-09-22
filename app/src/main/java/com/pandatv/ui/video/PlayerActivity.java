@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
@@ -22,6 +23,7 @@ import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.pandatv.R;
 import com.pandatv.modle.net.OkBaseHttpImpl;
 import com.pandatv.modle.net.callback.NetWorkCallBack;
+import com.pandatv.ui.video.user.VideoUrl;
 import com.pandatv.ui.video.user.Videoset;
 import com.umeng.socialize.ShareAction;
 import com.umeng.socialize.UMShareListener;
@@ -46,6 +48,7 @@ public class PlayerActivity extends AppCompatActivity implements View.OnClickLis
 
 
 
+
     //按钮点击次数的初始化值
     private int count = 0;
     //列表刷新时间
@@ -54,6 +57,7 @@ public class PlayerActivity extends AppCompatActivity implements View.OnClickLis
     private ImageButton collect;
     private ImageButton share;
     private PlayerAdapter adapter;
+   List<Videoset.VideosetBean._$0Bean> lists;
 
 
     @Override
@@ -66,11 +70,11 @@ public class PlayerActivity extends AppCompatActivity implements View.OnClickLis
 
 
 
-
     }
 
     private void initList() {
         list=new ArrayList<>();
+        lists=new ArrayList<>();
 
     }
 
@@ -82,22 +86,22 @@ public class PlayerActivity extends AppCompatActivity implements View.OnClickLis
         String id = intent.getStringExtra("id");
         palyerTitle.setText(title);
         ImageLoader imageloader = ImageLoader.getInstance();
-//使用默认的ImageLoaderConfiguration
         ImageLoaderConfiguration configuration = ImageLoaderConfiguration.createDefault(PlayerActivity.this);
-//初始化ImageLoader的配置
         imageloader.init(configuration);
         videocontroller1.setUp("http://asp.cntv.lxdns.com/asp/hls/main/0303000a/3/default/b258dc46dd0044f9a66ab99345412822/main.m3u8?maxbr=4096","http://asp.cntv.lxdns.com/asp/hls/main/0303000a/3/default/b258dc46dd0044f9a66ab99345412822/main.m3u8?maxbr=4096",title);
-        //调用方法获得解析的数据
-//        http://api.cntv.cn/video/videolistById?vsid=VSET100237714751&n=7&serviceId=panda&o=desc&of=time&p=
+        //解析视屏数据
+
+
+        //解析二层列表
         OkBaseHttpImpl.getInstance().get(URL + id + "&n=7&serviceId=panda&o=desc&of=time&p=", null, new NetWorkCallBack<Videoset>() {
-
-
             @Override
-            public void onSuccess(Videoset videoSet) {
+            public void onSuccess(Videoset set) {
+                Videoset.VideosetBean bean = set.getVideoset();
+                Videoset.VideosetBean._$0Bean bean_$0 = bean.get_$0();
+                lists.add(bean_$0);
 
 
-
-                List<Videoset.VideoBean> video = videoSet.getVideo();
+                List<Videoset.VideoBean> video = set.getVideo();
                 list.addAll(video);
 
 
@@ -147,6 +151,8 @@ public class PlayerActivity extends AppCompatActivity implements View.OnClickLis
 
             }
         });
+
+
     }
     protected void initView() {
         palyerTitle = (TextView) findViewById(R.id.palyerTitle);
@@ -159,9 +165,7 @@ public class PlayerActivity extends AppCompatActivity implements View.OnClickLis
 
         X_recyler = (XRecyclerView) findViewById(R.id.X_recyler);
         collect = (ImageButton) findViewById(R.id.collect);
-
         share = (ImageButton) findViewById(R.id.share);
-
 //点击事件
         play_image_butt.setOnClickListener(this);
         return_butt.setOnClickListener(this);
@@ -175,7 +179,6 @@ public class PlayerActivity extends AppCompatActivity implements View.OnClickLis
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.play_image_butt:
-
                 count++;
                 if (count == 1) {
                     play_image_butt.setImageResource(R.drawable.com_facebook_tooltip_blue_topnub);
@@ -248,17 +251,40 @@ public class PlayerActivity extends AppCompatActivity implements View.OnClickLis
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //获取ImageLoader对象
-                    ImageLoader imageloader = ImageLoader.getInstance();
-//使用默认的ImageLoaderConfiguration
-                    ImageLoaderConfiguration configuration = ImageLoaderConfiguration.createDefault(PlayerActivity.this);
-//初始化ImageLoader的配置
-                    imageloader.init(configuration);
-                    videocontroller1.setUp("http://asp.cntv.lxdns.com/asp/hls/main/0303000a/3/default/b258dc46dd0044f9a66ab99345412822/main.m3u8?maxbr=4096","http://asp.cntv.lxdns.com/asp/hls/main/0303000a/3/default/b258dc46dd0044f9a66ab99345412822/main.m3u8?maxbr=4096","");
+
+
+                        //http://115.182.35.91/api/getVideoInfoForCBox.do?pid=a0848bf7d1ea482794b2449b1d62b009
+                        OkBaseHttpImpl.getInstance().get("http://115.182.35.91/api/getVideoInfoForCBox.do?pid=" +list.get(position).getVid(), null, new NetWorkCallBack<VideoUrl>() {
+
+
+                            @Override
+                            public void onSuccess(VideoUrl videoUrl) {
+                                //http://115.182.35.91/api/getVideoInfoForCBox.do?pid=VSET100284428835
+
+                                VideoUrl.VideoBean video = videoUrl.getVideo();
+                                String url = video.getChapters().get(0).getUrl();
+                                Log.e("111111111","2222222222"+url);
+                                videocontroller1.setUp(url,url,"");
+
+                            }
+
+                            @Override
+                            public void onError(int errorCode, String errorMsg) {
+
+                            }
+
+                            @Override
+                            public void onFail(String netOff) {
+
+                            }
+
+                        });
+
+
+
                 }
             });
         }
-
         @Override
         public int getItemCount() {
             return list.size();

@@ -122,7 +122,7 @@ public class VideoFragment extends BaseFragment implements  VideoContract.View{
                 //图片集合
                 final List<PandaCulture.BigImgBean> bigImg = pandaCulture.getBigImg();
                 big.addAll(bigImg);
-                ImageView video_Image=video_Image= (ImageView) inflate.findViewById(R.id.video_Image);
+                ImageView video_Image= (ImageView) inflate.findViewById(R.id.video_Image);
                 Glide.with(getContext()).load(big.get(0).getImage()).into(video_Image);
                 mListView.addHeaderView(inflate);
                 adapter=new VideoAdapter(getContext(),list);
@@ -134,6 +134,7 @@ public class VideoFragment extends BaseFragment implements  VideoContract.View{
                     public void onClick(View v) {
                         Intent intent=new Intent(getContext(),VideosActivity.class);
                         intent.putExtra("title",big.get(0).getTitle());
+                        intent.putExtra("pid",big.get(0).getPid());
                         startActivity(intent);
                     }
                 });

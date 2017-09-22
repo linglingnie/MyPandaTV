@@ -28,6 +28,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/person"
                 android:background="@drawable/person_sign"
+                android:scaleType="fitXY"
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="11dp"
                 />
