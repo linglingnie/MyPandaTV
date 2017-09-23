@@ -22,7 +22,7 @@ import butterknife.OnClick;
 
 import static android.R.id.input;
 
-class FindPwdActivity extends BaseActivity {
+public class FindPwdActivity extends BaseActivity {
 
     @BindView(R.id.mBack)
     TextView mBack;

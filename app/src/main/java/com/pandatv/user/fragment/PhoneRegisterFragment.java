@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -18,6 +19,9 @@ import com.pandatv.config.Urls;
 import com.pandatv.modle.net.OkBaseHttpImpl;
 import com.pandatv.user.activity.DealActivity;
 import com.pandatv.user.activity.LoginActivity;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -53,7 +57,6 @@ public class PhoneRegisterFragment extends BaseFragment {
 
     @Override
     protected void initData() {
-
     }
 
     @Override
@@ -66,7 +69,7 @@ public class PhoneRegisterFragment extends BaseFragment {
 
     }
 
-    @OnClick({R.id.mEditPhone,  R.id.mEditInput, R.id.mCheck, R.id.mDeal, R.id.mRegisterBtn})
+    @OnClick({R.id.mEditPhone, R.id.mEditInput, R.id.mCheck, R.id.mDeal, R.id.mRegisterBtn})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.mEditPhone:
@@ -76,24 +79,48 @@ public class PhoneRegisterFragment extends BaseFragment {
 
                 break;
             case R.id.mCheck:
+
                 break;
             case R.id.mDeal:
                 startActivity(new Intent(getActivity(), DealActivity.class));
                 break;
             case R.id.mRegisterBtn:
+
                 phone = mEditPhone.getText().toString().trim();
                 input = mEditInput.getText().toString().trim();
-                if(phone.equals("")&&input.equals("")){
+                if (phone.equals("") && input==null) {
                     Toast.makeText(getActivity(), "请输入信息", Toast.LENGTH_SHORT).show();
-                }else {
-                SharedPreferences.Editor editor = getActivity().getSharedPreferences("data", MODE_PRIVATE).edit();
-                editor.putString("name", phone);
-                editor.putString("password", input);
-                editor.commit();
-                startActivity(new Intent(getActivity(), LoginActivity.class));
-                getActivity().finish();
+                } else if (!isMobileNO(phone)) {
+                    Toast.makeText(getActivity(), "手机号错误", Toast.LENGTH_SHORT).show();
+
+                } else if (mCheck.isClickable()) {
+                    SharedPreferences.Editor editor = getActivity().getSharedPreferences("data", MODE_PRIVATE).edit();
+                    editor.putString("name", phone);
+                    editor.putString("password", input);
+                    editor.commit();
+                    startActivity(new Intent(getActivity(), LoginActivity.class));
+                    getActivity().finish();
+                } else {
+                    Toast.makeText(getActivity(), "请输入完整", Toast.LENGTH_SHORT).show();
                 }
                 break;
         }
     }
+
+
+    //判断手机格式是否正确
+
+    public boolean isMobileNO(String mobiles) {
+
+        Pattern p = Pattern
+
+                .compile("^((13[0-9])|(15[^4,\\D])|(18[0,5-9]))\\d{8}$");
+
+        Matcher m = p.matcher(mobiles);
+
+        return m.matches();
+
+    }
+
 }
+

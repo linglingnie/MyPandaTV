@@ -18,6 +18,9 @@ import com.pandatv.modle.net.OkBaseHttpImpl;
 import com.pandatv.user.activity.DealActivity;
 import com.pandatv.user.activity.LoginActivity;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import butterknife.BindView;
 import butterknife.OnClick;
 
@@ -70,17 +73,35 @@ public class EmailRegisterFragment extends BaseFragment {
             case R.id.mRegisterBtn:
                 phone = mEditPhone.getText().toString().trim();
                 input = mEditInput.getText().toString().trim();
-                if (phone.equals("") && input.equals("")) {
+                if (phone.equals("") && input==null) {
                     Toast.makeText(getActivity(), "请输入信息", Toast.LENGTH_SHORT).show();
-                } else {
+                } else if (!isEmail(phone)) {
+                    Toast.makeText(getActivity(), "邮箱错误", Toast.LENGTH_SHORT).show();
+
+                }else if(!input.equals("")) {
                     SharedPreferences.Editor editor = getActivity().getSharedPreferences("data", MODE_PRIVATE).edit();
                     editor.putString("name", phone);
                     editor.putString("password", input);
                     editor.commit();
                     startActivity(new Intent(getActivity(), LoginActivity.class));
                     getActivity().finish();
+                }else {
+                    Toast.makeText(getActivity(), "请输入完整", Toast.LENGTH_SHORT).show();
                 }
                 break;
         }
+    }
+    //判断email格式是否正确
+
+    public boolean isEmail(String email) {
+
+        String str = "^([a-zA-Z0-9_\\-\\.]+)@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.)|(([a-zA-Z0-9\\-]+\\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\\]?)$";
+
+        Pattern p = Pattern.compile(str);
+
+        Matcher m = p.matcher(email);
+
+        return m.matches();
+
     }
 }
