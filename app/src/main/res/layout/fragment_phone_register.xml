@@ -51,9 +51,9 @@
         android:layout_marginTop="30px">
 
         <EditText
-            android:id="@+id/mEditVerify"
-            android:layout_width="260dp"
-            android:layout_height="match_parent"
+            android:id="@+id/edit_checkimage"
+            android:layout_width="300dp"
+            android:layout_height="120px"
             android:layout_centerVertical="true"
             android:layout_toLeftOf="@+id/personal_reg_imgcheck"
             android:background="@drawable/pe_shape_border_gray"
@@ -65,20 +65,20 @@
             android:textSize="14sp" />
 
         <ImageView
-            android:id="@+id/mImgCheck"
+            android:id="@+id/personal_reg_imgcheck"
             android:layout_width="100dp"
-            android:layout_height="match_parent"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
+            android:layout_height="120px"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
             android:layout_marginLeft="30px"
             android:background="@color/white"
             android:gravity="center"
-            android:scaleType="fitXY"
-            android:text="@string/forget_image_yanzhengma" />
+            android:scaleType="fitXY" />
+
     </RelativeLayout>
 
     <TextView
-        android:id="@+id/hint_imagecheck"
+        android:id="@+id/hint_checkimage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="60px"
@@ -89,33 +89,34 @@
         android:layout_height="120px"
         android:layout_marginLeft="60px"
         android:layout_marginRight="60px"
-        android:layout_marginTop="10dp">
+        android:layout_marginTop="30px">
 
         <EditText
-            android:id="@+id/mEditPhoneVerify"
-            android:layout_width="260dp"
-            android:layout_height="120px"
+            android:id="@+id/edit_checkphone"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_centerVertical="true"
             android:layout_toLeftOf="@+id/personal_reg_phonecheck"
             android:background="@drawable/pe_shape_border_gray"
             android:hint="@string/forget_phone_yanzhengma_hint"
-            android:padding="5dp"
+            android:padding="15px"
             android:textColor="@color/gray"
             android:textColorHint="#c9c9c9"
             android:textCursorDrawable="@null"
             android:textSize="14sp" />
 
-        <TextView
-            android:id="@+id/mPhoneCheck"
+        <Button
+            android:id="@+id/personal_reg_phonecheck"
             android:layout_width="100dp"
-            android:layout_height="120px"
+            android:layout_height="match_parent"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginLeft="30px"
-            android:background="@color/colorPrimaryDark"
+            android:background="@drawable/pe_login_view_bg"
             android:gravity="center"
             android:text="@string/regist_yanzhengma"
-            android:textColor="#ffffff" />
+            android:textColor="@color/white" />
+
     </RelativeLayout>
 
     <TextView

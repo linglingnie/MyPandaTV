@@ -124,7 +124,7 @@
             android:textColor="@color/gray"
             android:textCursorDrawable="@null" />
 
-        <TextView
+        <ImageView
             android:id="@+id/personal_reg_imgcheck"
             android:layout_width="100dp"
             android:layout_height="match_parent"
@@ -159,7 +159,7 @@
             android:button="@null"
             android:checked="true" />
         <TextView
-            android:id="@+id/personal_reg_xieyi_view"
+            android:id="@+id/mDeal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
@@ -178,7 +178,7 @@
     </RelativeLayout>
 
     <TextView
-        android:id="@+id/btn_register"
+        android:id="@+id/mRegisterBtn"
         android:layout_width="match_parent"
         android:layout_height="132px"
         android:layout_marginLeft="60px"

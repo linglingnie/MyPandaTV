@@ -2,6 +2,8 @@ package com.pandatv.user.activity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -49,7 +51,9 @@ public class LoginActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-
+        personalLoginForgetPwd.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG);//下划线
+//        personalLoginForgetPwd.setText("使用代码实现下划线样式");
+        //personalLoginForgetPwd.setTextColor(Color.WHITE);
     }
 
     @Override
@@ -86,7 +90,7 @@ public class LoginActivity extends BaseActivity {
                 startActivity(new Intent(this, FindPwdActivity.class));
                 break;
             case R.id.llweixinlogin:
-                Toast.makeText(this, "换个试试", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "换成QQ试试o(╥﹏╥)o", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.llqqlogin:
                 UMShareAPI.get(this).
@@ -127,6 +131,7 @@ public class LoginActivity extends BaseActivity {
                         });
                 break;
             case R.id.llsinalogin:
+                Toast.makeText(this, "换成QQ试试o(╥﹏╥)o", Toast.LENGTH_SHORT).show();
                 break;
         }
     }

@@ -82,7 +82,7 @@
 
         <EditText
             android:id="@+id/edit_checkimage"
-            android:layout_width="match_parent"
+            android:layout_width="300dp"
             android:layout_height="120px"
             android:layout_centerVertical="true"
             android:layout_toLeftOf="@+id/personal_reg_imgcheck"
@@ -94,16 +94,16 @@
             android:textCursorDrawable="@null"
             android:textSize="14sp" />
 
-        <TextView
+        <ImageView
             android:id="@+id/personal_reg_imgcheck"
             android:layout_width="100dp"
-            android:layout_height="match_parent"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
+            android:layout_height="120px"
             android:layout_marginLeft="30px"
             android:background="@color/white"
             android:gravity="center"
-            android:text="@string/forget_image_yanzhengma" />
+            android:scaleType="fitXY"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true" />
 
     </RelativeLayout>
 

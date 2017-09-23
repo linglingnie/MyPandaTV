@@ -5,34 +5,24 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.pandatv.R;
 import com.pandatv.base.BaseFragment;
 import com.pandatv.config.Urls;
-import com.pandatv.dao.DaoManger;
-import com.pandatv.dao.UserBean;
-import com.pandatv.dao.UserBeanDao;
 import com.pandatv.modle.net.OkBaseHttpImpl;
 import com.pandatv.user.activity.DealActivity;
 import com.pandatv.user.activity.LoginActivity;
-import com.pandatv.user.activity.UserActivity;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
-import butterknife.Unbinder;
 
-import static android.R.attr.password;
-import static android.R.id.input;
 import static android.content.Context.MODE_PRIVATE;
-import static android.net.wifi.WifiEnterpriseConfig.Eap.PWD;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -41,13 +31,9 @@ public class PhoneRegisterFragment extends BaseFragment {
 
     @BindView(R.id.mEditPhone)
     EditText mEditPhone;
-    @BindView(R.id.mEditVerify)
-    EditText mEditVerify;
-    @BindView(R.id.mImgCheck)
+    @BindView(R.id.personal_reg_imgcheck)
     ImageView mImgCheck;
-    @BindView(R.id.mEditPhoneVerify)
-    EditText mEditPhoneVerify;
-    @BindView(R.id.mPhoneCheck)
+    @BindView(R.id.personal_reg_phonecheck)
     TextView mPhoneCheck;
     @BindView(R.id.mEditInput)
     EditText mEditInput;
@@ -57,10 +43,8 @@ public class PhoneRegisterFragment extends BaseFragment {
     TextView mDeal;
     @BindView(R.id.mRegisterBtn)
     TextView mRegisterBtn;
-    private UserBean userBean;
     private String phone;
     private String input;
-    private UserBeanDao dao;
 
     @Override
     protected int getLayoutRes() {
@@ -69,8 +53,6 @@ public class PhoneRegisterFragment extends BaseFragment {
 
     @Override
     protected void initData() {
-        dao = DaoManger.getInstance(getActivity()).getDao();
-        userBean = new UserBean();
 
     }
 
@@ -84,20 +66,11 @@ public class PhoneRegisterFragment extends BaseFragment {
 
     }
 
-    @OnClick({R.id.mEditPhone, R.id.mEditVerify, R.id.mImgCheck, R.id.mEditPhoneVerify, R.id.mPhoneCheck, R.id.mEditInput, R.id.mCheck, R.id.mDeal, R.id.mRegisterBtn})
+    @OnClick({R.id.mEditPhone,  R.id.mEditInput, R.id.mCheck, R.id.mDeal, R.id.mRegisterBtn})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.mEditPhone:
 
-                break;
-            case R.id.mEditVerify:
-                break;
-            case R.id.mImgCheck:
-                    OkBaseHttpImpl.getInstance().loadImage(Urls.IMGCODE, mImgCheck);
-                break;
-            case R.id.mEditPhoneVerify:
-                break;
-            case R.id.mPhoneCheck:
                 break;
             case R.id.mEditInput:
 
@@ -110,12 +83,16 @@ public class PhoneRegisterFragment extends BaseFragment {
             case R.id.mRegisterBtn:
                 phone = mEditPhone.getText().toString().trim();
                 input = mEditInput.getText().toString().trim();
+                if(phone.equals("")&&input.equals("")){
+                    Toast.makeText(getActivity(), "请输入信息", Toast.LENGTH_SHORT).show();
+                }else {
                 SharedPreferences.Editor editor = getActivity().getSharedPreferences("data", MODE_PRIVATE).edit();
                 editor.putString("name", phone);
                 editor.putString("password", input);
                 editor.commit();
                 startActivity(new Intent(getActivity(), LoginActivity.class));
                 getActivity().finish();
+                }
                 break;
         }
     }
